@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <b>Amount</b>
+    <input type="text" name="sotien" id="amount">
+    <b>From Currency</b>
+    <select id="loaitien1">
+        <option value="1">Việt Nam Đồng</option>
+        <option value="23000">Đồng dollar Mỹ</option>
+    </select>
+    <b>To Currency</b>
+    <select id="loaitien2">
+        <option value="1">Việt Nam Đồng</option>
+        <option value="23000">Đồng dollar Mỹ</option>
+    </select>
+    <button id="Convert" type="button" onclick="chuyendoi()"><b>Convert</b></button>
+    <script>
+        function chuyendoi() {
+            let soTien=document.getElementById("amount").value;
+            let lt1=document.getElementById("loaitien1").value;
+            let lt2=document.getElementById("loaitien2").value;
+            let tien=soTien*lt1/lt2;
+            alert("Giá trị chuyển đổi là:" +tien)
+
+        }
+    </script>
+
+</form>
+</body>
+</html>
