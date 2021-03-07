@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <h1>CALCULATOR</h1>
+    <input id="giatri1" type="number">
+    <input id="giatri2" type="number"><br>
+    <button type="button" id="addition" onclick="phepcong()">Addition(+)</button>
+    <button type="button" id="subtraction" onclick="pheptru()">Subtraction(-)</button>
+    <button type="button" id="multiplication" onclick="phepnhan()">Multiplication(x)</button>
+    <button type="button" id="division" onclick="phepchia()">Division(/)</button>
+    <script>
+            function phepcong() {
+           let so1=parseInt(document.getElementById("giatri1").value);
+           let so2=parseInt(document.getElementById("giatri2").value);
+           let ketquacong= so1+so2;
+           alert("Kết quả là:" +ketquacong);
+        }
+        function pheptru() {
+            let so1=parseInt(document.getElementById("giatri1").value);
+            let so2=parseInt(document.getElementById("giatri2").value);
+            let ketquatru= so1-so2;
+            alert("Kết quả là:" +ketquatru);
+        }
+        function phepnhan() {
+            let so1=parseInt(document.getElementById("giatri1").value);
+            let so2=parseInt(document.getElementById("giatri2").value);
+            let ketquanhan= so1*so2;
+            alert("Kết quả là:" +ketquanhan);
+        }
+        function phepchia() {
+            let so1=parseInt(document.getElementById("giatri1").value);
+            let so2=parseInt(document.getElementById("giatri2").value);
+            let ketquachia= so1/so2;
+            alert("Kết quả là:" +ketquachia);
+
+        }
+
+    </script>
+
+</form>
+
+</body>
+</html>
