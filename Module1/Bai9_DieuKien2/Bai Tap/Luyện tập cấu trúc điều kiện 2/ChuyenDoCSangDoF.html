@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+<p><b>Nhập độ C vào đây</b></p>
+<input type="number" id="doC" >
+<input type="button" onclick="chuyenDoi()" value="Chuyển đổi">
+</form>
+<script>
+    function chuyenDoi() {
+        let doC=parseInt(document.getElementById('doC').value);
+        let doF=doC*9/5+32;
+        alert('Độ F là: '+doF);
+
+    }
+</script>
+</body>
+</html>

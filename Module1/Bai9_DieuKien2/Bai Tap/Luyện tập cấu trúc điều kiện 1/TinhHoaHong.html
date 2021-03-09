@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="doanhSo">
+<input type="button" onclick="kiemTra()" value="Tính hoa hồng">
+<script>
+    function kiemTra() {
+        let doanhSo=parseInt(document.getElementById('doanhSo').value);
+        let hoaHong;
+        if (doanhSo>=20000000){
+            hoaHong=doanhSo*0.2;
+            alert('Hoa hồng của bạn là '+ hoaHong);
+        }else if (doanhSo>=10000000){
+            hoaHong=doanhSo*0.1;
+            alert('Hoa hồng của bạn là '+ hoaHong);
+        } else if (doanhSo>=5000000){
+            hoaHong=doanhSo*0.05;
+            alert('Hoa hồng của bạn là '+ hoaHong);
+        } else {
+            alert('Hoa hồng của bạn là '+ doanhSo);
+        }
+
+    }
+</script>
+
+</body>
+</html>

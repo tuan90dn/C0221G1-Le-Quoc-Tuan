@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <p><b>Nhập độ C vào đây</b></p>
+    <input type="number" id="donVim" >
+    <input type="button" onclick="chuyenDoi()" value="Chuyển đổi">
+</form>
+<script>
+    function chuyenDoi() {
+        let m=parseInt(document.getElementById('donVim').value);
+        let feet=m*3.2808;
+        alert('Đổi sang feet là: '+feet+'feet');
+
+    }
+</script>
+</body>
+</html>

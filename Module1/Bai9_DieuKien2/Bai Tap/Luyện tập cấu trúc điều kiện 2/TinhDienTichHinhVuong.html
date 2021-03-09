@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <p><b>Nhập độ dài cạnh a vào đây</b></p>
+    <input type="number" id="DoDaiCanh" >
+    <input type="button" onclick="dienTich()" value="Tính diện tích">
+</form>
+<script>
+    function dienTich() {
+        let a=parseInt(document.getElementById('DoDaiCanh').value);
+        let dienTich=a*a;
+        alert('Diện tích hình vuông là: '+dienTich);
+    }
+</script>
+</body>
+</html>

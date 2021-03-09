@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="number" id="nhapSoa">
+<input type="number" id="nhapSob">
+<input type="number" id="nhapSoc">
+<input type="button" value="Số lớn nhất là" onclick="kiemTra()">
+<script>
+    function kiemTra() {
+        let a=parseInt(document.getElementById("nhapSoa").value);
+        let b=parseInt(document.getElementById("nhapSob").value);
+        let c=parseInt(document.getElementById("nhapSoc").value);
+        let max = a;
+        if (a>b){
+            if(a>c){
+                max=a;
+                // alert('a là số lớn nhất')
+            } else {
+                max=c;
+                // alert('c là số lớn nhất')
+            }
+        } else {
+            if (b>c){
+                max=b;
+            }else {
+                max=c;
+            }
+        }
+        alert('Số lớn nhất là '+ max);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <p><b>Nhập độ tuổi vào đây</b></p>
+    <input type="number" id="DoTuoi">
+    <input type="button" onclick="kiemTra()" value="Kiểm tra tuổi">
+</form>
+<script>
+    function kiemTra() {
+        let a = parseInt(document.getElementById('DoTuoi').value);
+        if (a > 0 && a < 120) {
+            alert('Đây là tuổi của một người')
+        } else {
+            alert('Đây không phải là tuổi người');
+        }
+    }
+</script>
+</body>
+</html>

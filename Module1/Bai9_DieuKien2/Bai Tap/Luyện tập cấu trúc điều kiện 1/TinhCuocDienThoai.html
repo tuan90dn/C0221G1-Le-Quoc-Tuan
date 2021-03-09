@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="soPhut">
+<input type="button" value="Nhập số phút đã gọi" onclick="kiemTra()">
+<script>
+    function kiemTra() {
+        let soPhut=parseInt(document.getElementById('soPhut').value);
+        let tienCuoc=25000;
+        if (soPhut<=50){
+            tienCuoc=soPhut*600+tienCuoc;
+            // alert('Tiền cước của bạn là '+tienCuoc);
+        } else if (soPhut<=200){
+            tienCuoc=(soPhut-50)*400+50*600+tienCuoc;
+        } else {
+            tienCuoc=(soPhut-200)*200+150*400+50*600+tienCuoc;
+        } alert('Tiền cước của bạn là '+tienCuoc);
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+<!--    <!Bài 1-->
+
+    <input type="number" id="soa">
+    <input type="number" id="sob">
+    <button type="button" onclick="kiemTra()">Kiểm Tra</button>
+    <script>
+
+        function kiemTra() {
+            let a=parseInt(document.getElementById("soa").value);
+            let b=parseInt(document.getElementById("sob").value);
+            let c=a%b==0;
+            if (c){
+                alert('a chia hết cho b')
+            } else {
+                alert('a không chia hết cho b')
+            }
+
+        }
+    </script>
+
+
+</form>
+
+</body>
+</html>

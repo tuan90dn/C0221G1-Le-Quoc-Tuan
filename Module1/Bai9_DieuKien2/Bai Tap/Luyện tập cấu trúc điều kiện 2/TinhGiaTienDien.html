@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="SoChuDien">
+<input type="button" value="Nhập số chữ điện đã dùng" onclick="kiemTra()">
+<script>
+    function kiemTra() {
+        let soDien=parseInt(document.getElementById('SoChuDien').value);
+        let soTien;
+        if(soDien<=50){
+            soTien=soDien*1.678;
+
+        } else if(soDien<=100){
+            soTien=50*1.678+(soDien-50)*1.734;
+
+        } alert('Số tiền cần nộp là: '+soTien);
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <p><b>Nhập độ dài cạnh a vào đây</b></p>
+    <input type="number" id="DoDaiCanha"><br>
+    <p><b>Nhập độ dài cạnh b vào đây</b></p>
+    <input type="number" id="DoDaiCanhb"><br>
+    <p><b>Nhập độ dài cạnh c vào đây</b></p>
+    <input type="number" id="DoDaiCanhc"><br>
+    <input style="margin-top: 10px" type="button" onclick="kiemTra()" value="Kiểm tra">
+</form>
+<script>
+    function kiemTra() {
+        let a=parseInt(document.getElementById('DoDaiCanha').value);
+        let b=parseInt(document.getElementById('DoDaiCanhb').value);
+        let c=parseInt(document.getElementById('DoDaiCanhc').value);
+        if(a>0&&b>0&&c>0&&(a+b)>c&&(a+c)>b&&(b+c)>a){
+           alert('Đây là các cạnh của một tam giác');
+        } else {
+            alert('Đây không phải là các cạnh của một tam giác');
+        }
+    }
+</script>
+
+</body>
+</html>
