@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="number" id="soLuong">
+    <input type="button" value="Check" onclick="kiemTra()">
+</form>
+<script>
+    function kiemTra() {
+
+        let num = parseInt(document.getElementById('soLuong').value);
+        let N = 2;
+        let count = 0;
+        let so = "";
+        while (count < num) {
+            let ktra = true;
+            for (i = 2; i < N / 2 + 1; i++) {
+                if (N % i == 0) {
+                    ktra = false;
+                    break;
+                }
+            }
+            if (ktra == true) {
+                so += N + "<br>";
+                count++;
+            }
+            N++;
+        }
+        document.write(so)
+    }
+</script>
+</body>
+</html>
