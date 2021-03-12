@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="number" id="NhapSo">
+    <input type="button" onclick="kiemTra()" value="Tính Giai Thừa">
+</form>
+<script>
+    function kiemTra() {
+        let num=parseInt(document.getElementById('NhapSo').value);
+        let kq=1;
+        for (let i=1;i<=num;i++){
+            kq*=i;
+        }
+        document.write('Giai thừa của số vừa nhập là '+ kq);
+    }
+
+
+
+</script>
+
+
+</body>
+</html>
