@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr=[5,6,12,4,14,15,18,2,3,10];
+    let index=0;
+    let max=arr[0];
+    let tb=0;
+    for (let i=0;i<arr.length;i++){
+        tb+=arr[i];
+        if(arr[i]>max){
+            arr[i]=max;
+            index=i;
+        }
+
+    }
+    document.write('Phần tử lớn nhất trong mảng là: '+max+' tại index: '+index+'<br>');
+    document.write('Giá trị trung bình của mảng là: '+tb/arr.length);
+</script>
+
+</body>
+</html>

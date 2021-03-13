@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr=[5,6,12,4,14,15,18,2,3,10];
+    // arr.reverse();
+    // alert(arr);
+    let first=0;
+    let last=arr.length-1;
+    while (first<last){
+        let b=arr[first];
+        arr[first]=arr[last];
+        arr[last]=b;
+        first++;
+        last--;
+    }
+    alert(arr);
+</script>
+</body>
+</html>
