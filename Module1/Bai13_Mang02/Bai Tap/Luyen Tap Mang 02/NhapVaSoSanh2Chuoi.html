@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="text" id="chuoi1"><br>
+    <input type="text" id="chuoi2"><br>
+    <input type="button" onclick="SoSanh()" value="So Sánh">
+</form>
+<script>
+    function SoSanh() {
+        let a=document.getElementById('chuoi1');
+        let b=document.getElementById('chuoi2');
+
+        if (a===b){
+            document.write('2 chuỗi nãy giống nhau')
+        } else {
+            document.write('2 chuỗi này khác nhau');
+        }
+
+    }
+</script>
+
+</body>
+</html>

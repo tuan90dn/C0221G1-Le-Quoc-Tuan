@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="tiengViet">
+<input type="button" value="Tiếng Việt" onclick="chuyen_sang_tieng_Anh()"><br>
+<input type="text" id="tiengAnh">
+<input type="button" value="Tiếng Anh" onclick="chuyen_sang_tieng_Viet()"><br>
+<script>
+    let tiengAnh=['one','two','three'];
+    let tiengViet=['một','hai','ba'];
+    function chuyen_sang_tieng_Anh() {
+        let TV=document.getElementById('tiengViet').value;
+        for (let i=0;i<tiengViet.length;i++){
+            if (TV===tiengViet[i]){
+                alert(tiengAnh[i]);
+                document.getElementById('tiengViet').value='';
+            }
+        }
+
+    }
+    function chuyen_sang_tieng_Viet() {
+        let TV=document.getElementById('tiengAnh').value;
+        for (let j=0;j<tiengAnh.length;j++){
+            if (TV===tiengAnh[j]){
+                alert(tiengViet[j]);
+                document.getElementById('tiengAnh').value='';
+            }
+        }
+
+    }
+</script>
+
+</body>
+</html>
