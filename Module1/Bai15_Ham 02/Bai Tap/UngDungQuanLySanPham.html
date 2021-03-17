@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <th>STT</th>-->
+<!--        <th>TÊN</th>-->
+<!--        <th>SỬA</th>-->
+<!--        <th>XÓA</th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th>1</th>-->
+<!--        <th>nokia</th>-->
+<!--        <th><input type="button" onclick="sua()" value="Sửa"></th>-->
+<!--        <th><input type="button" onclick="xoa()" value="Xóa"></th>-->
+<!--    </tr>-->
+<!--</table>-->
+
+    <h2><b>Add New Product</b></h2>
+    <input type="text" id="newProduct" placeholder="New Product">
+    <input type="button" onclick="add()" value="Add" style="background-color: darkgreen;color: white">
+    <h2><b>Add New Product</b></h2>
+<p id="HienThi"></p>
+<script>
+    let arr=['samsung','nokia','iphone'];
+
+    function display(list) {
+        let tableString='<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>TÊN</th>\n' +
+            '        <th>SỬA</th>\n' +
+            '        <th>XÓA</th>\n' +
+            '    </tr>';
+        for (let i=0;i<list.length;i++){
+            tableString+='<tr>\n' +
+                '        <th>'+(i+1)+'</th>\n' +
+                '        <th>'+list[i]+'</th>\n' +
+                '        <th><input type="button" onclick="sua('+i+')" value="Sửa"></th>\n' +
+                '        <th><input type="button" onclick="xoa()" value="Xóa"></th>\n' +
+                '    </tr>';
+        }
+        tableString+='</table>';
+        document.getElementById('HienThi').innerHTML=tableString;
+    }
+
+    function add() {
+        let product=document.getElementById('newProduct').value;
+        arr.push(product);
+        display(arr);
+    }
+    function sua(index) {
+        let newProduct=prompt('Nhập tên cần thay đổi');
+        arr[index]=newProduct;
+        display(arr);
+    }
+    function xoa(index) {
+        arr.splice(index,1);
+        display(arr);
+
+    }
+    display(arr);
+</script>
+<!--<script>-->
+<!--    let arr= Array(20);-->
+<!--    for (let i=0;i<arr.length;i++){-->
+<!--        arr[i]=Array(3);-->
+<!--        for (let j=0;j<arr.length;j++){-->
+<!--            arr[i][j]='';-->
+<!--        }-->
+<!--    }-->
+<!--    function display() {-->
+<!--        let tableString= '<table border="1">';-->
+
+
+<!--    }-->
+
+
+<!--</script>-->
+
+
+</body>
+</html>
