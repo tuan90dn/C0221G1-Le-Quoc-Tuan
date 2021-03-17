@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function timMin(a,b,c) {
+        a=parseFloat(a);
+        b=parseFloat(b);
+        c=parseFloat(c);
+        let min=a;
+        if (b<a){
+            min=b;
+        } else {
+            if (c<a){
+                min=c;
+            }
+        }
+        return min;
+    }
+    alert(timMin(2,0,7));
+</script>
+
+</body>
+</html>

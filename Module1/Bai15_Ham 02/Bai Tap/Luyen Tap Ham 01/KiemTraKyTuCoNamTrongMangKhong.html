@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function kiemTra(arr, text) {
+        let count = 0;
+        for(let j=0;j<arr.length;j++){
+            if (text != arr[j]) {
+                count =- 1;
+            }
+        }
+        for (let i = 0; i < arr.length; i++) {
+            if (text == arr[i]) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+    let arr1 = [0, 1, 1, 2,1];
+    let num = 4;
+    alert(kiemTra(arr1, num));
+</script>
+
+</body>
+</html>

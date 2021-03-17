@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let ngoiSao=['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe','Regulus'];
+    let chomSao=['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major','Leo'];
+    function search(ten) {
+        for (let i=0;i<ngoiSao.length;i++){
+            if (ngoiSao[i]===ten){
+                return 'Chòm sao tương ứng là '+chomSao[i];
+            }else {
+                return 'Không tìm thấy chòm sao tương ứng';
+            }
+        }
+    }
+    let nhap=prompt('Nhập vào tên ngôi sao');
+    alert(search(nhap));
+</script>
+
+</body>
+</html>
