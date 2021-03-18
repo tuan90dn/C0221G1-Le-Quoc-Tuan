@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class HinhTron {
+        constructor(radius) {
+            this.radius = radius;
+        }
+
+        getRadius() {
+            return this.radius;
+        }
+
+        getArea() {
+            return Math.PI *this.radius * this.radius;
+        }
+
+    }
+    let circle=new HinhTron(2)    ;
+    let banKinh=circle.getRadius();
+    let chuVi=circle.getArea();
+    alert('Bán kính hình tròn là: '+banKinh+' Chu vi hình tròn là: '+chuVi);
+</script>
+
+</body>
+</html>

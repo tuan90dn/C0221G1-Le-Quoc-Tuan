@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    class Temperature {
+        constructor(C) {
+            this.C=C;
+        }
+        doiSangF(){
+            return (this.C*1.8)+32;
+        }
+        doiSangK(){
+            return this.C+273.15;
+        }
+    }
+    let tem=new Temperature(25);
+    document.write(tem.doiSangF()+'<br>');
+    document.write(tem.doiSangK());
+
+</script>
+</body>
+</html>
