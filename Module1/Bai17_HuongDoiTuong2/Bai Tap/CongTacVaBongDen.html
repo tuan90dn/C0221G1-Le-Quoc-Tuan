@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="ThongBao">Bóng đèn đang tắt</p>
+<input type="button" onclick="switchButton()" value="Công tắc">
+<script>
+    class Lamp {
+        constructor(status) {
+            this.status = status;
+        }
+
+        electricLamp() {
+            this.status = !this.status;
+        }
+    }
+
+    class Switch{
+        constructor(status,lamp) {
+            this.status=status;
+            this.lamp=lamp;
+        }
+        connectToLamp(){
+            if (this.lamp.status){
+                document.getElementById('ThongBao').innerText='Bóng đèn đang bật';
+            } else {
+                document.getElementById('ThongBao').innerText='Bóng đèn đang tắt';
+            }
+        }
+    }
+
+    let den=new Lamp(false);
+    let nut=new Switch(true,den);
+    // nut.connectToLamp();
+
+
+    function switchButton(){
+        den.electricLamp();
+        nut.connectToLamp();
+    }
+
+</script>
+</body>
+</html>
