@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function missingValue(A,B) {
+        for (let i=0;i<A.length;i++){
+            for (let j=0;j<B.length;j++){
+                if(A[i]===B[j]){
+                    B.splice(j,1);
+                }
+            }
+        }
+        return B.sort();
+    }
+    let a=[1,2,3,4];
+    let b=[7,3,5,6];
+    alert(missingValue(a,b));
+</script>
+
+</body>
+</html>

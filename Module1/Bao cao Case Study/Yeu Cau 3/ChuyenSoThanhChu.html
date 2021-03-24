@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let mangSo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let mangChu = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín'];
+    let num = prompt('Nhập số cần chuyển đổi vào đây');
+    let result = '';
+    for (let j = 0; j < num.length; j++) {
+        for (let i = 0; i < mangSo.length; i++) {
+            if (mangSo[i] == num[j]) {
+                result += mangChu[i]+' ';
+            }
+        }
+    }
+    alert(result);
+</script>
+
+</body>
+</html>

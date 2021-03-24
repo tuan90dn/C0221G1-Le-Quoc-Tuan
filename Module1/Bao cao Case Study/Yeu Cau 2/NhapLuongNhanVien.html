@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let luong=prompt('Nhập lương cần tính vào đây');
+    let thue;
+    let luongRong;
+    if(luong>=15000000){
+        luongRong=luong*0.8;
+        thue=luong*0.2;
+    } else if(luong<15000000&&luong>=7000000){
+        luongRong=luong*0.9;
+        thue=luong*0.1;
+    } else {
+        luongRong=luong*0.95;
+        thue=luong*0.05;
+    }
+    alert('Thuế bạn cần nộp là '+thue+' Lương bạn nhận được là '+luongRong);
+</script>
+
+</body>
+</html>

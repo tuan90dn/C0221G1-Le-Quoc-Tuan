@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let thoat=true;
+    do {
+
+        let choose=prompt('1.Cafe\n' +
+            '2.Cam vắt\n' +
+            '3.Nước ép cà rốt\n' +
+            '4.Nước ép cà chua\n' +
+            '5.Nước lọc\n' +
+            '6.Nước dừa\n'+'7.Exit');
+        switch (choose) {
+            case '1':
+                caFe();
+                break;
+            case '2':
+                camVat();
+                break;
+            case '3':
+                caRot();
+                break;
+            case '4':
+                caChua();
+                break;
+            case '5':
+                nuocLoc();
+                break;
+            case '6':
+                nuocDua();
+                break;
+            case '7':
+                thoat=false;
+
+        }
+
+    } while (thoat);
+    function caFe() {
+        let num=prompt('Giá cafe là 10.000/1ly.Nhập số lượng cần mua');
+        alert('Tổng giá cần trả là '+num*10000);
+    }
+    function camVat() {
+        let num=prompt('Giá cam vắt là 10.000/1ly.Nhập số lượng cần mua');
+        alert('Tổng giá cần trả là '+num*10000);
+    }
+    function caRot() {
+        let num1=prompt('Giá cafe là 10.000/1ly.Nhập số lượng cần mua');
+        alert('Tổng giá cần trả là '+num1*10000);
+    }
+    function caChua() {
+        let num1=prompt('Giá cafe là 10.000/1ly.Nhập số lượng cần mua');
+        alert('Tổng giá cần trả là '+num1*10000);
+    }
+    function nuocLoc() {
+        let num1=prompt('Giá cafe là 10.000/1ly.Nhập số lượng cần mua');
+        alert('Tổng giá cần trả là '+num1*10000);
+    }
+    function nuocDua() {
+        let num1=prompt('Giá cafe là 10.000/1ly.Nhập số lượng cần mua');
+        alert('Tổng giá cần trả là '+num1*10000);
+    }
+
+</script>
+
+</body>
+</html>

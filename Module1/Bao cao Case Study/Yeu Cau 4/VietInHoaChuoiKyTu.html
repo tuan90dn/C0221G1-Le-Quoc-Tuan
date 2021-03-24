@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let chuoi=prompt('Nhập tên vào đây');
+    function vietHoa(chuoi){
+        let result='';
+        chuoi=chuoi.toLowerCase().split(' ');
+        for (let i=0;i<chuoi.length;i++){
+            result+=chuoi[i].charAt(0).toUpperCase() + chuoi[i].slice(1)+' ';
+        }
+        return result;
+    }
+    function chuDaiNhat(chuoi){
+        chuoi=vietHoa(chuoi);
+        chuoi=chuoi.split(' ');
+        let max;
+        for (let i=0;i<chuoi.length;i++){
+            max=chuoi[0].length;
+            if (chuoi[i].length>max){
+                max=chuoi[i].length;
+            }
+        }
+        return chuoi[max];
+    }
+    document.write(vietHoa(chuoi)+'<br>');
+    document.write(chuDaiNhat(chuoi));
+
+
+</script>
+
+</body>
+</html>
