@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let result='';
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j <5; j++) {
+            if (i==0||i==3){
+                result+='*';
+
+            } else {
+                if(j==0||j==4){
+                    result+='*';
+                } else {
+                    result+=' ';
+                }
+            }
+
+        }
+        result+='<br>';
+    }
+    document.write('<pre>'+result+'</pre>');
+</script>
+
+</body>
+</html>
