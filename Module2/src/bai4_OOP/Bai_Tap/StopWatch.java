@@ -1,5 +1,7 @@
 package bai4_OOP.Bai_Tap;
 
+import java.util.Arrays;
+
 //import java.time.LocalTime;
 public class StopWatch {
     private Long startTime, endTime;
@@ -20,27 +22,17 @@ public class StopWatch {
         return endTime-startTime;
     }
 
-    private static int sum() {
-        int sum = 0;
-        for (int i = 0; i <= 100; i++) {
-            sum += i;
-        }
-        return sum;
-    }
-
-    private static void doJob(int count) {
-
-        for (int i = 0; i < count; i++) {
-            sum();
-        }
-    }
 
     public static void main(String[] args) {
         StopWatch stopWatch = new StopWatch();
+        int[] arr=new int[10000000];
         stopWatch.start();
-        doJob(100000000);
+        for (int i = 0; i <arr.length ; i++) {
+            arr[i]=(int) (Math.random()*100);
+        }
+        Arrays.sort(arr);
         stopWatch.end();
-        System.out.println("Distance time in milli second: " + stopWatch.getElapsedTime());
+        System.out.println(stopWatch.getElapsedTime()+"mls");
     }
 
 }
