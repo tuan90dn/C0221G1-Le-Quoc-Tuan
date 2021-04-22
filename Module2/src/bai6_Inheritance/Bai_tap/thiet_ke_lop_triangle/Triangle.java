@@ -1,4 +1,4 @@
-package bai6_Inheritance.Bai_tap.thiet_ke_lop_triangle;
+package bai6_Inheritance.bai_tap.thiet_ke_lop_triangle;
 
 import bai6_Inheritance.Thuc_hanh.Shape;
 
