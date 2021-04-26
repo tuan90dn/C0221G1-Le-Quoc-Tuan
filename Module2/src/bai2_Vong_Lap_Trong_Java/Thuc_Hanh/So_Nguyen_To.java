@@ -1,4 +1,4 @@
-package bai2_Vong_Lap_Trong_Java.Thuc_Hanh;
+package bai2_vong_lap_trong_java.Thuc_Hanh;
 import java.util.Scanner;
 public class So_Nguyen_To {
     public static void main(String[] args) {
