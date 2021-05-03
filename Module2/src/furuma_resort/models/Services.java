@@ -1,23 +1,26 @@
-package furuma_resort.Models;
+package furuma_resort.models;
 
 public abstract class Services {
-    private String nameOfService;
-    private double areaOfEmploy;
-    private double priceOfRent;
-    private int maximumOfPerson;
-    private String typeOfEmploy;
-    private String id;
+    protected String id;
+    protected String nameOfService;
+    protected double areaOfEmploy;
+    protected double priceOfRent;
+    protected int maximumOfPerson;
+    protected String typeOfEmploy;
+
 
     public Services() {
     }
 
-    public Services(String nameOfService, double areaOfEmploy, double priceOfRent, int maximumOfPerson, String typeOfEmploy, String id) {
+    public Services(String id,String nameOfService, double areaOfEmploy,
+                    double priceOfRent, int maximumOfPerson, String typeOfEmploy) {
+        this.id = id;
         this.nameOfService = nameOfService;
         this.areaOfEmploy = areaOfEmploy;
         this.priceOfRent = priceOfRent;
         this.maximumOfPerson = maximumOfPerson;
         this.typeOfEmploy = typeOfEmploy;
-        this.id = id;
+
     }
 
     public String getNameOfService() {
@@ -80,6 +83,6 @@ public abstract class Services {
                 '}';
     }
 
-    public abstract String showInfor();
+    public abstract void showInfor();
 
 }

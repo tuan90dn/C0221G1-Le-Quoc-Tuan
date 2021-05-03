@@ -7,7 +7,7 @@ public class PhoneNumber {
     private static Pattern pattern;
     private Matcher matcher;
 
-    private static final String EMAIL_REGEX =   "^\\([0-9]{2}\\)\\-\\([0]+[0-9]{9}\\)";
+    private static final String EMAIL_REGEX =   "^\\([0-9]{2}\\)-\\([0]+[0-9]{9}\\)";
 
     public PhoneNumber() {
         pattern = Pattern.compile(EMAIL_REGEX);

@@ -1,4 +1,4 @@
-package furuma_resort.Models;
+package furuma_resort.models;
 
 public class House extends Services {
     private String standardOfRoom;
@@ -14,8 +14,10 @@ public class House extends Services {
         this.amountOfFloor = amountOfFloor;
     }
 
-    public House(String nameOfService, double areaOfEmploy, double priceOfRent, int maximumOfPerson, String typeOfEmploy, String id, String standardOfRoom, String differentServices, int amountOfFloor) {
-        super(nameOfService, areaOfEmploy, priceOfRent, maximumOfPerson, typeOfEmploy, id);
+    public House(String id,String nameOfService, double areaOfEmploy, double priceOfRent, int maximumOfPerson,
+                 String typeOfEmploy,  String standardOfRoom, String differentServices,
+                 int amountOfFloor) {
+        super(id,nameOfService, areaOfEmploy, priceOfRent, maximumOfPerson, typeOfEmploy);
         this.standardOfRoom = standardOfRoom;
         this.differentServices = differentServices;
         this.amountOfFloor = amountOfFloor;
@@ -45,14 +47,23 @@ public class House extends Services {
         this.amountOfFloor = amountOfFloor;
     }
 
-
-
     @Override
-    public String showInfor() {
+    public String toString() {
         return "House{" +
                 "standardOfRoom='" + standardOfRoom + '\'' +
                 ", differentServices='" + differentServices + '\'' +
                 ", amountOfFloor=" + amountOfFloor +
-                '}'+", which is a subclass of "+super.toString();
+                ", id='" + id + '\'' +
+                ", nameOfService='" + nameOfService + '\'' +
+                ", areaOfEmploy=" + areaOfEmploy +
+                ", priceOfRent=" + priceOfRent +
+                ", maximumOfPerson=" + maximumOfPerson +
+                ", typeOfEmploy='" + typeOfEmploy + '\'' +
+                '}';
+    }
+
+    @Override
+    public void showInfor() {
+        System.out.println(toString());
     }
 }
