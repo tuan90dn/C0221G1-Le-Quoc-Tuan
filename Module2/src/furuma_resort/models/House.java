@@ -66,4 +66,5 @@ public class House extends Services {
     public void showInfor() {
         System.out.println(toString());
     }
+
 }

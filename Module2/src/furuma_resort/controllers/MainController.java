@@ -100,7 +100,7 @@ public class MainController {
 
     }
 
-    private static void showInformationOfEmployee() {
+    public static void showInformationOfEmployee() {
         Map<String,Employee> mapEmployee=readEmployee(EMPLOYEE);
         System.out.println("List employee");
         for (Map.Entry<String,Employee> employeeEntry:mapEmployee.entrySet()){

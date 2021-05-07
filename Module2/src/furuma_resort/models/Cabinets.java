@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class Cabinets {
+
     private static Stack<Employee> stackOfEmployee=new Stack<>();
     static {
         Map<String,Employee> mapOfEmployee= MainController.readEmployee(MainController.EMPLOYEE);
@@ -14,6 +15,8 @@ public class Cabinets {
             stackOfEmployee.push(entry.getValue());
         }
     }
+
+
     private static Employee getFileEmployee(String id){
         Employee employee=null;
         while (!stackOfEmployee.isEmpty()){
@@ -25,14 +28,16 @@ public class Cabinets {
         return employee;
     }
     public static void findEmployee(){
+//        MainController.showInformationOfEmployee();
         Scanner scanner=new Scanner(System.in);
         System.out.println("Please input the id of employee need do search: ");
         String id=scanner.nextLine();
-        Employee employee=getFileEmployee(id);
-        if (employee!=null){
-            System.out.println("Employee is: "+employee.toString());
+        Employee employee1=getFileEmployee(id);
+        if (employee1 !=null){
+            System.out.println("Employee is: "+employee1.toString());
         } else {
             System.out.println("Not found!");
         }
+        employee1=null;
     }
 }
