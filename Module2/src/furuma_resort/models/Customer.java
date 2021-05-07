@@ -114,7 +114,7 @@ public class Customer implements Comparable<Customer> {
                 '}';
     }
 
-    public void ShowInfor(){
+    public void showInfor(){
         System.out.println(toString());
     }
 

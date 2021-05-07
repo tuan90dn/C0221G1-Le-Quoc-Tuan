@@ -10,11 +10,14 @@ import furuma_resort.models.*;
 import java.util.*;
 
 public class MainController {
+
     private static Scanner scanner=new Scanner(System.in);
     private static String VILLA="villa";
     private static String HOUSE="house";
     private static String ROOM="room";
     private static String CUSTOMER="customer";
+    private static String BOOKING = "booking";
+    public static String EMPLOYEE = "employee";
     public static void displayMainMenu(){
         int choose=-1;
         do {
@@ -61,7 +64,7 @@ public class MainController {
     }
 
     private static void showStackOfCustomer() {
-
+        Cabinets.findEmployee();
     }
 
     private static void showQueueOfCustomer() {
@@ -75,35 +78,70 @@ public class MainController {
         System.out.println("List customer who buy ticket: ");
         while (!queueCustomer.isEmpty()){
             customer=queueCustomer.poll();
-            customer.ShowInfor();
+            customer.showInfor();
         }
+    }
+    public static Map<String,Employee> readEmployee(String fileName){
+        FileUtils.setPath(fileName);
+        List<String> listPropertiesOfEmployee=FileUtils.readFile();
+        Map<String,Employee> mapEmployee=new HashMap<>();
+        String[] arrayPropertiesOfEmployee=null;
+        Employee employee=null;
+        for (String property:listPropertiesOfEmployee){
+            arrayPropertiesOfEmployee=property.split(StringUtils.COMMA);
+            employee=new Employee();
+            employee.setId(arrayPropertiesOfEmployee[0]);
+            employee.setNameOfEmployee(arrayPropertiesOfEmployee[1]);
+            employee.setBirthday(arrayPropertiesOfEmployee[2]);
+            employee.setAddress(arrayPropertiesOfEmployee[3]);
+            mapEmployee.put(employee.getId(),employee);
+        }
+        return mapEmployee;
+
     }
 
     private static void showInformationOfEmployee() {
+        Map<String,Employee> mapEmployee=readEmployee(EMPLOYEE);
+        System.out.println("List employee");
+        for (Map.Entry<String,Employee> employeeEntry:mapEmployee.entrySet()){
+            System.out.println(employeeEntry.getKey()+" "+employeeEntry.getValue().toString());
+        }
     }
 
     private static void addNewBooking() {
+        List<Customer> listReadCustomer=readCustomer(CUSTOMER);
         showInformationOfCustomer(CUSTOMER);
-        int choose=-1;
-        while (choose!=4){
+        System.out.println("Please choose customer to booking: ");
+        int chooseCustomer=Integer.parseInt(scanner.nextLine());
+
             System.out.println("1.\tBooking Villa\n" +
                     "2.\tBooking House\n" +
                     "3.\tBooking Room\n"+
                     "4.\tExit.");
             System.out.println("Input your choice: ");
-            choose=Integer.parseInt(scanner.nextLine());
-            switch (choose){
-                case 1:
-                    showAllServices(VILLA);
-                    break;
-                case 2:
-                    showAllServices(HOUSE);
-                    break;
-                case 3:
-                    showAllServices(ROOM);
-                    break;
-            }
+        int chooseModel=Integer.parseInt(scanner.nextLine());
+        List<Services> listOfService=null;
+        switch (chooseModel){
+            case 1:
+                listOfService=readService(VILLA);
+                showAllServices(VILLA);
+                break;
+            case 2:
+                listOfService=readService(HOUSE);
+                showAllServices(HOUSE);
+                break;
+            case 3:
+                listOfService=readService(ROOM);
+                showAllServices(ROOM);
+                break;
         }
+        System.out.println("Please choose service to booking: ");
+        int chooseService=Integer.parseInt(scanner.nextLine());
+        Customer customer=listReadCustomer.get(chooseCustomer-1);
+        customer.setServices(listOfService.get(chooseService-1));
+        FileUtils.setPath(BOOKING);
+        FileUtils.writeFile(new String[]{customer.toString()});
+
 
     }
     private static List<Customer> readCustomer(String fileName){
@@ -125,17 +163,20 @@ public class MainController {
             customer.setAddress(propertiesCustomer[7]);
             listCustomer.add(customer);
         }
+        Collections.sort(listCustomer);
         return listCustomer;
     }
 
     private static void showInformationOfCustomer(String fileName) {
         System.out.println("List customer: ");
         List<Customer> listCustomer=readCustomer(fileName);
-        Collections.sort(listCustomer);
-        int i=1;
-        for (Customer customer: listCustomer){
-            System.out.println(i+"."+customer.toString());
-            i++;
+
+        int i;
+        Customer customer=null;
+        for (i=0;i<listCustomer.size();i++){
+            customer=listCustomer.get(i);
+            System.out.print((i+1)+".");
+            customer.showInfor();
         }
     }
 
@@ -305,11 +346,13 @@ public class MainController {
 
     private static void showAllServices(String fileName) {
         System.out.println("List services: ");
-        int i=1;
-        for (Services services:readService(fileName)){
-            System.out.println(i+"."+services.toString());
-            i++;
-//            services.showInfor();
+        int i;
+        List<Services> listReadService=readService(fileName);
+        Services services=null;
+        for (i=0;i<listReadService.size();i++){
+            services=listReadService.get(i);
+            System.out.print((i+1)+".");
+            services.showInfor();
         }
     }
 //    private static void showAllServices(String fileName) {

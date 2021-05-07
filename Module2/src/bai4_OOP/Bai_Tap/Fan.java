@@ -7,6 +7,7 @@ public class Fan {
     private double radius=5;
     private String color="blue";
 
+
     public int getSlow() {
         return slow;
     }
