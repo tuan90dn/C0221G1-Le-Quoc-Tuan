@@ -16,6 +16,9 @@ public class Room extends Services {
         this.freeServices = freeServices;
     }
 
+//    public Room(String id, String nameService, double areaEmploy, double price, int maximum, String type, String nameExtraService, String unit, double priceExtra) {
+//    }
+
     public ExtraServices getFreeServices() {
         return freeServices;
     }
@@ -26,15 +29,8 @@ public class Room extends Services {
 
     @Override
     public String toString() {
-        return "Room{" +
-                "freeServices=" + freeServices +
-                ", id='" + id + '\'' +
-                ", nameOfService='" + nameOfService + '\'' +
-                ", areaOfEmploy=" + areaOfEmploy +
-                ", priceOfRent=" + priceOfRent +
-                ", maximumOfPerson=" + maximumOfPerson +
-                ", typeOfEmploy='" + typeOfEmploy + '\'' +
-                '}';
+        return super.toString() +
+                "," + freeServices;
     }
 
     @Override

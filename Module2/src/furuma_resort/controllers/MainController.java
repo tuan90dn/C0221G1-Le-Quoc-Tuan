@@ -29,7 +29,9 @@ public class MainController {
                     "6.\tShow Information of Employee\n" +
                     "7.\tShow Queue of Employee\n"+
                     "8.\tShow Stack of Employee\n"+
-                    "9.\tExit");
+                    "9.\tDelete Service\n"+
+                    "10.\tEdit Service\n"+
+                    "11.\tExit");
             System.out.println("Input your choice: ");
             choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
@@ -56,11 +58,46 @@ public class MainController {
                     break;
                 case 8:
                     showStackOfCustomer();
+                    break;
+                case 9:
+                    deleteServices();
+                    break;
+                case 10:
+                    editServices();
+                    break;
 
 
             }
 
-        }while (choose != 9);
+        }while (choose != 10);
+    }
+
+    private static void editServices() {
+        int choose=-1;
+        while (choose!=5){
+            System.out.println("1.\tEdit Villa\n" +
+                    "2.\tEdit House\n" +
+                    "3.\tEdit Room\n" +
+                    "4.\tBack to menu\n" +
+                    "5.\tExit");
+            System.out.println("Input your choice: ");
+            choose=Integer.parseInt(scanner.nextLine());
+            switch (choose){
+                case 1:
+                    editService(VILLA);
+                    break;
+                case 2:
+                    editService(HOUSE);
+                    break;
+                case 3:
+                    editService(ROOM);
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+
+            }
+        }
     }
 
     private static void showStackOfCustomer() {
@@ -107,6 +144,7 @@ public class MainController {
             System.out.println(employeeEntry.getKey()+" "+employeeEntry.getValue().toString());
         }
     }
+
 
     private static void addNewBooking() {
         List<Customer> listReadCustomer=readCustomer(CUSTOMER);
@@ -391,6 +429,159 @@ public class MainController {
         }
 
     }
+    public static void deleteServices(){
+        int choose=-1;
+        while (choose!=5){
+            System.out.println("1.\tDelete Villa\n" +
+                    "2.\tDelete House\n" +
+                    "3.\tDelete Room\n" +
+                    "4.\tBack to menu\n" +
+                    "5.\tExit");
+            System.out.println("Input your choice: ");
+            choose=Integer.parseInt(scanner.nextLine());
+            switch (choose){
+                case 1:
+                    deleteService(VILLA);
+                    break;
+                case 2:
+                    deleteService(HOUSE);
+                    break;
+                case 3:
+                    deleteService(ROOM);
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+
+            }
+        }
+
+
+    }
+
+    private static void deleteService(String fileName) {
+        showAllServices(fileName);
+        System.out.println("Please choose the "+fileName+" need to delete: ");
+        int choose=Integer.parseInt(scanner.nextLine());
+        List<Services> listServices=readService(fileName);
+        listServices.remove(choose-1);
+        Services arrayServices;
+        FileUtils.deleteFile();
+        for (int i=0;i<listServices.size();i++){
+            arrayServices=listServices.get(i);
+            FileUtils.writeFile(arrayServices.toString().split(StringUtils.COMMA));
+        }
+//
+    }
+    private static void editService(String fileName) {
+        showAllServices(fileName);
+        System.out.println("Please choose the "+fileName+" need to edit: ");
+        int choose=Integer.parseInt(scanner.nextLine());
+        Services stringService=addNewStringService(fileName);
+        List<Services> listServices=readService(fileName);
+        listServices.set(choose-1,stringService);
+        Services arrayServices;
+        FileUtils.deleteFile();
+        for (int i=0;i<listServices.size();i++){
+            arrayServices=listServices.get(i);
+            FileUtils.writeFile(arrayServices.toString().split(StringUtils.COMMA));
+        }
+//
+    }
+    private static Services addNewStringService(String fileName) {
+        String id=null;
+        String nameService=null;
+        double areaEmploy=0;
+        double areaPool=0;
+        double price=0;
+        int maximum=0;
+        int amountFloor=0;
+        String nameExtraService=null;
+        String type=null;
+        String standard=null;
+        Services service;
+        do {
+            System.out.println("Please input service's id: ");
+            id=scanner.nextLine();
+        }while (!Validator.isValidRegex(id,Validator.SERVICE_ID_REGEX));
+        do {
+            System.out.println("Please input service's name: ");
+            nameService=scanner.nextLine();
+        }while (!Validator.isValidRegex(nameService,Validator.SERVICE_NAME_REGEX));
+        do {
+            System.out.println("Please input area of employ: ");
+            areaEmploy=Double.parseDouble(scanner.nextLine());
+        }while (!Validator.isMoreThan(areaEmploy,30));
+        do {
+            System.out.println("Please input price of rent: ");
+            price=Double.parseDouble(scanner.nextLine());
+        }while (!Validator.isMoreThan(price,0));
+        do {
+            System.out.println("Please input maximum of person:");
+            maximum=Integer.parseInt(scanner.nextLine());
+        }while (!Validator.isMoreThan(maximum,0,20));
+        do {
+            System.out.println("Please input type of employ: ");
+            type=scanner.nextLine();
+        }while (!Validator.isValidRegex(type,Validator.SERVICE_NAME_REGEX));
+
+        if (fileName.equals(VILLA)){
+            do {
+                System.out.println("Please input standard of room: ");
+                standard=scanner.nextLine();
+            }while (!Validator.isValidRegex(standard,Validator.SERVICE_NAME_REGEX));
+
+            do {
+                System.out.println("Please input area of pool: ");
+                areaPool=Double.parseDouble(scanner.nextLine());
+            }while (!Validator.isMoreThan(areaPool,30));
+            do {
+                System.out.println("Please input amount of floor: ");
+                amountFloor=Integer.parseInt(scanner.nextLine());
+            }while (!Validator.isMoreThan(amountFloor,0));
+
+            System.out.println("Please input different services:");
+            String differentService=scanner.nextLine();
+//            String[] service = {id,nameService, String.valueOf(areaEmploy),
+//                    String.valueOf(price), String.valueOf(maximum),type,standard, String.valueOf(areaPool),
+//                    String.valueOf(amountFloor),differentService};
+            service = new Villa(id,nameService,areaEmploy,price,
+                    maximum, type,standard, differentService,
+                    areaPool,amountFloor);
+            return service;
+        } else if (fileName.equals(HOUSE)){
+            do {
+                System.out.println("Please input standard of room: ");
+                standard=scanner.nextLine();
+            }while (!Validator.isValidRegex(standard,Validator.SERVICE_NAME_REGEX));
+            do {
+                System.out.println("Please input amount of floor: ");
+                amountFloor=Integer.parseInt(scanner.nextLine());
+            }while (!Validator.isMoreThan(amountFloor,0));
+            System.out.println("Please input different services:");
+            String differentService=scanner.nextLine();
+            service= new House(id,nameService,areaEmploy,price,
+                    maximum, type,
+                    standard,differentService,amountFloor);
+            return service;
+        } else if (fileName.equals(ROOM)){
+            do {
+                System.out.println("Please input name of extra services: ");
+                nameExtraService=scanner.nextLine();
+            }while (!Validator.isValidExtraService(nameExtraService));
+
+            System.out.println("Please input unit: ");
+            String unit=scanner.nextLine();
+            System.out.println("Please input price of extra service: ");
+            double priceExtra=Double.parseDouble(scanner.nextLine());
+            ExtraServices extraServices=new ExtraServices(nameExtraService,unit,priceExtra);
+            service= new Room(id,nameService,areaEmploy,price,
+                    maximum, type,extraServices);
+            return service;
+        }
+        return null;
+    }
+
     private static void addNewService(String fileName) {
         String id=null;
         String nameService=null;
@@ -474,7 +665,7 @@ public class MainController {
 
             System.out.println("Please input unit: ");
             String unit=scanner.nextLine();
-            System.out.println("Please input price of extraservice: ");
+            System.out.println("Please input price of extra service: ");
             double priceExtra=Double.parseDouble(scanner.nextLine());
             FileUtils.writeFile(new String[] {id,nameService,String.valueOf(areaEmploy), String.valueOf(price),
                     String.valueOf(maximum), type,nameExtraService,unit, String.valueOf(priceExtra)});

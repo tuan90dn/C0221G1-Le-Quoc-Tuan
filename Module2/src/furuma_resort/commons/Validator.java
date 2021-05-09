@@ -38,7 +38,7 @@ public class Validator {
         return flag;
     }
     public static boolean isValidExtraService(String extraServiceName){
-        String[] listService={"massage"," karaoke", "food", "drink"," car"};
+        String[] listService={"massage","karaoke", "food", "drink"," car"};
         boolean flag= Arrays.asList(listService).contains(extraServiceName);
         if (!flag){
             System.out.println("Please input: massage, karaoke, food, drink, car. ");

@@ -18,6 +18,16 @@ public class FileUtils {
             e.printStackTrace();
         }
     }
+    public static void deleteFile(){
+        try {
+            bufferedWriter = new BufferedWriter(new FileWriter(path,false));
+            bufferedWriter.write("");
+//            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static List<String> readFile(){
         List<String> arrayContent=new ArrayList<>();
         try {

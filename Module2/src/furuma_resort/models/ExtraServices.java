@@ -37,10 +37,8 @@ public class ExtraServices {
 
     @Override
     public String toString() {
-        return "ExtraServices{" +
-                "nameOfExtraService='" + nameOfExtraService + '\'' +
-                ", unit='" + unit + '\'' +
-                ", priceOfExtraService=" + priceOfExtraService +
-                '}';
+        return nameOfExtraService +
+                "," + unit +
+                "," + priceOfExtraService;
     }
 }

@@ -73,14 +73,12 @@ public abstract class Services {
 
     @Override
     public String toString() {
-        return "Services{" +
-                "nameOfService='" + nameOfService + '\'' +
-                ", areaOfEmploy=" + areaOfEmploy +
-                ", priceOfRent=" + priceOfRent +
-                ", maximumOfPerson=" + maximumOfPerson +
-                ", typeOfEmploy='" + typeOfEmploy + '\'' +
-                ", id='" + id + '\'' +
-                '}';
+        return id+
+                "," + nameOfService+
+                "," + areaOfEmploy +
+                "," + priceOfRent +
+                "," + maximumOfPerson +
+                "," + typeOfEmploy;
     }
 
     public abstract void showInfor();
