@@ -23,3 +23,7 @@ values
 (2,'tuan',28);
 alter table student
 add email varchar(50);
+alter table student
+drop column email;
+alter table student
+modify column name_student varchar(100);
