@@ -5,6 +5,11 @@ ID_loai_khach int primary key not null,
 ten_loai_khach varchar(45) not null);
 insert into loai_khach
 values (1,"tuan"),(2,"toàn"),(3,"đức");
+insert into loai_khach
+values (4,"Diamond"),(5,"Gold"),(6,"Diamon");
+update loai_khach
+set ten_loai_khach='Diamond'
+where ID_loai_khach=6;
 truncate table khach_hang;
 select * from loai_khach;
 create table khach_hang(
@@ -21,7 +26,10 @@ insert into khach_hang
 values(1,1,"Nguyễn Văn A",'1990-11-28',123456789,8239483,'a@gmail.com','Lê Duẩn'),
 (2,2,"Nguyễn Văn B",'1991-11-28',123456789,8239483,'b@gmail.com','Lê Lợi'),
 (3,3,"Nguyễn Văn C",'1992-11-28',123456789,8239483,'c@gmail.com','Lê Độ');
-
+insert into khach_hang
+values(4,4,"Nguyễn Văn A",'1990-11-28',123456789,8239483,'a@gmail.com','Đà Nẵng'),
+(5,5,"Nguyễn Văn B",'1991-11-28',123456789,8239483,'b@gmail.com','Đà Nẵng'),
+(6,6,"Nguyễn Văn C",'1992-11-28',123456789,8239483,'c@gmail.com','Quảng Trị');
 delete from khach_hang
 where (ID_khach_hang=1)or
 (ID_khach_hang=2)or
@@ -74,6 +82,9 @@ insert into nhan_vien
 values (1,'Lê Văn A',1,1,1,'1992-11-30',34346456,10000000,23534534,'abc@gmail','đà nẵng'),
 (2,'Lê Văn B',2,2,2,'1993-11-30',3896456,10000000,23534534,'abc@gmail','đà nẵng'),
 (3,'Lê Văn C',3,3,3,'1994-11-30',35346456,10000000,23534534,'abc@gmail','đà nẵng');
+insert into nhan_vien
+values (5,'Lê Hoang Tuan',3,3,3,'1994-11-30',35346456,10000000,23534534,'abc@gmail','đà nẵng'),
+(6,'Ho Van Tuan',3,3,3,'1994-11-30',35346456,10000000,23534534,'abc@gmail','đà nẵng');
 select * from nhan_vien;
 delete from nhan_vien
 where (ID_nhan_vien=1)or
@@ -124,6 +135,10 @@ insert into dich_vu_di_kem
 values(1,'Massage',300,1,'Trống'),
 (2,'Karaoke',200,1,'Trống'),
 (3,'Thuê xe',100,1,'Trống');
+insert into dich_vu_di_kem
+values(4,'Massage',300,1,'Trống'),
+(5,'Karaoke',200,1,'Trống'),
+(6,'Thuê xe',100,1,'Trống');
 create table hop_dong(
 ID_hop_dong int primary key not null,
 ID_nhan_vien int,
@@ -142,17 +157,61 @@ insert into hop_dong
 values(1,1,1,1,'2021-05-10','2021-05-13',1000000,5000000),
 (2,2,2,2,'2021-05-10','2021-05-11',1000000,5000000),
 (3,3,3,3,'2021-05-10','2021-05-12',1000000,5000000);
-
+insert into hop_dong
+values(4,4,4,1,'2021-05-10','2021-05-13',1000000,5000000),
+(5,5,5,2,'2021-05-10','2021-05-11',1000000,5000000),
+(6,6,6,3,'2021-05-10','2021-05-12',1000000,5000000);
 create table hop_dong_chi_tiet(
 ID_hop_dong_chi_tiet int primary key not null,
 ID_dich_vu_di_kem int,
-ID_hop_dong int, 
+ID_hop_dong int,
+unique(ID_dich_vu_di_kem,ID_hop_dong),
 so_luong int,
 foreign key (ID_dich_vu_di_kem) references dich_vu_di_kem(ID_dich_vu_di_kem),
 foreign key (ID_hop_dong) references hop_dong(ID_hop_dong)
 );
+drop table hop_dong_chi_tiet;
 select * from hop_dong_chi_tiet;
 insert into hop_dong_chi_tiet
 values(1,1,1,3),
 (2,2,2,3),
 (3,3,3,3);
+insert into hop_dong_chi_tiet
+values(4,4,4,2),
+(5,5,5,6),
+(6,6,6,8);
+-- task2
+
+select * from nhan_vien
+where (ho_ten like '% % H%'
+ or ho_ten like '% % T%' 
+ or ho_ten like '% % K%') and (char_length(ho_ten)<15) ;
+ 
+ -- task3
+ 
+ select * from khach_hang
+ where ((year(curdate())-year(khach_hang.ngay_sinh)) between 18 and 50)
+ and (khach_hang.dia_chi='Đà Nẵng' or khach_hang.dia_chi ='Quảng Trị');
+ 
+ -- task4
+ 
+ select kh.ho_ten, loai_khach.ten_loai_khach,hct.so_luong 'Số lần đặt phòng'
+ from hop_dong h
+ join hop_dong_chi_tiet hct on h.ID_hop_dong = hct.ID_hop_dong
+join khach_hang kh on h.ID_khach_hang = kh.ID_khach_hang
+join loai_khach on kh.ID_loai_khach = loai_khach.ID_loai_khach
+where loai_khach.ten_loai_khach = 'Diamond'
+order by hct.so_luong;
+
+-- task5
+ select kh.ID_khach_hang,kh.ho_ten,lk.ten_loai_khach,h.ID_hop_dong,dv.ten_dich_vu,
+ h.ngay_lam_hop_dong,h.ngay_ket_thuc,dv.chi_phi_thue+hct.so_luong*dvk.gia 'tổng tiền'
+ from khach_hang kh
+ join loai_khach lk on kh.ID_loai_khach=lk.ID_loai_khach
+ join hop_dong h on kh.ID_khach_hang = h.ID_khach_hang 
+ join dich_vu dv on h.ID_dich_vu = dv.ID_dich_vu 
+ join hop_dong_chi_tiet hct on hct.ID_hop_dong = h.ID_hop_dong
+ join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem 
+ order by kh.ID_khach_hang;
+
+
