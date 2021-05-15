@@ -161,8 +161,8 @@ insert into hop_dong
 values(4,4,4,1,'2021-05-10','2021-05-13',1000000,5000000),
 (5,5,5,2,'2021-05-10','2021-05-11',1000000,5000000),
 (6,6,6,3,'2021-05-10','2021-05-12',1000000,5000000);
-insert into hop_dong
-values(7,4,4,1,'2019-02-10','2021-05-13',1000000,5000000);
+delete from hop_dong
+where ID_hop_dong like 7;
 update hop_dong
 set ngay_ket_thuc = '2019-02-12'
 where ID_hop_dong=7;
@@ -185,6 +185,10 @@ insert into hop_dong_chi_tiet
 values(4,4,4,2),
 (5,5,5,6),
 (6,6,6,8);
+insert into hop_dong_chi_tiet
+values(7,4,5,2);
+delete from hop_dong_chi_tiet
+where ID_hop_dong_chi_tiet like 7;
 -- task2
 
 select * from nhan_vien
@@ -225,6 +229,4 @@ select dv.ID_dich_vu,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue,ldv.ten_loai_di
 from dich_vu dv
 left join hop_dong hd on dv.ID_dich_vu = hd.ID_dich_vu
 join loai_dich_vu ldv on dv.ID_loai_dich_vu = ldv.ID_loai_dich_vu
-where (hd.ID_dich_vu is null) and not ((hd.ID_dich_vu is not null) and ((month(hd.ngay_lam_hop_dong)>3) and (year(hd.ngay_lam_hop_dong)=2019)) or (year(hd.ngay_lam_hop_dong) in (2020,2021)));
-select * from hop_dong;
-select * from dich_vu;
+where hd.ID_dich_vu is null or not ((month(hd.ngay_lam_hop_dong)>3) and (year(hd.ngay_lam_hop_dong)=2019) or (year(hd.ngay_lam_hop_dong) in (2020,2021)));
