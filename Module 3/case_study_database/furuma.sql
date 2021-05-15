@@ -161,6 +161,11 @@ insert into hop_dong
 values(4,4,4,1,'2021-05-10','2021-05-13',1000000,5000000),
 (5,5,5,2,'2021-05-10','2021-05-11',1000000,5000000),
 (6,6,6,3,'2021-05-10','2021-05-12',1000000,5000000);
+insert into hop_dong
+values(7,4,4,1,'2019-02-10','2021-05-13',1000000,5000000);
+update hop_dong
+set ngay_ket_thuc = '2019-02-12'
+where ID_hop_dong=7;
 create table hop_dong_chi_tiet(
 ID_hop_dong_chi_tiet int primary key not null,
 ID_dich_vu_di_kem int,
@@ -208,10 +213,18 @@ order by hct.so_luong;
  h.ngay_lam_hop_dong,h.ngay_ket_thuc,dv.chi_phi_thue+hct.so_luong*dvk.gia 'tổng tiền'
  from khach_hang kh
  join loai_khach lk on kh.ID_loai_khach=lk.ID_loai_khach
- join hop_dong h on kh.ID_khach_hang = h.ID_khach_hang 
- join dich_vu dv on h.ID_dich_vu = dv.ID_dich_vu 
- join hop_dong_chi_tiet hct on hct.ID_hop_dong = h.ID_hop_dong
- join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem 
+ left join hop_dong h on kh.ID_khach_hang = h.ID_khach_hang  
+ left join dich_vu dv on h.ID_dich_vu = dv.ID_dich_vu 
+ left join hop_dong_chi_tiet hct on hct.ID_hop_dong = h.ID_hop_dong
+ left join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem 
  order by kh.ID_khach_hang;
 
+-- task6
 
+select dv.ID_dich_vu,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue,ldv.ten_loai_dich_vu,hd.ngay_lam_hop_dong,hd.ID_dich_vu
+from dich_vu dv
+left join hop_dong hd on dv.ID_dich_vu = hd.ID_dich_vu
+join loai_dich_vu ldv on dv.ID_loai_dich_vu = ldv.ID_loai_dich_vu
+where (hd.ID_dich_vu is null) and not ((hd.ID_dich_vu is not null) and ((month(hd.ngay_lam_hop_dong)>3) and (year(hd.ngay_lam_hop_dong)=2019)) or (year(hd.ngay_lam_hop_dong) in (2020,2021)));
+select * from hop_dong;
+select * from dich_vu;
