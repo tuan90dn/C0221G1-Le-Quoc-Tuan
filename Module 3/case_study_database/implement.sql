@@ -38,7 +38,8 @@ select dv.ID_dich_vu,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue,ldv.ten_loai_di
 from dich_vu dv
 left join hop_dong hd on dv.ID_dich_vu = hd.ID_dich_vu
 join loai_dich_vu ldv on dv.ID_loai_dich_vu = ldv.ID_loai_dich_vu
-where hd.ID_dich_vu is null or not ((month(hd.ngay_lam_hop_dong)>3) and (year(hd.ngay_lam_hop_dong)=2019) or (year(hd.ngay_lam_hop_dong) in (2020,2021)));
+where hd.ID_dich_vu is null and hd.ngay_lam_hop_dong not in
+(select hd.ngay_lam_hop_dong from hop_dong hd where month(hd.ngay_lam_hop_dong) between month('2019-01') and month(curdate()));
 
 -- task 7
 select * from dich_vu;
@@ -103,3 +104,7 @@ where year(hd.ngay_lam_hop_dong) like 2019 and month(hd.ngay_lam_hop_dong) in (1
 and hd.ID_dich_vu not in
 (select hd.ID_dich_vu from hop_dong hd where year(hd.ngay_lam_hop_dong) like 2019 and month(hd.ngay_lam_hop_dong) between 1 and 6)
 group by hct.ID_hop_dong_chi_tiet;
+
+
+select nv.ID_nhan_vien
+from nhan_vien
