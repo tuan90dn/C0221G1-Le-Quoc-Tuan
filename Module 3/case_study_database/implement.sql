@@ -106,5 +106,11 @@ and hd.ID_dich_vu not in
 group by hct.ID_hop_dong_chi_tiet;
 
 
-select nv.ID_nhan_vien
-from nhan_vien
+-- task 16 
+select * from nhan_vien;
+delete from nhan_vien
+where ID_nhan_vien in (select ID_nhan_vien
+from (select nhan_vien.ID_nhan_vien from nhan_vien
+join hop_dong
+on nhan_vien.ID_nhan_vien = hop_dong.ID_nhan_vien
+where hop_dong.ngay_lam_hop_dong in (year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019))x);
