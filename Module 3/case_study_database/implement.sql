@@ -69,4 +69,37 @@ on  kh.ID_khach_hang = hd.ID_khach_hang
 where (year(hd.ngay_lam_hop_dong) like 2021)
 group by month(hd.ngay_lam_hop_dong);
 
+-- task 10
 
+
+select hd.ID_hop_dong,hd.ngay_lam_hop_dong,hd.ngay_ket_thuc,hd.tien_dat_coc,count(hct.ID_hop_dong_chi_tiet)'so_luong_dich_vu_di_kem'
+from hop_dong hd
+join hop_dong_chi_tiet hct 
+on hd.ID_hop_dong = hct.ID_hop_dong
+join dich_vu_di_kem dvk
+on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
+group by hct.ID_hop_dong_chi_tiet;
+
+-- task 11
+
+select dvk.ten_dich_vu_di_kem,dvk.gia,kh.ho_ten
+from khach_hang kh
+join loai_khach lk on kh.ID_loai_khach = lk.ID_loai_khach
+join hop_dong hd on kh.ID_khach_hang = hd.ID_khach_hang
+join hop_dong_chi_tiet hct on hd.ID_hop_dong = hct.ID_hop_dong
+join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem
+where lk.ten_loai_khach like 'Diamond' and (kh.dia_chi like 'Quảng Ngãi' or kh.dia_chi like 'Vinh') ;
+
+-- task 12
+select hd.ID_hop_dong,nv.ho_ten'ho_ten_nhan_vien',kh.ho_ten 'ho_ten_khach_hang',kh.sdt 'sdt_khach_hang',dv.ten_dich_vu,hd.tien_dat_coc,hd.ngay_lam_hop_dong,count(hct.ID_hop_dong_chi_tiet)'so_luong_dich_vu_di_kem' 
+from khach_hang kh
+join loai_khach lk on kh.ID_loai_khach = lk.ID_loai_khach
+join hop_dong hd on kh.ID_khach_hang = hd.ID_khach_hang
+join dich_vu dv on hd.ID_dich_vu = dv.ID_dich_vu
+join nhan_vien nv on hd.ID_nhan_vien = nv.ID_nhan_vien
+join hop_dong_chi_tiet hct on hd.ID_hop_dong = hct.ID_hop_dong
+join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem
+where year(hd.ngay_lam_hop_dong) like 2019 and month(hd.ngay_lam_hop_dong) in (10,11,12) 
+and hd.ID_dich_vu not in
+(select hd.ID_dich_vu from hop_dong hd where year(hd.ngay_lam_hop_dong) like 2019 and month(hd.ngay_lam_hop_dong) between 1 and 6)
+group by hct.ID_hop_dong_chi_tiet;
