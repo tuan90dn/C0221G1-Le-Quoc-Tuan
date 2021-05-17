@@ -4,7 +4,7 @@
 select * from nhan_vien
 where (ho_ten like 'H%'
  or ho_ten like 'T%' 
- or ho_ten like 'K%') and (char_length(ho_ten)<15) ;
+ or ho_ten like 'K%') and (char_length(ho_ten)<=15) ;
 
  -- task 3
  
@@ -113,11 +113,13 @@ select dvk.ten_dich_vu_di_kem,dvk.gia,dvk.don_vi,sum(hct.so_luong)
 from dich_vu_di_kem dvk
 inner join hop_dong_chi_tiet hct on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
 inner join hop_dong hd on hd.ID_hop_dong = hct.ID_hop_dong
-group by dvk.ten_dich_vu_di_kem;
+group by dvk.ten_dich_vu_di_kem
+;
 
 select max(tong_so_luong)
 from ( select sum(so_luong) 'tong_so_luong' from hop_dong_chi_tiet
-group by ID_dich_vu_di_kem);
+group by ID_dich_vu_di_kem)
+ha;
 
 
 -- task 16 
