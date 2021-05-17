@@ -5,7 +5,7 @@ select * from nhan_vien
 where (ho_ten like 'H%'
  or ho_ten like 'T%' 
  or ho_ten like 'K%') and (char_length(ho_ten)<15) ;
- 
+
  -- task 3
  
  select * from khach_hang
@@ -56,8 +56,11 @@ and hd.ID_dich_vu not in
 
 -- task 8
 
+
 select ho_ten from khach_hang
 group by ho_ten;
+
+
 
 select distinct ho_ten from khach_hang;
 
@@ -105,12 +108,33 @@ and hd.ID_dich_vu not in
 (select hd.ID_dich_vu from hop_dong hd where year(hd.ngay_lam_hop_dong) like 2019 and month(hd.ngay_lam_hop_dong) between 1 and 6)
 group by hct.ID_hop_dong_chi_tiet;
 
+-- task 13
+select dvk.ten_dich_vu_di_kem,dvk.gia,dvk.don_vi,sum(hct.so_luong)
+from dich_vu_di_kem dvk
+inner join hop_dong_chi_tiet hct on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
+inner join hop_dong hd on hd.ID_hop_dong = hct.ID_hop_dong
+group by dvk.ten_dich_vu_di_kem;
+
+select max(tong_so_luong)
+from ( select sum(so_luong) 'tong_so_luong' from hop_dong_chi_tiet
+group by ID_dich_vu_di_kem);
+
 
 -- task 16 
-select * from nhan_vien;
+SET FOREIGN_KEY_CHECKS=0;
+
 delete from nhan_vien
-where ID_nhan_vien in (select ID_nhan_vien
+where ID_nhan_vien not in (select ID_nhan_vien
 from (select nhan_vien.ID_nhan_vien from nhan_vien
 join hop_dong
 on nhan_vien.ID_nhan_vien = hop_dong.ID_nhan_vien
-where hop_dong.ngay_lam_hop_dong in (year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019))x);
+where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019)x);
+
+SET FOREIGN_KEY_CHECKS=1;
+
+delete from nhan_vien
+where ID_nhan_vien not in (select ID_nhan_vien
+from hop_dong
+where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019);
+select * from nhan_vien;
+select * from hop_dong;
