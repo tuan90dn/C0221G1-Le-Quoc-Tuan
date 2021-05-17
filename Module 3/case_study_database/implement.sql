@@ -109,17 +109,48 @@ and hd.ID_dich_vu not in
 group by hct.ID_hop_dong_chi_tiet;
 
 -- task 13
-select dvk.ten_dich_vu_di_kem,dvk.gia,dvk.don_vi,sum(hct.so_luong)
+
+select ten_dich_vu_di_kem,gia,max(tong_so) from (select dvk.ten_dich_vu_di_kem,dvk.gia,dvk.don_vi,sum(hct.so_luong)'tong_so'
 from dich_vu_di_kem dvk
 inner join hop_dong_chi_tiet hct on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
 inner join hop_dong hd on hd.ID_hop_dong = hct.ID_hop_dong
-group by dvk.ten_dich_vu_di_kem
-;
+group by dvk.ten_dich_vu_di_kem)x;
 
-select max(tong_so_luong)
-from ( select sum(so_luong) 'tong_so_luong' from hop_dong_chi_tiet
-group by ID_dich_vu_di_kem)
-ha;
+-- cách khác của Minh
+select sum(hop_dong_chi_tiet.so_luong) so_lan, dich_vu_di_kem.ten_dich_vu_di_kem
+from hop_dong_chi_tiet
+join dich_vu_di_kem
+on hop_dong_chi_tiet.id_dich_vu_di_kem=dich_vu_di_kem.id_dich_vu_di_kem
+group by hop_dong_chi_tiet.id_dich_vu_di_kem
+ having sum(hop_dong_chi_tiet.so_luong)>=
+ all(select sum(hop_dong_chi_tiet.so_luong)
+ from hop_dong_chi_tiet
+ group by hop_dong_chi_tiet.id_dich_vu_di_kem)
+ ;
+
+
+
+-- task 14
+
+select ten_dich_vu_di_kem,tong_so from (select dvk.ten_dich_vu_di_kem,dvk.gia,dvk.don_vi,sum(hct.so_luong)'tong_so'
+from dich_vu_di_kem dvk
+inner join hop_dong_chi_tiet hct on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
+inner join hop_dong hd on hd.ID_hop_dong = hct.ID_hop_dong
+group by dvk.ten_dich_vu_di_kem)x
+where x.tong_so like 3;
+
+-- task 15
+
+select nv.ID_nhan_vien,nv.ho_ten,trinh_do.ten_trinh_do,
+bo_phan.ten_bo_phan,nv.sdt,nv.dia_chi,count(hd.ID_nhan_vien) 'so_hop_dong_da_lap'
+from nhan_vien nv
+inner join trinh_do on trinh_do.ID_trinh_do = nv.ID_trinh_do
+inner join bo_phan on bo_phan.ID_bo_phan = nv.ID_bo_phan
+inner join hop_dong hd on hd.ID_nhan_vien = nv.ID_nhan_vien
+where year(hd.ngay_lam_hop_dong) between 2018 and 2019
+group by hd.ID_nhan_vien
+having so_hop_dong_da_lap < 3;
+
 
 
 -- task 16 
