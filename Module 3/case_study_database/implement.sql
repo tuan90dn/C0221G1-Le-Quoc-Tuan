@@ -187,4 +187,23 @@ where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019)x);
  on kh.ID_khach_hang = hd.ID_khach_hang
  where year(hd.ngay_lam_hop_dong) < 2016)x);
  
- 
+ -- task 19
+ create or replace view  so_lan_su_dung_dvdk as
+ select dvk.ID_dich_vu_di_kem,dvk.ten_dich_vu_di_kem,dvk.gia,dvk.don_vi,sum(hct.so_luong)'tong_so'
+from dich_vu_di_kem dvk
+inner join hop_dong_chi_tiet hct on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
+inner join hop_dong hd on hd.ID_hop_dong = hct.ID_hop_dong
+group by dvk.ten_dich_vu_di_kem;
+
+
+update dich_vu_di_kem
+set gia = gia*2
+where ID_dich_vu_di_kem in (select ID_dich_vu_di_kem from so_lan_su_dung_dvdk where so_lan_su_dung_dvdk.tong_so > 10);
+
+-- task 20
+
+select ID_khach_hang ID,ho_ten,email,sdt,ngay_sinh,dia_chi
+from khach_hang
+union all
+select ID_nhan_vien,ho_ten,email,sdt,ngay_sinh,dia_chi
+from nhan_vien;
