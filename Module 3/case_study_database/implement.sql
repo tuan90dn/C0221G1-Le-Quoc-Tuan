@@ -30,7 +30,8 @@ group by kh.ID_khach_hang;
  left join dich_vu dv on h.ID_dich_vu = dv.ID_dich_vu 
  left join hop_dong_chi_tiet hct on hct.ID_hop_dong = h.ID_hop_dong
  left join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem 
- group by kh.ID_khach_hang;
+ group by kh.ID_khach_hang,h.ID_hop_dong;
+ 
 
 -- task 6
 
@@ -154,7 +155,6 @@ having so_hop_dong_da_lap < 4;
 
 
 -- task 16 
-SET FOREIGN_KEY_CHECKS=0;
 
 delete from nhan_vien
 where ID_nhan_vien not in (select ID_nhan_vien
@@ -163,11 +163,28 @@ join hop_dong
 on nhan_vien.ID_nhan_vien = hop_dong.ID_nhan_vien
 where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019)x);
 
-SET FOREIGN_KEY_CHECKS=1;
+-- task 17
 
-delete from nhan_vien
-where ID_nhan_vien not in (select ID_nhan_vien
-from hop_dong
-where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019);
-select * from nhan_vien;
-select * from hop_dong;
+
+ update loai_khach
+ set ten_loai_khach ='Diamond'
+ where ten_loai_khach = 'Platinum' and ten_loai_khach in (select ten_loai_khach from (select kh.ID_khach_hang,kh.ho_ten,lk.ten_loai_khach,h.ID_hop_dong,dv.ten_dich_vu,
+ h.ngay_lam_hop_dong,h.ngay_ket_thuc,dv.chi_phi_thue+hct.so_luong*dvk.gia 'tong_tien'
+ from khach_hang kh
+ join loai_khach lk on kh.ID_loai_khach=lk.ID_loai_khach
+ left join hop_dong h on kh.ID_khach_hang = h.ID_khach_hang  
+ left join dich_vu dv on h.ID_dich_vu = dv.ID_dich_vu 
+ left join hop_dong_chi_tiet hct on hct.ID_hop_dong = h.ID_hop_dong
+ left join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem
+ where year(h.ngay_lam_hop_dong) = 2019
+ group by kh.ID_khach_hang)x where x.tong_tien > 10000000);
+ 
+ -- task 18
+ delete from khach_hang
+ where ID_khach_hang in (select ID_khach_hang from (select kh.ID_khach_hang
+ from khach_hang kh
+ inner join hop_dong hd
+ on kh.ID_khach_hang = hd.ID_khach_hang
+ where year(hd.ngay_lam_hop_dong) < 2016)x);
+ 
+ 

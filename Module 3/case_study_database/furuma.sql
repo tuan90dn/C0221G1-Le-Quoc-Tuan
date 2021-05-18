@@ -8,8 +8,8 @@ values (1,"tuan"),(2,"toàn"),(3,"đức");
 insert into loai_khach
 values (4,"Diamond"),(5,"Gold"),(6,"Diamon");
 update loai_khach
-set ten_loai_khach='Diamond'
-where ID_loai_khach=6;
+set ten_loai_khach='Platinum'
+where ten_loai_khach='Gold';
 truncate table khach_hang;
 select * from loai_khach;
 create table khach_hang(
@@ -139,6 +139,7 @@ insert into dich_vu_di_kem
 values(4,'Massage',300,1,'Trống'),
 (5,'Karaoke',200,1,'Trống'),
 (6,'Thuê xe',100,1,'Trống');
+
 create table hop_dong(
 ID_hop_dong int primary key not null,
 ID_nhan_vien int,
@@ -152,6 +153,8 @@ foreign key (ID_nhan_vien) references nhan_vien(ID_nhan_vien),
 foreign key (ID_khach_hang) references khach_hang(ID_khach_hang),
 foreign key (ID_dich_vu) references dich_vu(ID_dich_vu)
 );
+alter table hop_dong
+add foreign key (ID_khach_hang) references khach_hang(ID_khach_hang) on delete cascade;
 select * from hop_dong;
 insert into hop_dong
 values(1,1,1,1,'2021-05-10','2021-05-13',1000000,5000000),
@@ -164,8 +167,8 @@ values(4,4,4,1,'2021-05-10','2021-05-13',1000000,5000000),
 delete from hop_dong
 where ID_hop_dong like 7;
 update hop_dong
-set ngay_lam_hop_dong = '2019-02-10'
-where ID_hop_dong=3;
+set ID_nhan_vien = 6
+where ID_hop_dong=5;
 create table hop_dong_chi_tiet(
 ID_hop_dong_chi_tiet int primary key not null,
 ID_dich_vu_di_kem int,
@@ -189,3 +192,7 @@ insert into hop_dong_chi_tiet
 values(7,4,5,2);
 delete from hop_dong_chi_tiet
 where ID_hop_dong_chi_tiet like 7;
+update hop_dong_chi_tiet
+set ID_dich_vu_di_kem = 1
+where ID_dich_vu_di_kem in (4,5,6);
+
