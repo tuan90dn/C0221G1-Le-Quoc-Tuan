@@ -94,7 +94,7 @@ join loai_khach lk on kh.ID_loai_khach = lk.ID_loai_khach
 join hop_dong hd on kh.ID_khach_hang = hd.ID_khach_hang
 join hop_dong_chi_tiet hct on hd.ID_hop_dong = hct.ID_hop_dong
 join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem
-where lk.ten_loai_khach = 'Diamond' and (kh.dia_chi like 'Quảng Ngãi' or kh.dia_chi like 'Vinh') ;
+where lk.ten_loai_khach = 'Diamond' and (kh.dia_chi = 'Quảng Ngãi' or kh.dia_chi = 'Vinh') ;
 
 -- task 12
 select hd.ID_hop_dong,nv.ho_ten'ho_ten_nhan_vien',kh.ho_ten 'ho_ten_khach_hang',kh.sdt 'sdt_khach_hang',dv.ten_dich_vu,hd.tien_dat_coc,hd.ngay_lam_hop_dong,count(hct.ID_hop_dong_chi_tiet)'so_luong_dich_vu_di_kem' 
@@ -112,23 +112,9 @@ group by hct.ID_hop_dong_chi_tiet;
 
 -- task 13
 
-select ten_dich_vu_di_kem,gia,max(tong_so) from (select dvk.ten_dich_vu_di_kem,dvk.gia,dvk.don_vi,sum(hct.so_luong)'tong_so'
-from dich_vu_di_kem dvk
-inner join hop_dong_chi_tiet hct on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
-inner join hop_dong hd on hd.ID_hop_dong = hct.ID_hop_dong
-group by dvk.ten_dich_vu_di_kem)x;
+select ten_dich_vu_di_kem,gia,tong_so from so_lan_su_dung_dvdk
+where tong_so >= all (select tong_so from so_lan_su_dung_dvdk) ;
 
--- cách khác của Minh
-select sum(hop_dong_chi_tiet.so_luong) so_lan, dich_vu_di_kem.ten_dich_vu_di_kem
-from hop_dong_chi_tiet
-join dich_vu_di_kem
-on hop_dong_chi_tiet.id_dich_vu_di_kem=dich_vu_di_kem.id_dich_vu_di_kem
-group by hop_dong_chi_tiet.id_dich_vu_di_kem
- having sum(hop_dong_chi_tiet.so_luong)>=
- all(select sum(hop_dong_chi_tiet.so_luong)
- from hop_dong_chi_tiet
- group by hop_dong_chi_tiet.id_dich_vu_di_kem)
- ;
 
 
 
@@ -139,7 +125,7 @@ from dich_vu_di_kem dvk
 inner join hop_dong_chi_tiet hct on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
 inner join hop_dong hd on hd.ID_hop_dong = hct.ID_hop_dong
 group by dvk.ten_dich_vu_di_kem)x
-where x.tong_so like 3;
+where x.tong_so = 1;
 
 -- task 15
 
