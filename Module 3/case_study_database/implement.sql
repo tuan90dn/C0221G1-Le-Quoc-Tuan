@@ -207,3 +207,31 @@ from khach_hang
 union all
 select ID_nhan_vien,ho_ten,email,sdt,ngay_sinh,dia_chi
 from nhan_vien;
+
+-- task 21
+create or replace view v_nhan_vien as
+select nv.ID_nhan_vien,nv.ho_ten,nv.dia_chi,hd.ngay_lam_hop_dong from nhan_vien nv
+join hop_dong hd
+on nv.ID_nhan_vien = hd.ID_nhan_vien
+where nv.dia_chi = 'đà nẵng' and hd.ngay_lam_hop_dong = '2018-02-10'
+;
+select * from v_nhan_vien;
+
+-- task 22
+
+update nhan_vien
+set dia_chi = 'Liên Chiểu'
+where ID_nhan_vien in (select ID_nhan_vien from (select ID_nhan_vien from v_nhan_vien)x);
+
+-- task 23
+delimiter //
+
+create procedure sp_1(in p_id int)
+begin
+delete from khach_hang
+where ID_khach_hang=p_id;
+end //
+
+delimiter ;
+
+-- task 24

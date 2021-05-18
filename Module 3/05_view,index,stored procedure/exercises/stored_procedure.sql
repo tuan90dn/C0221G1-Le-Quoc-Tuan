@@ -7,6 +7,24 @@ end //
 
 delimiter ;
 
+DELIMITER $$
+CREATE  PROCEDURE add_new_product(
+in id int,
+in product_code varchar(50),
+in product_name varchar(50),
+in product_price varchar(50),
+in product_amount varchar(50),
+in product_description varchar(50),
+in product_status varchar(50)
+)
+begin
+insert into products
+values (id,product_code,product_name,product_price,product_amount,
+product_description,product_status);
+end //
+DELIMITER ;
+
+
 delimiter //
 create procedure edit_product(
 in search_id int,
@@ -41,7 +59,7 @@ end //
 
 delimiter ;
 
-call add_new_product(5,'tuan','dep','trai','nhat','the','gioi');
+call add_new_product(7,'atuan','dep','trai','nhat','the','gioi');
 call allrecords();
 call edit_product(6,4,'anhtuan','dep','trai','nhat','the','gioi');
 call delete_product(5);

@@ -91,6 +91,10 @@ where (ID_nhan_vien=1)or
 (ID_nhan_vien=2)or
 (ID_nhan_vien=3);
 
+update nhan_vien
+set dia_chi = 'Hải Châu'
+where ID_nhan_vien = 1;
+
 select * from khach_hang;
 
 
