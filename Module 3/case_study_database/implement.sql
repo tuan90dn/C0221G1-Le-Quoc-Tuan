@@ -30,7 +30,7 @@ group by kh.ID_khach_hang;
  left join dich_vu dv on h.ID_dich_vu = dv.ID_dich_vu 
  left join hop_dong_chi_tiet hct on hct.ID_hop_dong = h.ID_hop_dong
  left join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem 
- order by kh.ID_khach_hang;
+ group by kh.ID_khach_hang;
 
 -- task 6
 
@@ -38,8 +38,8 @@ select dv.ID_dich_vu,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue,ldv.ten_loai_di
 from dich_vu dv
 left join hop_dong hd on dv.ID_dich_vu = hd.ID_dich_vu
 join loai_dich_vu ldv on dv.ID_loai_dich_vu = ldv.ID_loai_dich_vu
-where hd.ID_dich_vu is null and hd.ngay_lam_hop_dong not in
-(select hd.ngay_lam_hop_dong from hop_dong hd where month(hd.ngay_lam_hop_dong) between month('2019-01') and month(curdate()));
+where hd.ID_dich_vu is null or hd.ngay_lam_hop_dong not in
+(select hd.ngay_lam_hop_dong from hop_dong hd where (month(hd.ngay_lam_hop_dong) in(1,2,3)) and year(hd.ngay_lam_hop_dong)=2019);
 
 -- task 7
 select * from dich_vu;
@@ -48,10 +48,10 @@ select dv.ID_dich_vu ,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue,ldv.ten_loai_d
 from dich_vu dv
 join loai_dich_vu as ldv on dv.ID_loai_dich_vu = ldv.ID_loai_dich_vu
 join hop_dong as hd on dv.ID_dich_vu = hd.ID_dich_vu
-where (year(hd.ngay_lam_hop_dong) like 2018)
+where (year(hd.ngay_lam_hop_dong) = 2018)
 and hd.ID_dich_vu not in 
 (select hd.ID_dich_vu from hop_dong hd
- where year(hd.ngay_lam_hop_dong) like 2019); 
+ where year(hd.ngay_lam_hop_dong) = 2019); 
 
 
 -- task 8
@@ -60,9 +60,10 @@ and hd.ID_dich_vu not in
 select ho_ten from khach_hang
 group by ho_ten;
 
-
-
 select distinct ho_ten from khach_hang;
+
+select ho_ten from khach_hang union 
+select ho_ten from khach_hang;
 
 -- task 9
 
@@ -70,19 +71,19 @@ select month(hd.ngay_lam_hop_dong) 'thang', year(hd.ngay_lam_hop_dong) 'nam',cou
 from khach_hang kh
 join hop_dong hd
 on  kh.ID_khach_hang = hd.ID_khach_hang
-where (year(hd.ngay_lam_hop_dong) like 2021)
+where (year(hd.ngay_lam_hop_dong) = 2021)
 group by month(hd.ngay_lam_hop_dong);
 
 -- task 10
 
 
-select hd.ID_hop_dong,hd.ngay_lam_hop_dong,hd.ngay_ket_thuc,hd.tien_dat_coc,count(hct.ID_hop_dong_chi_tiet)'so_luong_dich_vu_di_kem'
+select hd.ID_hop_dong,hd.ngay_lam_hop_dong,hd.ngay_ket_thuc,hd.tien_dat_coc,sum(hct.so_luong)'so_luong_dich_vu_di_kem'
 from hop_dong hd
 join hop_dong_chi_tiet hct 
 on hd.ID_hop_dong = hct.ID_hop_dong
 join dich_vu_di_kem dvk
 on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
-group by hct.ID_hop_dong_chi_tiet;
+group by hd.ID_hop_dong;
 
 -- task 11
 
@@ -92,7 +93,7 @@ join loai_khach lk on kh.ID_loai_khach = lk.ID_loai_khach
 join hop_dong hd on kh.ID_khach_hang = hd.ID_khach_hang
 join hop_dong_chi_tiet hct on hd.ID_hop_dong = hct.ID_hop_dong
 join dich_vu_di_kem dvk on hct.ID_dich_vu_di_kem = dvk.ID_dich_vu_di_kem
-where lk.ten_loai_khach like 'Diamond' and (kh.dia_chi like 'Quảng Ngãi' or kh.dia_chi like 'Vinh') ;
+where lk.ten_loai_khach = 'Diamond' and (kh.dia_chi like 'Quảng Ngãi' or kh.dia_chi like 'Vinh') ;
 
 -- task 12
 select hd.ID_hop_dong,nv.ho_ten'ho_ten_nhan_vien',kh.ho_ten 'ho_ten_khach_hang',kh.sdt 'sdt_khach_hang',dv.ten_dich_vu,hd.tien_dat_coc,hd.ngay_lam_hop_dong,count(hct.ID_hop_dong_chi_tiet)'so_luong_dich_vu_di_kem' 
@@ -149,8 +150,7 @@ inner join bo_phan on bo_phan.ID_bo_phan = nv.ID_bo_phan
 inner join hop_dong hd on hd.ID_nhan_vien = nv.ID_nhan_vien
 where year(hd.ngay_lam_hop_dong) between 2018 and 2019
 group by hd.ID_nhan_vien
-having so_hop_dong_da_lap < 3;
-
+having so_hop_dong_da_lap < 4;
 
 
 -- task 16 

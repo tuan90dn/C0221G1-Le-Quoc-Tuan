@@ -17,7 +17,7 @@ where m.mark = (select max(mark.mark) from mark);
 
 select st.student_Id,st.student_name,st.address,st.phone,AVG(m.mark)
 from student st
-join mark m
+left join mark m
 on st.student_Id = m.student_ID
 group by st.student_Id
 order by AVG(m.mark) asc;
