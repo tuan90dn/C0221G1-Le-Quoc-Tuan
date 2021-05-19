@@ -248,8 +248,63 @@ DELIMITER ;
 
 call sp_2(7,3,4,3,'2018-05-5','2018-05-10',100000,1000000);
 select * from hop_dong;
+SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = '...';
+
+
+-- task 25
+delimiter //
+
+create trigger tr_1 after delete on hop_dong for each row
+begin
+declare so_luong_hd int;
+insert into luu_hop_dong
+values (OLD.ID_hop_dong,OLD.ID_nhan_vien,OLD.ID_khach_hang,OLD.ID_dich_vu,OLD.ngay_lam_hop_dong,OLD.ngay_ket_thuc,OLD.tien_dat_coc,OLD.tong_tien);
+set so_luong_hd = (select count(ID_hop_dong) from hop_dong);
+insert into so_luong_hd_con_lai
+values(so_luong_hd);
+end //
+
+delimiter ;
+
+drop trigger tr_1;
+delete from hop_dong
+where ID_hop_dong = 7;
+
+delimiter //
+create procedure lay_record()
+begin
+select count(*) from hop_dong
+where ID_khach_hang=p_id;
+end //
+
+delimiter ;
+call lay_record(6);
+select * from khach_hang
+where ID_khach_hang=6;
+create table so_luong_hd_con_lai(so_luong_hd int);
+create table luu_hop_dong(
+ID_hop_dong int primary key not null,
+ID_nhan_vien int,
+ID_khach_hang int,
+ID_dich_vu int,
+ngay_lam_hop_dong date,
+ngay_ket_thuc date,
+tien_dat_coc int,
+tong_tien int);
 
 -- task 26
+delimiter //
+create trigger tr_2 before update on hop_dong for each row
+begin
+if datediff(NEW.ngay_ket_thuc,OLD.ngay_lam_hop_dong)<2
+then 
+SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày';
+end if;
+end //
 
+delimiter ;
+drop trigger tr_2;
 
-
+update hop_dong
+set ngay_ket_thuc='2018-02-15'
+where ngay_ket_thuc='2018-02-12';
