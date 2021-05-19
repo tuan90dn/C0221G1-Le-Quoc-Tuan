@@ -221,3 +221,35 @@ end //
 delimiter ;
 
 -- task 24
+DELIMITER //
+CREATE  PROCEDURE sp_2(
+p_ID_hop_dong int ,
+p_ID_nhan_vien int,
+p_ID_khach_hang int,
+p_ID_dich_vu int,
+p_ngay_lam_hop_dong date,
+p_ngay_ket_thuc date,
+p_tien_dat_coc int,
+p_tong_tien int
+)
+begin
+if (p_ID_hop_dong not in (select ID_hop_dong from hop_dong)
+and p_ID_nhan_vien in (select ID_nhan_vien from nhan_vien)
+and p_ID_khach_hang in (select ID_khach_hang from khach_hang)
+and p_ID_dich_vu in (select ID_dich_vu from dich_vu))
+then
+insert into hop_dong
+values (p_ID_hop_dong,p_ID_nhan_vien,p_ID_khach_hang,p_ID_dich_vu,p_ngay_lam_hop_dong,
+p_ngay_ket_thuc,p_tien_dat_coc,p_tong_tien);
+else select concat('Wrong input') as 'Error';
+end if;
+end //
+DELIMITER ;
+
+call sp_2(7,3,4,3,'2018-05-5','2018-05-10',100000,1000000);
+select * from hop_dong;
+
+-- task 26
+
+
+

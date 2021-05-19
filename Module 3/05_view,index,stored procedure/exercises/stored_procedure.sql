@@ -7,7 +7,7 @@ end //
 
 delimiter ;
 
-DELIMITER $$
+DELIMITER //
 CREATE  PROCEDURE add_new_product(
 in id int,
 in product_code varchar(50),

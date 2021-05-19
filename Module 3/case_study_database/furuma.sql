@@ -199,4 +199,6 @@ where ID_hop_dong_chi_tiet like 7;
 update hop_dong_chi_tiet
 set ID_dich_vu_di_kem = 1
 where ID_dich_vu_di_kem in (4,5,6);
+insert into hop_dong
+values(7,3,4,3,'2018-05-5','2018-05-10',100000,3000000);
 
