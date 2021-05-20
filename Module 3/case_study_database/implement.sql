@@ -308,3 +308,4 @@ drop trigger tr_2;
 update hop_dong
 set ngay_ket_thuc='2018-02-15'
 where ngay_ket_thuc='2018-02-12';
+
