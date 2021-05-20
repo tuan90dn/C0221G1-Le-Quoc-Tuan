@@ -112,7 +112,11 @@ group by hct.ID_hop_dong_chi_tiet;
 
 -- task 13
 
-select ten_dich_vu_di_kem,gia,tong_so from so_lan_su_dung_dvdk
+select ten_dich_vu_di_kem,gia,tong_so from  (select dvk.ID_dich_vu_di_kem,dvk.ten_dich_vu_di_kem,dvk.gia,dvk.don_vi,sum(hct.so_luong)'tong_so'
+from dich_vu_di_kem dvk
+inner join hop_dong_chi_tiet hct on dvk.ID_dich_vu_di_kem = hct.ID_dich_vu_di_kem
+inner join hop_dong hd on hd.ID_hop_dong = hct.ID_hop_dong
+group by dvk.ten_dich_vu_di_kem)x
 where tong_so >= all (select tong_so from so_lan_su_dung_dvdk) ;
 
 
@@ -188,10 +192,10 @@ where ID_dich_vu_di_kem in (select ID_dich_vu_di_kem from so_lan_su_dung_dvdk wh
 
 -- task 20
 
-select ID_khach_hang ID,ho_ten,email,sdt,ngay_sinh,dia_chi
+select ID_khach_hang ID,ho_ten,email,sdt,ngay_sinh,dia_chi,1 as 'type'
 from khach_hang
 union all
-select ID_nhan_vien,ho_ten,email,sdt,ngay_sinh,dia_chi
+select ID_nhan_vien,ho_ten,email,sdt,ngay_sinh,dia_chi,0 as 'type'
 from nhan_vien;
 
 -- task 21
