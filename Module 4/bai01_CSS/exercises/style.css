@@ -6,12 +6,15 @@ p{
     text-align: justify;
     text-indent: 50px;
 }
-pre{
-    color: blue;
-}
+
 span{
-    color: blue;
+    font-weight: bold;
+    color: darkcyan;
 }
 #dark{
-    color: chartreuse;
+    font-weight: bold;
+    color: midnightblue;
+}
+body{
+    background-color: beige;
 }
