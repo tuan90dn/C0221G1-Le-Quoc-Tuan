@@ -1,6 +1,17 @@
 h1{
-    color: forestgreen;
+    border-bottom: 1px solid;
+    font-weight: bold;
+}
+p{
+    text-align: justify;
+    text-indent: 50px;
 }
 pre{
     color: blue;
+}
+span{
+    color: blue;
+}
+#dark{
+    color: chartreuse;
 }
