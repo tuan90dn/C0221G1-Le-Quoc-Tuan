@@ -28,9 +28,10 @@ a{
     text-decoration: none;
 }
 ol{
+    border: burlywood 5px solid;
     background: #ff9999;
-    padding: 20px;;
-
+    padding: 20px;
+    border-radius: 30px;
 }
 ol li {
     background: #ffe5e5;
