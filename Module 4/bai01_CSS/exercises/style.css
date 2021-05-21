@@ -3,7 +3,7 @@ h1{
     font-weight: bold;
 }
 p{
-    text-align: justify;
+
     text-indent: 50px;
 }
 
@@ -11,10 +11,32 @@ span{
     font-weight: bold;
     color: darkcyan;
 }
-#dark{
+.dark{
     font-weight: bold;
     color: midnightblue;
 }
 body{
     background-color: beige;
+}
+div{
+    padding: 10px;
+    width: auto;
+    height: auto;
+    text-align: justify;
+}
+a{
+    text-decoration: none;
+}
+ol{
+    background: #ff9999;
+    padding: 20px;;
+
+}
+ol li {
+    background: #ffe5e5;
+    padding: 5px;
+    margin-left: 20px;
+}
+ul {
+    list-style-image: url('https://james.codegym.vn/draftfile.php/7734/user/draft/934811554/bullet_red _2.png');
 }
