@@ -2,25 +2,71 @@ body{
     margin: 0;
 }
 #header{
-    background: burlywood;
-    height: 100px;
+    /*background: burlywood;*/
+    height: 60px;
     width: 100%;
 }
 #main{
     background: darkolivegreen;
-    height: 380px;
+    height: 400px;
     width: 70%;
     float: left;
 }
 #sidebar{
-    background: lawngreen;
-    height: 380px;
+    /*background: lawngreen;*/
+    height: 400px;
     width: 30%;
     float: left;
 }
 #footer{
-    background: red;
+    /*background: red;*/
     height: 95px;
     width: 100%;
     clear: both;
 }
+input {
+    float: left;
+    width: 20%;
+    height: 70%;
+    margin-right: 16px;
+    margin-top: 8px;
+
+    border: none;
+    font-size: 17px;
+    background: darkgray;
+    border-radius: 30px;
+}
+img {
+    float: left;
+    width: 5%;
+    height: 70%;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+#menu li{
+    list-style: none;
+    position: relative;
+    width:100px;
+    height: 30px;
+    padding:0 20px;
+    background-color: black;
+    line-height: 30px;
+    cursor:pointer;
+}
+ li a{
+    text-decoration:none;
+    color: black;
+}
+ li:hover{
+    background-color:red;
+}
+ ul {
+  margin-left: 50px;
+     color: black;
+}
+ ul li:hover ul{
+    visibility:visible;
+}
+
+
