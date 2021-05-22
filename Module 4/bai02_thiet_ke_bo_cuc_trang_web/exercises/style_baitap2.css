@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+}
+#header{
+    background: burlywood;
+    height: 100px;
+    width: 100%;
+}
+#main{
+    background: darkolivegreen;
+    height: 380px;
+    width: 70%;
+    float: left;
+}
+#sidebar{
+    background: lawngreen;
+    height: 380px;
+    width: 30%;
+    float: left;
+}
+#footer{
+    background: red;
+    height: 95px;
+    width: 100%;
+    clear: both;
+}
