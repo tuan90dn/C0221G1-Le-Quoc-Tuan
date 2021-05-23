@@ -2,14 +2,17 @@ body{
     margin: 0;
 }
 #header{
-    background: #1a1a1a;
+    background: darkgray;
     height: 60px;
     width: 100%;
 }
 #header-link{
-    background: darkgreen;
-    height: 40px;
+    background: blueviolet;
+    height: 38px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+
 }
 #left-contend{
     background: darkgray;
@@ -24,16 +27,42 @@ body{
     float: left;
 }
 #footer{
-    background: #1a1a1a;
+    /*background: #1a1a1a;*/
     height: 43px;
     width: 100%;
     clear: both;
     text-align: center;
+    justify-content: center;
+    display: flex;
 }
 img {
     float: left;
-    width: 5%;
+    width: 10%;
     height: 70%;
     margin-top: 10px;
     margin-left: 15px;
+}
+#header-link ul{
+    margin: 0;
+}
+#header-link li{
+    height: 20px;
+    width: 200px;
+    /*position: relative;*/
+    float: left;
+    list-style: none;
+}
+#header-link li a {
+    width: 200px;
+    height: 20px;
+    /*display: block;*/
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+}
+p{
+    margin-top: auto;
+    margin-bottom: auto;
 }
