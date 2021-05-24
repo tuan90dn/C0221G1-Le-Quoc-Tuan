@@ -14,20 +14,23 @@ body{
     justify-content: center;
 
 }
-#left-contend{
-    background: darkgray;
+#left-content{
+    /*background: darkgray;*/
     height: 435px;
     width: 30%;
     float: left;
 }
-#right-contend{
+#left-content a:hover {
+    color: red;
+}
+#right-content{
     background: darkgray;
     height: 435px;
     width: 70%;
     float: left;
 }
 #footer{
-    /*background: #1a1a1a;*/
+    background: darkgray;
     height: 43px;
     width: 100%;
     clear: both;
