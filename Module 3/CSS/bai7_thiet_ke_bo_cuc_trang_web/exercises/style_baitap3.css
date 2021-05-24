@@ -1,86 +1,120 @@
 body{
     margin: 0;
 }
-#header{
+.header{
     background: #1a1a1a;
     height: 65px;
     width: 100%;
 }
-#left-sidebar{
-    background: darkgray;
+.left-sidebar{
+    background-color: darkgray;
     height: 435px;
-    width: 10%;
-    float: left;
+    /*width: 10%;*z/
+    /*float: left;*/
 
 }
-#main{
-    background: beige;
+.main{
+    background-color: white;
     height: 435px;
-    width: 80%;
-    float: left;
+    /*width: 80%;*/
+    /*float: left;*/
 }
-#right-sidebar{
-    background: darkgray;
+.right-sidebar{
+    background-color: darkgray;
     height: 435px;
-    width: 10%;
-    float: right;
+    /*width: 10%;*/
+    /*float: right;*/
     text-align: center;
 
 }
-#footer{
+.footer{
     background: #1a1a1a;
     height: 65px;
     width: 100%;
-    clear: both;
+    /*clear: both;*/
     text-align: center;
+    position: fixed;
+    bottom: 0px;
+
 }
-#footer p{
+.footer p{
     font-weight: bold;
     font-size: medium;
     color: white;
-    height: 65px;
-    line-height: 65px;
-    /*position: center;*/
+
 }
 
-#header li{
-    height: 60px;
+.header li{
+    height: 65px;
     position: relative;
     float: left;
     list-style: none;
     text-align: center;
 }
-#header li a {
-    width: 60px;
-    height: 25px;
+.header li a {
+    width: 80px;
+    height: 65px;
     display: block;
     text-decoration: none;
     color: white;
     padding: 20px;
 }
-#header ul ul li a {
+.header ul ul li a {
     /*width: 60px;*/
     text-align: center;
     position: relative;
     left: -40px;
     color: darkgreen;
 }
-#header li a:hover{
+.header li a:hover{
     background-color: black;
 }
-#header ul ul{
+.header ul ul{
     position: absolute;
     visibility: hidden;
 }
-#header ul li:hover ul{
+.header ul li:hover ul{
     visibility: visible;
 }
 .block-sidebar{
-    width: 70%;
+    width: 100px;
     height: 50px;
     border: black solid 1px;
     background-color: antiquewhite;
     margin-left:  auto;
     margin-right: auto;
     margin-top: 10px;
+    text-align: center;
+}
+* {
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
 }
