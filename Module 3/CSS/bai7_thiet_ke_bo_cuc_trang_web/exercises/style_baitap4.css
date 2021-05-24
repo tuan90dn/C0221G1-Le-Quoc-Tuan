@@ -5,6 +5,7 @@ body{
     background: darkgray;
     height: 60px;
     width: 100%;
+    position: fixed;
 }
 #header-link{
     background: blueviolet;
@@ -12,11 +13,14 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
+    position: relative;
+    top:60px;
+    left: 0px;
 
 }
 #left-content{
     /*background: darkgray;*/
-    height: 435px;
+    height: 497px;
     width: 30%;
     float: left;
 }
@@ -24,8 +28,8 @@ body{
     color: red;
 }
 #right-content{
-    background: darkgray;
-    height: 435px;
+    /*background: darkgray;*/
+    height: 497px;
     width: 70%;
     float: left;
 }
