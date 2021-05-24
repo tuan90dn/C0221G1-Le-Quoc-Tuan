@@ -24,7 +24,7 @@ body{
     width: 30%;
     float: left;
 }
-#left-content a:hover {
+#left-content a:focus {
     color: red;
 }
 #right-content{
