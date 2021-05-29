@@ -8,8 +8,10 @@ public class ProductRepository {
     static Map<String, Product> mapProducts=new HashMap<>();
     static {
         mapProducts.put("1",new Product("1","tivi","10 000 000","nhập khẩu","Sony"));
-        mapProducts.put("2",new Product("2","tu lanh","15 000 000","nhập khẩu","toshiba"));
-        mapProducts.put("3",new Product("3","dieu hoa nhiet do","12 000 000","nội địa","panasonic"));
+        mapProducts.put("2",new Product("2","tivi","10 000 000","nhập khẩu","Sony"));
+        mapProducts.put("3",new Product("3","tu lanh","15 000 000","nhập khẩu","toshiba"));
+        mapProducts.put("4",new Product("4","tu lanh","15 000 000","nhập khẩu","toshiba"));
+        mapProducts.put("5",new Product("5","dieu hoa nhiet do","12 000 000","nội địa","panasonic"));
 
     }
 
