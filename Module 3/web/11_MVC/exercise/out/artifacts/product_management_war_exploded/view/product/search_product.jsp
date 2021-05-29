@@ -11,6 +11,9 @@
     <title>Title</title>
 </head>
 <body>
+<p>
+    <a href="/products">Back to list of products</a>
+</p>
 <form method="post">
     <h2>Please input product's name:</h2>
     <input type="text" name="name" id="name">

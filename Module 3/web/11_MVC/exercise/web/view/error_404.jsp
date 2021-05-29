@@ -11,6 +11,12 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>Error</h1>
+<p>
+    <a href="/products">Back to list of products</a>
+</p>
+<p>
+    <a href="/products?action=search">Back to search form</a>
+</p>
 </body>
 </html>

@@ -72,7 +72,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showSearchForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/search_product.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/product/search_product.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -82,14 +82,15 @@ public class ProductServlet extends HttpServlet {
         }
     }
     private void searchProduct(HttpServletRequest request, HttpServletResponse response) {
+
         String name = request.getParameter("name");
-        Product product = productServices.findProductByName(name);
+        List<Product> product = productServices.findProductByName(name);
         RequestDispatcher dispatcher;
-        if(product == null){
-            dispatcher = request.getRequestDispatcher("/vỉew/error_404.jsp");
+        if(product.size()==0){
+            dispatcher = request.getRequestDispatcher("view/error_404.jsp");
         } else {
-            request.setAttribute("product", product);
-            dispatcher = request.getRequestDispatcher("/view/product/view_product.jsp");
+            request.setAttribute("products", product);
+            dispatcher = request.getRequestDispatcher("view/product/show_list_product_search.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -105,10 +106,10 @@ public class ProductServlet extends HttpServlet {
         Product product = productServices.findProductById(id);
         RequestDispatcher dispatcher;
         if(product == null){
-            dispatcher = request.getRequestDispatcher("/vỉew/error_404.jsp");
+            dispatcher = request.getRequestDispatcher("vỉew/error_404.jsp");
         } else {
             request.setAttribute("product", product);
-            dispatcher = request.getRequestDispatcher("/view/product/view_product.jsp");
+            dispatcher = request.getRequestDispatcher("view/product/view_product.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -124,10 +125,10 @@ public class ProductServlet extends HttpServlet {
         Product product = productServices.findProductById(id);
         RequestDispatcher dispatcher;
         if (product == null) {
-            dispatcher = request.getRequestDispatcher("/view/error_404.jsp");
+            dispatcher = request.getRequestDispatcher("view/error_404.jsp");
         } else {
             request.setAttribute("product", product);
-            dispatcher = request.getRequestDispatcher("/view/product/delete_product.jsp");
+            dispatcher = request.getRequestDispatcher("view/product/delete_product.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -143,7 +144,7 @@ public class ProductServlet extends HttpServlet {
         Product product = productServices.findProductById(id);
         RequestDispatcher dispatcher;
         if (product == null) {
-            dispatcher = request.getRequestDispatcher("/view/error_404.jsp");
+            dispatcher = request.getRequestDispatcher("view/error_404.jsp");
         } else {
             productServices.deleteProduct(id);
             try {
@@ -159,10 +160,10 @@ public class ProductServlet extends HttpServlet {
         Product product = productServices.findProductById(id);
         RequestDispatcher dispatcher;
         if (product == null) {
-            dispatcher = request.getRequestDispatcher("/view/error_404.jsp");
+            dispatcher = request.getRequestDispatcher("view/error_404.jsp");
         } else {
             request.setAttribute("product", product);
-            dispatcher = request.getRequestDispatcher("/view/product/edit_product.jsp");
+            dispatcher = request.getRequestDispatcher("view/product/edit_product.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -184,7 +185,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("product", product);
         request.setAttribute("message", "Product information was updated");
         RequestDispatcher dispatcher;
-        dispatcher = request.getRequestDispatcher("/view/product/edit_product.jsp");
+        dispatcher = request.getRequestDispatcher("view/product/edit_product.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -198,7 +199,7 @@ public class ProductServlet extends HttpServlet {
 
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/create_product.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/product/create_product.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -217,7 +218,7 @@ public class ProductServlet extends HttpServlet {
         Product product = new Product(id, name, price, description, manufactory);
         productServices.saveProduct(product);
         request.setAttribute("message", "New product was created");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/create_product.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/product/create_product.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -230,7 +231,7 @@ public class ProductServlet extends HttpServlet {
     private void listProducts(HttpServletRequest request, HttpServletResponse response) {
         List<Product> products = productServices.findAllProduct();
         request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/list_product.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/product/list_product.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

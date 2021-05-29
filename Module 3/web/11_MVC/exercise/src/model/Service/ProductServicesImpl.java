@@ -21,14 +21,15 @@ public class ProductServicesImpl implements IProductServices {
     }
 
     @Override
-    public Product findProductByName(String name) {
+    public List<Product> findProductByName(String name) {
         ArrayList<Product> productList=(ArrayList<Product>) findAllProduct();
+        ArrayList<Product> listProductResult=new ArrayList<>();
         for (Product product:productList){
             if (product.getNameOfProduct().equals(name)){
-                return product;
+                listProductResult.add(product);
             }
         }
-        return null;
+        return listProductResult;
     }
 
     @Override

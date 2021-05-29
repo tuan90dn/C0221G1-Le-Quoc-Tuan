@@ -8,7 +8,7 @@ import java.util.List;
 public interface IProductServices {
     List<Product> findAllProduct();
     Product findProductById(String id);
-    Product findProductByName(String name);
+    List<Product> findProductByName(String name);
     void saveProduct(Product product);
     void updateProduct(String id,Product product);
     void deleteProduct(String id);
