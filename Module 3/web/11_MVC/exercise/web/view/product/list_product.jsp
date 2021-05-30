@@ -13,6 +13,7 @@
 </head>
 <body>
 <h1>Products</h1>
+
 <p>
     <a href="/products?action=create">Create new product</a><br>
     <a href="/products?action=search">Search product</a>

@@ -1,11 +1,11 @@
 package model.bean;
 
 public class Product {
-    private String idOfProduct;
-    private String nameOfProduct;
-    private String priceOfProduct;
-    private String descriptionOfProduct;
-    private String manufactoryOfProduct;
+    public String idOfProduct;
+    public String nameOfProduct;
+    public String priceOfProduct;
+    public String descriptionOfProduct;
+    public String manufactoryOfProduct;
 
     public Product() {
     }

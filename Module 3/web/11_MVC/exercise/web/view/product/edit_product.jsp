@@ -26,24 +26,20 @@
         <legend>Product information</legend>
         <table>
             <tr>
-                <td>Id of product: </td>
-                <td><input type="text" name="id" id="id"></td>
-            </tr>
-            <tr>
                 <td>Name of product: </td>
-                <td><input type="text" name="name" id="name"></td>
+                <td><input type="text" name="name" id="name" value="${product.nameOfProduct}"></td>
             </tr>
             <tr>
                 <td>Price of product: </td>
-                <td><input type="text" name="price" id="price"></td>
+                <td><input type="text" name="price" id="price" value="${product.priceOfProduct}"></td>
             </tr>
             <tr>
                 <td>Description of product: </td>
-                <td><input type="text" name="description" id="description"></td>
+                <td><input type="text" name="description" id="description" value="${product.descriptionOfProduct}"></td>
             </tr>
             <tr>
                 <td>Manufactory of product: </td>
-                <td><input type="text" name="manufactory" id="manufactory"></td>
+                <td><input type="text" name="manufactory" id="manufactory" value="${product.manufactoryOfProduct}"></td>
             </tr>
             <tr>
                 <td></td>
