@@ -232,6 +232,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void listProducts(HttpServletRequest request, HttpServletResponse response) {
+
         List<Product> products = productServices.findAllProduct();
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/product/list_product.jsp");
