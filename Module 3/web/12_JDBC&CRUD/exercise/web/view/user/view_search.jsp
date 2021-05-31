@@ -21,14 +21,14 @@
 </p>
 <table border="1">
     <tr>
-        <td>ID Of User</td>
+
         <td>Name Of User</td>
         <td>Email Of User</td>
         <td>Country Of User</td>
     </tr>
     <c:forEach items="${users}" var="user">
         <tr>
-            <td><c:out value="${user.id}"/></td>
+
             <td><c:out value="${user.name}"/></td>
             <td><c:out value="${user.email}"/></td>
             <td><c:out value="${user.country}"/></td>

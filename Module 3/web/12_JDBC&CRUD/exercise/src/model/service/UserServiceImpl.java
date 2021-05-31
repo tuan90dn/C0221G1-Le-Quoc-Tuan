@@ -26,6 +26,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public List<User> selectAllUsersOrDerByName() {
+        return userRepository.selectAllUsersOrderByName();
+    }
+
+    @Override
     public List<User> searchUserByCountry(String country) {
         return userRepository.selectUserByCountry(country);
     }

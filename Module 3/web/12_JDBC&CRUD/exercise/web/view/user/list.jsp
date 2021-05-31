@@ -54,17 +54,17 @@
 <script src="../../datatables/js/jquery.dataTables.min.js"></script>
 <script src="../../datatables/js/dataTables.bootstrap4.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#tableUser').dataTable(
-            {
-                "dom":'lrtip',
-                "lengthChange":false,
-                "pageLength":5
-            }
-        );
+<%--<script>--%>
+<%--    $(document).ready(function () {--%>
+<%--        $('#tableUser').dataTable(--%>
+<%--            {--%>
+<%--                "dom":'lrtip',--%>
+<%--                "lengthChange":false,--%>
+<%--                "pageLength":5--%>
+<%--            }--%>
+<%--        );--%>
 
-    });
-</script>
+<%--    });--%>
+<%--</script>--%>
 </body>
 </html>

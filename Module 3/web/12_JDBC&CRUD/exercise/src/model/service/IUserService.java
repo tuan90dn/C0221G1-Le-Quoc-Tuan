@@ -11,6 +11,7 @@ public interface IUserService {
     public User selectUserByID(int id);
 
     public List<User> selectAllUsers();
+    public List<User> selectAllUsersOrDerByName();
     public List<User> searchUserByCountry(String country);
 
     public boolean deleteUser(int id) throws SQLException;

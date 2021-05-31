@@ -17,6 +17,7 @@ public class UserRepository {
     private static final String SELECT_USER_BY_ID = "select id,name,email,country from users where id =?";
     private static final String SELECT_USER_BY_COUNTRY = "select id,name,email,country from users where country =?";
     private static final String SELECT_ALL_USERS = "select * from users";
+    private static final String SELECT_ALL_USERS_ORDER_BY_NAME = "select * from users order by name";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
     BaseRepository baseRepository=new BaseRepository();
@@ -98,6 +99,32 @@ public class UserRepository {
 
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
+            System.out.println(preparedStatement);
+            // Step 3: Execute the query or update query
+            ResultSet rs = preparedStatement.executeQuery();
+
+            // Step 4: Process the ResultSet object.
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String country = rs.getString("country");
+                users.add(new User(id, name, email, country));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return users;
+    }
+    public List<User> selectAllUsersOrderByName() {
+        Connection connection = baseRepository.connectDataBase();
+        // using try-with-resources to avoid closing resources (boiler plate code)
+        List<User> users = new ArrayList<>();
+        // Step 1: Establishing a Connection
+        try (
+
+                // Step 2:Create a statement using connection object
+                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS_ORDER_BY_NAME);) {
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
