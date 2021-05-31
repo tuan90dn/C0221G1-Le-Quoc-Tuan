@@ -15,7 +15,7 @@ public class UserRepository {
             " (?, ?, ?);";
 
     private static final String SELECT_USER_BY_ID = "select id,name,email,country from users where id =?";
-    private static final String SELECT_USER_BY_COUNTRY = "select id,name,email,country from users where country =?";
+    private static final String SELECT_USER_BY_COUNTRY = "select id,name,email,country from users where country like ?";
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String SELECT_ALL_USERS_ORDER_BY_NAME = "select * from users order by name";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
@@ -73,7 +73,7 @@ public class UserRepository {
         try (
                 // Step 2:Create a statement using connection object
                 PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_COUNTRY);) {
-            preparedStatement.setString(1, country);
+            preparedStatement.setString(1, "%"+country+"%");
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
@@ -83,7 +83,8 @@ public class UserRepository {
                 int id=rs.getInt("id");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
-                listUser.add(new User(id, name, email, country));
+                String ctry = rs.getString("country");
+                listUser.add(new User(id, name, email, ctry));
             }
         } catch (SQLException e) {
             printSQLException(e);
