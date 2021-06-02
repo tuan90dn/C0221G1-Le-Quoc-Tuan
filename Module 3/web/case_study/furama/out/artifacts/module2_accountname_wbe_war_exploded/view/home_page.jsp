@@ -36,7 +36,7 @@
                 <a class="nav-link" href="#">Employee<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Customer</a>
+                <a class="nav-link" href="/customers">Customer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Service</a>

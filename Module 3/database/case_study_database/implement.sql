@@ -21,6 +21,7 @@ join loai_khach on kh.ID_loai_khach = loai_khach.ID_loai_khach
 where loai_khach.ten_loai_khach = 'Diamond'
 group by kh.ID_khach_hang;
 
+
 -- task 5
  select kh.ID_khach_hang,kh.ho_ten,lk.ten_loai_khach,h.ID_hop_dong,dv.ten_dich_vu,
  h.ngay_lam_hop_dong,h.ngay_ket_thuc,dv.chi_phi_thue+hct.so_luong*dvk.gia 'tong_tien'

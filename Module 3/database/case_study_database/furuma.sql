@@ -202,3 +202,4 @@ where ID_dich_vu_di_kem in (4,5,6);
 insert into hop_dong
 values(7,3,4,3,'2018-05-5','2018-05-10',100000,3000000);
 
+SET FOREIGN_KEY_CHECKS = 1;
