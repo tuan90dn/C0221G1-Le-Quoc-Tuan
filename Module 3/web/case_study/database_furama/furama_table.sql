@@ -26,3 +26,8 @@ values(1,"Nguyễn Văn A",'1990-11-28',0,123456789,8239483,'a@gmail.com','Đà 
 (5,"Lê Thị E",'1991-11-28',1,123456789,8239483,'e@gmail.com','Đà Nẵng'),
 (3,"Nguyễn Văn F",'1992-11-28',0,123456789,8239483,'c@gmail.com','Quảng Trị');
 
+create table service_type(
+service_type_id int primary key,
+service_type_name varchar(45)
+);
+

@@ -1,6 +1,7 @@
 package controller;
 
 import model.bean.Customer;
+import model.bean.CustomerType;
 import model.service.CustomerServicesImpl;
 import model.service.ICustomerServices;
 
@@ -105,7 +106,7 @@ public class CustomerServlet extends HttpServlet {
 
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        int customer_type_id = Integer.parseInt(request.getParameter("idType"));
+        CustomerType customer_type_id = customerServices.selectCustomerTypeByID(Integer.parseInt(request.getParameter("idType")));
         String name = request.getParameter("name");
         String birthday = request.getParameter("birthday");
         int gender = Integer.parseInt(request.getParameter("idGender"));
@@ -143,7 +144,7 @@ public class CustomerServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
     private void insertCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException {
-        int id= Integer.parseInt(request.getParameter("idType"));
+        CustomerType id= customerServices.selectCustomerTypeByID(Integer.parseInt(request.getParameter("idType")));
         String name = request.getParameter("name");
         String birthday = request.getParameter("birthday");
         int gender = Integer.parseInt(request.getParameter("idGender"));

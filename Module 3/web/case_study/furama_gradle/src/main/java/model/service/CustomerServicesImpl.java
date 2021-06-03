@@ -1,13 +1,16 @@
 package model.service;
 
 import model.bean.Customer;
+import model.bean.CustomerType;
 import model.repository.CustomerRepository;
+import model.repository.CustomerTypeRepository;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class CustomerServicesImpl implements ICustomerServices {
     CustomerRepository customerRepository=new CustomerRepository();
+    CustomerTypeRepository customerTypeRepository=new CustomerTypeRepository();
     @Override
     public List<Customer> selectAllCustomers() {
         return customerRepository.selectAllCustomers();
@@ -36,5 +39,10 @@ public class CustomerServicesImpl implements ICustomerServices {
     @Override
     public boolean updateCustomer(Customer customer) throws SQLException {
         return customerRepository.updateCustomer(customer);
+    }
+
+    @Override
+    public CustomerType selectCustomerTypeByID(int id) {
+        return customerTypeRepository.selectCustomerTypeByID(id);
     }
 }

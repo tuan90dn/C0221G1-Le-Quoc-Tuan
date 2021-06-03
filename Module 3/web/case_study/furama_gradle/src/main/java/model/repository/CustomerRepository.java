@@ -1,6 +1,7 @@
 package model.repository;
 
 import model.bean.Customer;
+import model.bean.CustomerType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,6 +22,7 @@ public class CustomerRepository {
     private static final String SELECT_CUSTOMER_BY_ID = "select * from customer where customer_id=?;";
     private static final String SELECT_CUSTOMER_BY_NAME = "select * from customer where customer_name like ?;";
     BaseRepository baseRepository = new BaseRepository();
+    CustomerTypeRepository customerTypeRepository=new CustomerTypeRepository();
 
     public List<Customer> selectAllCustomers() {
         Connection connection = baseRepository.connectDataBase();
@@ -44,6 +46,7 @@ public class CustomerRepository {
     }
     public Customer selectCustomerByID(int id) {
         Customer customer = null;
+
         Connection connection = baseRepository.connectDataBase();        
         try {               
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_BY_ID);
@@ -51,7 +54,7 @@ public class CustomerRepository {
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                int customer_type_id=rs.getInt("customer_type_id");
+                CustomerType customer_type_id=customerTypeRepository.selectCustomerTypeByID(rs.getInt("customer_type_id"));
                 String name = rs.getString("customer_name");
                 String birthday = rs.getString("customer_birthday");
                 int gender = rs.getInt("customer_gender");
@@ -71,7 +74,7 @@ public class CustomerRepository {
         Connection connection = baseRepository.connectDataBase();
         try (
                 PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMER_SQL)) {
-            preparedStatement.setInt(1, customer.getCustomer_type_id());
+            preparedStatement.setInt(1, customer.getCustomer_type_id().customer_type_id);
             preparedStatement.setString(2, customer.getCustomer_name());
             preparedStatement.setString(3, customer.getCustomer_birthday());
             preparedStatement.setInt(4, customer.getCustomer_gender());
@@ -116,7 +119,7 @@ public class CustomerRepository {
         boolean rowUpdated;
         Connection connection = baseRepository.connectDataBase();
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUSTOMER_SQL);) {
-            preparedStatement.setInt(1, customer.getCustomer_type_id());
+            preparedStatement.setInt(1, customer.getCustomer_type_id().customer_type_id);
             preparedStatement.setString(2, customer.getCustomer_name());
             preparedStatement.setString(3, customer.getCustomer_birthday());
             preparedStatement.setInt(4, customer.getCustomer_gender());
@@ -140,7 +143,7 @@ public class CustomerRepository {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int customer_id=rs.getInt("customer_id");
-                int customer_type_id=rs.getInt("customer_type_id");
+                CustomerType customer_type_id=customerTypeRepository.selectCustomerTypeByID(rs.getInt("customer_type_id"));
                 String nameCustomer = rs.getString("customer_name");
                 String birthday = rs.getString("customer_birthday");
                 int gender = rs.getInt("customer_gender");

@@ -2,7 +2,7 @@ package model.bean;
 
 public class Customer {
     protected int customer_id;
-    protected int customer_type_id;
+    protected CustomerType customer_type_id;
     protected String customer_name;
     protected String customer_birthday;
     protected int customer_gender;
@@ -22,7 +22,7 @@ public class Customer {
         this.customer_address = customer_address;
     }
 
-    public Customer(int customer_type_id, String customer_name, String customer_birthday, int customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) {
+    public Customer(CustomerType customer_type_id, String customer_name, String customer_birthday, int customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) {
         this.customer_type_id = customer_type_id;
         this.customer_name = customer_name;
         this.customer_birthday = customer_birthday;
@@ -33,7 +33,7 @@ public class Customer {
         this.customer_address = customer_address;
     }
 
-    public Customer(int customer_id, int customer_type_id, String customer_name, String customer_birthday,
+    public Customer(int customer_id, CustomerType customer_type_id, String customer_name, String customer_birthday,
                     int customer_gender, String customer_id_card, String customer_phone, String customer_email,
                     String customer_address) {
         this.customer_id = customer_id;
@@ -55,11 +55,11 @@ public class Customer {
         this.customer_id = customer_id;
     }
 
-    public int getCustomer_type_id() {
+    public CustomerType getCustomer_type_id() {
         return customer_type_id;
     }
 
-    public void setCustomer_type_id(int customer_type_id) {
+    public void setCustomer_type_id(CustomerType customer_type_id) {
         this.customer_type_id = customer_type_id;
     }
 
