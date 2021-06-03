@@ -17,6 +17,7 @@ customer_id_card varchar(45),
 customer_phone varchar(45),
 customer_email varchar(45),
 customer_address varchar(45));
+-- truncate table customer;
 insert into customer (customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address)
 values(1,"Nguyễn Văn A",'1990-11-28',0,123456789,8239483,'a@gmail.com','Đà Nẵng'),
 (3,"Nguyễn Văn B",'1991-11-28',0,123456789,8239483,'b@gmail.com','Quảng Nam'),
