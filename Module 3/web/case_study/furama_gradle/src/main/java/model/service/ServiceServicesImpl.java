@@ -13,7 +13,7 @@ public class ServiceServicesImpl implements IServiceServices {
 
     @Override
     public List<Service> selectAllServices() {
-        return serviceRepository.selectAllCustomers();
+        return serviceRepository.selectAllServices();
     }
 
     @Override

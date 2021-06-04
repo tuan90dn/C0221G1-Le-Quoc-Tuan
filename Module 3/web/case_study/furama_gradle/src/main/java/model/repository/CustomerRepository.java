@@ -72,8 +72,8 @@ public class CustomerRepository {
     public void insertCustomer(Customer customer) throws SQLException {
         System.out.println(INSERT_CUSTOMER_SQL);
         Connection connection = baseRepository.connectDataBase();
-        try (
-                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMER_SQL)) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMER_SQL);
             preparedStatement.setInt(1, customer.getCustomer_type_id().customer_type_id);
             preparedStatement.setString(2, customer.getCustomer_name());
             preparedStatement.setString(3, customer.getCustomer_birthday());

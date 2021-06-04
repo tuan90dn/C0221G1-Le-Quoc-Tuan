@@ -1,6 +1,8 @@
 package controller;
 
 import model.bean.service_class.Service;
+import model.service.CustomerServicesImpl;
+import model.service.ICustomerServices;
 import model.service.IServiceServices;
 import model.service.ServiceServicesImpl;
 
@@ -16,7 +18,10 @@ import java.util.List;
 
 @WebServlet(name = "ServiceServlet",value = "/services")
 public class ServiceServlet extends HttpServlet {
-    IServiceServices serviceServices=new ServiceServicesImpl();
+    IServiceServices serviceServices;
+    public void init(){
+        serviceServices=new ServiceServicesImpl();
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -29,7 +34,7 @@ public class ServiceServlet extends HttpServlet {
         try {
             switch (action) {
                 case "create":
-//                    showNewForm(request, response);
+                    showNewForm(request, response);
                     break;
                 case "edit":
 //                    showEditForm(request, response);
@@ -47,6 +52,11 @@ public class ServiceServlet extends HttpServlet {
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
+    }
+
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/service/create_service.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void listServicesOrderByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException {

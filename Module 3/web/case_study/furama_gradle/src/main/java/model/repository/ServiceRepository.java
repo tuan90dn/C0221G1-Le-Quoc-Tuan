@@ -18,7 +18,7 @@ public class ServiceRepository {
     ServiceRentTypeRepo serviceRentTypeRepo = new ServiceRentTypeRepo();
     ServiceTypeRepo serviceTypeRepo = new ServiceTypeRepo();
 
-    public List<Service> selectAllCustomers() {
+    public List<Service> selectAllServices() {
 
         Connection connection = baseRepository.connectDataBase();
         List<Service> services = new ArrayList<>();
@@ -40,6 +40,7 @@ public class ServiceRepository {
         return services;
 
     }
+
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

@@ -30,4 +30,94 @@ create table service_type(
 service_type_id int primary key,
 service_type_name varchar(45)
 );
+insert into service_type
+values (1,"Villa"),(2,"House"),(3,"Room");
+create table rent_type(
+rent_type_id int primary key,
+rent_type_name varchar(45),
+rent_type_cost double
+);
+insert into rent_type
+values (1,"Year",100000000),(2,"Month",10000000),(3,"Day",500000),(4,"Hour",100000);
+create table service(
+service_id int auto_increment primary key,
+service_name varchar(45),
+service_area int,
+service_cost double,
+service_max_people int,
+rent_type_id int,foreign key (rent_type_id) references rent_type(rent_type_id) on delete cascade,
+service_type_id int,foreign key (service_type_id) references service_type(service_type_id) on delete cascade,
+standard_room varchar(45),
+description_other_convenience varchar(45),
+pool_area double,
+number_of_floor int
+);
+truncate table service;
+insert into service(service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,standard_room,description_other_convenience,pool_area,number_of_floor)
+values('Luxury',300,5000000,30,1,1,'Luxury','Luxury',30,5),
+('Commoner',200,4000000,20,1,1,'Commoner','Commoner',20,5),
+('Luxury',300,5000000,30,1,2,'Luxury','Luxury',30,5),
+('Commoner',200,4000000,20,1,2,'Commoner','Commoner',20,5),
+('Luxury',300,5000000,30,1,3,'Luxury','Luxury',30,5),
+('Commoner',200,4000000,20,1,3,'Commoner','Commoner',20,5);
+
+create table `position`(
+position_id int primary key,
+position_name varchar(45)
+);
+insert into `position`
+values (1,"Lễ Tân"),(2,"Phục Vụ"),(3,"Chuyên Viên"),(4,"Giám Sát"),(5,"Quản Lý"),(6,"Giám Đốc");
+
+create table education_degree(
+education_degree_id int primary key,
+education_degree_name varchar(45)
+);
+
+insert into education_degree
+values (1,"Trung Cấp"),(2,"Cao Đẳng"),(3,"Đại Học"),(4,"Sau Đại Học");
+
+create table division(
+division_id int primary key,
+division_name varchar(45)
+);
+
+insert into division
+values (1,"Sale – Marketing"),(2,"Hành Chính"),(3,"Phục Vụ"),(4,"Quản Lý");
+
+-- create table `role`(
+-- role_id int auto_increment primary key,
+-- role_name varchar(225)
+-- );
+-- create table `user`(
+-- username varchar(225) primary key,
+-- password varchar(225)
+-- );
+-- create table user_role(
+-- role_id int ,foreign key (role_id) references `role`(role_id) on delete cascade,
+-- username varchar(225) ,foreign key (username) references `user`(username) on delete cascade
+-- );
+create table employee(
+employee_id int auto_increment primary key,
+employee_name varchar(45),
+employee_birthday date,
+employee_id_card varchar(45),
+employee_salary varchar(45),
+employee_phone varchar(45),
+employee_email varchar(45),
+employee_address varchar(45),
+position_id int,foreign key(position_id) references `position`(position_id) on delete cascade,
+education_degree_id int,foreign key(education_degree_id) references education_degree(education_degree_id) on delete cascade,
+division_id int,foreign key (division_id) references division (division_id) on delete cascade,
+username varchar(225)
+);
+
+insert into employee (employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,employee_email,employee_address,position_id,education_degree_id,division_id,username)
+values ('Lê Văn A','1992-11-30',34346456,10000000,23534534,'abc@gmail','Đà Nẵng',1,2,4,'Lê Văn A'),
+('Trần Văn B','1993-11-30',3896456,10000000,23534534,'abc@gmail','Huế',2,3,1,'Trần Văn B'),
+('Nguyễn Thị C','1994-11-30',35346456,10000000,23534534,'abc@gmail','Đà Nẵng',6,4,3,'Nguyễn Thị C'),
+('Lê Hoang Tuan','1994-11-30',35346456,10000000,23534534,'abc@gmail','Hà Nội',5,1,2,'Lê Hoang Tuan'),
+('Ho Van Tuan','1994-11-30',35346456,10000000,23534534,'abc@gmail','Quảng Bình',4,3,4,'Ho Van Tuan');
+truncate table employee;
+
+
 
