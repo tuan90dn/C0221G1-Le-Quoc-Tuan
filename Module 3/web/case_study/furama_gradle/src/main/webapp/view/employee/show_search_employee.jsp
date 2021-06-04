@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: DELL
-  Date: 6/3/2021
-  Time: 4:52 PM
+  Date: 6/4/2021
+  Time: 9:46 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,24 +16,28 @@
 </head>
 <body>
 <p>
-    <a href="/customers">Back to list of customer</a>
+    <a href="/employees">Back to list of employee</a>
 </p>
 <table id="idTable" class="table table-striped table-hover">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Phone</th>
-        <th>Email</th>
+        <th>Name of employee</th>
+        <th>Birthday of employee</th>
+        <th>Address of employee</th>
+        <th>Position of employee</th>
+        <th>Education Degree of employee</th>
+        <th>Division of employee</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="customer" items="${listCustomer}">
+    <c:forEach var="employee" items="${listEmployee}">
         <tr>
-            <td><a href="/customers?action=view&id=${customer.customer_id}"><c:out value="${customer.customer_name}"/></a></td>
-            <td><c:out value="${customer.customer_address}"/></td>
-            <td><c:out value="${customer.customer_phone}"/></td>
-            <td><c:out value="${customer.customer_email}"/></td>
+            <td><a href="/employees?action=view&id=${employee.employee_id}"><c:out value="${employee.employee_name}"/></a></td>
+            <td><c:out value="${employee.employee_birthday}"/></td>
+            <td><c:out value="${employee.employee_address}"/></td>
+            <td><c:out value="${employee.position_id.position_name}"/></td>
+            <td><c:out value="${employee.education_degree_id.education_degree_name}"/></td>
+            <td><c:out value="${employee.division_id.division_name}"/></td>
         </tr>
     </c:forEach>
     </tbody>

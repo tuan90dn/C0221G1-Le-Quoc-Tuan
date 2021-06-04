@@ -14,7 +14,7 @@ public interface IServiceServices {
     public void insertService(Service service) throws SQLException;
     public Service selectServiceByID(int id);
     public List<Service> selectServiceByName(String name);
-    public boolean deleteService(Service id) throws SQLException;
+    public boolean deleteService(int id) throws SQLException;
     public boolean updateService(Service service) throws SQLException;
     public ServiceType selectServiceTypeByID(int id);
     public RentType selectServiceRentTypeByID(int id);

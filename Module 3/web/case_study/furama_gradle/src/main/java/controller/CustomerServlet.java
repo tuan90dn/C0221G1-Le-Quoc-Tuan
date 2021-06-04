@@ -106,16 +106,16 @@ public class CustomerServlet extends HttpServlet {
 
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        CustomerType customer_type_id = customerServices.selectCustomerTypeByID(Integer.parseInt(request.getParameter("idType")));
+        CustomerType customerTypeId = customerServices.selectCustomerTypeByID(Integer.parseInt(request.getParameter("idType")));
         String name = request.getParameter("name");
         String birthday = request.getParameter("birthday");
         int gender = Integer.parseInt(request.getParameter("idGender"));
-        String id_card = request.getParameter("identity");
+        String idCard = request.getParameter("identity");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
 
-        Customer book = new Customer(id,customer_type_id, name,birthday,gender,id_card,phone, email, address);
+        Customer book = new Customer(id,customerTypeId, name,birthday,gender,idCard,phone, email, address);
         customerServices.updateCustomer(book);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/edit_customer.jsp");
         dispatcher.forward(request, response);
@@ -126,10 +126,6 @@ public class CustomerServlet extends HttpServlet {
         customerServices.deleteCustomer(id);
         response.sendRedirect("/customers");
 
-//        List<Customer> listUser = customerServices.selectAllCustomers();
-//        request.setAttribute("listUser", listUser);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/list_customer.jsp");
-//        dispatcher.forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -54,15 +54,15 @@ public class CustomerRepository {
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                CustomerType customer_type_id=customerTypeRepository.selectCustomerTypeByID(rs.getInt("customer_type_id"));
+                CustomerType customerTypeId=customerTypeRepository.selectCustomerTypeByID(rs.getInt("customer_type_id"));
                 String name = rs.getString("customer_name");
                 String birthday = rs.getString("customer_birthday");
                 int gender = rs.getInt("customer_gender");
-                String id_card = rs.getString("customer_id_card");
+                String idCard = rs.getString("customer_id_card");
                 String phone = rs.getString("customer_phone");
                 String email = rs.getString("customer_email");
                 String address = rs.getString("customer_address");
-                customer=new Customer(id,customer_type_id,name,birthday,gender,id_card,phone, email, address);
+                customer=new Customer(id,customerTypeId,name,birthday,gender,idCard,phone, email, address);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -143,15 +143,15 @@ public class CustomerRepository {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int customer_id=rs.getInt("customer_id");
-                CustomerType customer_type_id=customerTypeRepository.selectCustomerTypeByID(rs.getInt("customer_type_id"));
+                CustomerType customerTypeId=customerTypeRepository.selectCustomerTypeByID(rs.getInt("customer_type_id"));
                 String nameCustomer = rs.getString("customer_name");
                 String birthday = rs.getString("customer_birthday");
                 int gender = rs.getInt("customer_gender");
-                String id_card = rs.getString("customer_id_card");
+                String idCard = rs.getString("customer_id_card");
                 String phone = rs.getString("customer_phone");
                 String email = rs.getString("customer_email");
                 String address = rs.getString("customer_address");
-                listCustomer.add(new Customer(customer_id,customer_type_id,nameCustomer,birthday,gender,id_card,phone, email, address));
+                listCustomer.add(new Customer(customer_id,customerTypeId,nameCustomer,birthday,gender,idCard,phone, email, address));
             }
         } catch (SQLException e) {
             printSQLException(e);

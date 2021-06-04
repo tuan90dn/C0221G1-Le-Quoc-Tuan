@@ -25,7 +25,7 @@
                 <h2>Edit Customer</h2>
             </caption>
             <c:if test="${customer != null}">
-                <input type="hidden" name="id" value="<c:out value='${customer.customer_id}' />"/>
+                <input type="hidden" name="id" value="<c:out value='${customer.customer_id}'/>"/>
             </c:if>
             <tr>
                 <th>Type of customer</th>

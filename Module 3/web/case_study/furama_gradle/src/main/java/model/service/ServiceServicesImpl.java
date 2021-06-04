@@ -32,7 +32,7 @@ public class ServiceServicesImpl implements IServiceServices {
     }
 
     @Override
-    public boolean deleteService(Service id) throws SQLException {
+    public boolean deleteService(int id) throws SQLException {
         return false;
     }
 

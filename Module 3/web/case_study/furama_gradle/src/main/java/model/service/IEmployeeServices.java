@@ -16,7 +16,7 @@ public interface IEmployeeServices {
     public void insertEmployee(Employee employee) throws SQLException;
     public Employee selectEmployeeByID(int id);
     public List<Employee> selectEmployeeByName(String name);
-    public boolean deleteEmployee(Employee id) throws SQLException;
+    public boolean deleteEmployee(int id) throws SQLException;
     public boolean updateEmployee(Employee employee) throws SQLException;
     public EmployeePosition selectEmployeePositionByID(int id);
     public EmployeeEducationDegree selectEmployeeEducationDegreeByID(int id);

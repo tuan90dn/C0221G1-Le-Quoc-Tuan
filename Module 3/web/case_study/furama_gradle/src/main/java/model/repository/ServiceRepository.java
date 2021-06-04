@@ -29,10 +29,10 @@ public class ServiceRepository {
             while (rs.next()) {
                 int id = rs.getInt("service_id");
                 String name = rs.getString("service_name");
-                RentType rent_type_id = serviceRentTypeRepo.selectServiceRentTypeByID(rs.getInt("rent_type_id"));
-                ServiceType service_type_id = serviceTypeRepo.selectServiceTypeByID(rs.getInt("service_type_id"));
-                String number_of_floor = rs.getString("number_of_floor");
-                services.add(new Service(id, name, rent_type_id, service_type_id, number_of_floor));
+                RentType rentTypeId = serviceRentTypeRepo.selectServiceRentTypeByID(rs.getInt("rent_type_id"));
+                ServiceType serviceTypeId = serviceTypeRepo.selectServiceTypeByID(rs.getInt("service_type_id"));
+                String numberOfFloor = rs.getString("number_of_floor");
+                services.add(new Service(id, name, rentTypeId, serviceTypeId, numberOfFloor));
             }
         } catch (SQLException e) {
             printSQLException(e);

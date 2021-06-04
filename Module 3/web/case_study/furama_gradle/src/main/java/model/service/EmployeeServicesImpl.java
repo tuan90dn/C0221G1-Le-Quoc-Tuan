@@ -35,17 +35,17 @@ public class EmployeeServicesImpl implements IEmployeeServices {
 
     @Override
     public List<Employee> selectEmployeeByName(String name) {
-        return null;
+        return employeeRepository.selectEmployeeByName(name);
     }
 
     @Override
-    public boolean deleteEmployee(Employee id) throws SQLException {
-        return false;
+    public boolean deleteEmployee(int id) throws SQLException {
+        return employeeRepository.deleteEmployee(id);
     }
 
     @Override
     public boolean updateEmployee(Employee employee) throws SQLException {
-        return false;
+        return employeeRepository.updateEmployee(employee);
     }
 
     @Override
