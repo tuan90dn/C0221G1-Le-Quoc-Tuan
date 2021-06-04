@@ -1,31 +1,33 @@
 package model.repository;
 
 import model.bean.customer_class.CustomerType;
+import model.bean.service_class.RentType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CustomerTypeRepository {
+public class ServiceRentTypeRepo {
     BaseRepository baseRepository = new BaseRepository();
-    private static final String SELECT_CUSTOMERTYPE_BY_ID = "select * from customer_type where customer_type_id=?;";
-    public CustomerType selectCustomerTypeByID(int id) {
-        CustomerType customerType = null;
+    private static final String SELECT_ServiceRentType_BY_ID = "select * from rent_type where rent_type_id=?;";
+    public RentType selectServiceRentTypeByID(int id) {
+        RentType serviceRentType = null;
         Connection connection = baseRepository.connectDataBase();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMERTYPE_BY_ID);
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ServiceRentType_BY_ID);
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                String name = rs.getString("customer_type_name");
-                customerType=new CustomerType(id,name);
+                String name = rs.getString("rent_type_name");
+                String cost = rs.getString("rent_type_cost");
+                serviceRentType=new RentType(id,name,cost);
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
-        return customerType;
+        return serviceRentType;
     }
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

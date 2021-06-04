@@ -1,7 +1,7 @@
 package model.service;
 
-import model.bean.Customer;
-import model.bean.CustomerType;
+import model.bean.customer_class.Customer;
+import model.bean.customer_class.CustomerType;
 import model.repository.CustomerRepository;
 import model.repository.CustomerTypeRepository;
 

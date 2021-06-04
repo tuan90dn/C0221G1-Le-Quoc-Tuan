@@ -22,28 +22,7 @@
         <td>${customer.customer_id}</td>
     </tr>
     <tr>
-<%--        <c:choose>--%>
-<%--            <c:when test = "${customer.customer_type_id.customer_type_id == 1}">--%>
-<%--                <td>Type of customer:  </td>--%>
-<%--                <td>Diamond  </td>--%>
-<%--            </c:when>--%>
-<%--            <c:when test = "${customer.customer_type_id.customer_type_id == 2}">--%>
-<%--                <td>Type of customer:  </td>--%>
-<%--                <td>Platinium  </td>--%>
-<%--            </c:when>--%>
-<%--            <c:when test = "${customer.customer_type_id.customer_type_id == 3}">--%>
-<%--                <td>Type of customer:  </td>--%>
-<%--                <td>Gold  </td>--%>
-<%--            </c:when>--%>
-<%--            <c:when test = "${customer.customer_type_id.customer_type_id == 4}">--%>
-<%--                <td>Type of customer:  </td>--%>
-<%--                <td>Silver  </td>--%>
-<%--            </c:when>--%>
-<%--            <c:otherwise>--%>
-<%--                <td>Type of customer:  </td>--%>
-<%--                <td>Member  </td>--%>
-<%--            </c:otherwise>--%>
-<%--        </c:choose>--%>
+
     <td>Name of customer type: </td>
     <td>${customer.customer_type_id.customer_type_name}</td>
     </tr>

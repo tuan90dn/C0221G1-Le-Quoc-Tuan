@@ -1,4 +1,4 @@
-package model.bean;
+package model.bean.customer_class;
 
 public class Customer {
     protected int customer_id;

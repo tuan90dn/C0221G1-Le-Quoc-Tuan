@@ -39,10 +39,10 @@
                 <a class="nav-link" href="/customers">Customer</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Service</a>
+                <a class="nav-link" href="/services" tabindex="-1">Service</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contract</a>
+                <a class="nav-link" href="#" tabindex="-1">Contract</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

@@ -1,7 +1,7 @@
 package controller;
 
-import model.bean.Customer;
-import model.bean.CustomerType;
+import model.bean.customer_class.Customer;
+import model.bean.customer_class.CustomerType;
 import model.service.CustomerServicesImpl;
 import model.service.ICustomerServices;
 
