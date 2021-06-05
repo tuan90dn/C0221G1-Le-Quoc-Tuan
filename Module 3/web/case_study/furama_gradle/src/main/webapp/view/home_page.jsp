@@ -51,16 +51,18 @@
         </form>
     </div>
 </nav>
-<div class="container-fluid bg-light border" style="height: 430px">
+<div class="container-fluid border" style="height: 430px">
     <div class="row" >
-        <div class="col-lg-2 border-right" style="height: 430px">
-            <ul>
-                <li>Item One</li>
-                <li>Item Two</li>
-                <li>Item Three</li>
-            </ul>
+        <div class="col-lg-2 border-right m-0" style="background-image: url('https://q-cf.bstatic.com/images/hotel/max1024x768/268/268754755.jpg');height: 430px;width:100%;" >
+<%--            <ul>--%>
+<%--                <li>Item One</li>--%>
+<%--                <li>Item Two</li>--%>
+<%--                <li>Item Three</li>--%>
+<%--            </ul>--%>
         </div>
-        <div class="col-lg-10 "></div>
+        <div class="col-lg-10 p-0">
+            <img width="1066px" height="100%" src="https://khachsandanang.info/wp-content/uploads/2015/03/Furama-Resort-Danang-3-750x450.jpg">
+        </div>
     </div>
 </div>
 <footer class="bg-dark text-center text-white fixed-bottom" >
