@@ -150,8 +150,7 @@ public class CustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         Customer newCustomer = new Customer(id,name,birthday,gender,identity,phone, email, address);
         customerServices.insertCustomer(newCustomer);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/create_customer.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("/customers");
     }
 //
 }
