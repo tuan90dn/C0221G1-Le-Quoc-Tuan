@@ -1,4 +1,4 @@
-package model.bean;
+package model.bean.contract;
 
 import model.bean.customer_class.Customer;
 import model.bean.employee_class.Employee;

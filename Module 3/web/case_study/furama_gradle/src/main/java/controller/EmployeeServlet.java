@@ -70,9 +70,9 @@ public class EmployeeServlet extends HttpServlet {
                 case "view":
                     showInformationOfEmployee(request, response);
                     break;
-                case "search":
-                    showSearchForm(request, response);
-                    break;
+//                case "search":
+//                    showSearchForm(request, response);
+//                    break;
                 default:
                     listEmployeeOrderByName(request,response);
                     break;
@@ -100,7 +100,6 @@ public class EmployeeServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/employee/edit_employee.jsp");
         request.setAttribute("employee", existingUser);
         dispatcher.forward(request, response);
-
     }
 
     private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {

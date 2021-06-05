@@ -23,7 +23,7 @@ public class ServiceServicesImpl implements IServiceServices {
 
     @Override
     public Service selectServiceByID(int id) {
-        return null;
+        return serviceRepository.selectServiceByID(id);
     }
 
     @Override

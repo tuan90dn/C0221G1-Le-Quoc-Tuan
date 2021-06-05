@@ -27,8 +27,8 @@ public class CustomerRepository {
     public List<Customer> selectAllCustomers() {
         Connection connection = baseRepository.connectDataBase();
         List<Customer> customers = new ArrayList<>();
-        try (
-                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMER);) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMER);
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {

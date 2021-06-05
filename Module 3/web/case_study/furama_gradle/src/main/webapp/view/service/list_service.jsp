@@ -44,15 +44,21 @@
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6">
+                <div class="row align-items-center">
+                    <div class="col-sm-4">
                         <h2>Manage <b>Service</b></h2>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-lg-2">
+                        <a href="/view/home_page.jsp"><span>Home Page</span></a><br>
+                    </div>
+                    <div class="col-sm-2">
                         <a href="/services?action=create"><span>Add New Service</span></a><br>
-                        <a href="/services?action=search"><span>Search Service</span></a>
-
-
+                    </div>
+                    <div class="col-lg-4">
+                        <form method="post" action="/services?action=search" class="form-inline my-2 my-lg-0">
+                            <input name="name" id="name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -78,7 +84,7 @@
                         <td>
                             <span class="custom-checkbox">
                             	<input type="checkbox" id="selectAlls">
-                            	<label for="selectAll"></label>
+                            	<label for="selectAlls"></label>
                             </span>
 
                         </td>

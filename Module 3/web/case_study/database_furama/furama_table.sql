@@ -120,4 +120,33 @@ values ('Lê Văn A','1992-11-30',34346456,10000000,23534534,'abc@gmail','Đà N
 truncate table employee;
 
 
+create table attach_service(
+attach_service_id int auto_increment primary key,
+attach_service_name varchar(45),
+attach_service_cost double,
+attach_service_unit int,
+attach_service_status varchar(45)
+);
+create table contract(
+contract_id int auto_increment primary key,
+contract_start_date date,
+contract_end_date date,
+contract_deposit double,
+contract_total_money double,
+employee_id int,foreign key (employee_id) references employee(employee_id) on delete cascade,
+customer_id int,foreign key (customer_id) references customer(customer_id) on delete cascade,
+service_id int,foreign key (service_id) references service(service_id) on delete cascade
+);
 
+insert into contract (contract_start_date,contract_end_date,contract_deposit,contract_total_money,employee_id,customer_id,service_id)
+values ('2020-1-1','2020-1-10',1000000,10000000,2,1,3),
+('2020-11-19','2020-12-10',2000000,150000000,1,3,4),
+('2020-1-1','2020-1-10',1000000,10000000,5,5,2),
+('2020-1-1','2020-1-10',1000000,10000000,3,4,5),
+('2020-1-1','2020-1-10',1000000,10000000,2,6,6); 
+create table contract_detail(
+contract_detail_id int auto_increment primary key,
+contract_id int,foreign key(contract_id) references contract(contract_id) on delete cascade,
+attach_service_id int,foreign key (attach_service_id) references attach_service(attach_service_id) on delete cascade,
+quantity int
+);

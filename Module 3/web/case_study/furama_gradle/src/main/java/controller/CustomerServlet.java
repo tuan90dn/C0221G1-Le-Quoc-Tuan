@@ -117,8 +117,7 @@ public class CustomerServlet extends HttpServlet {
 
         Customer book = new Customer(id,customerTypeId, name,birthday,gender,idCard,phone, email, address);
         customerServices.updateCustomer(book);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/edit_customer.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("/customers");
     }
 
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

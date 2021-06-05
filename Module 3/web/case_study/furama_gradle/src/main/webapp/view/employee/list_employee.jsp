@@ -20,15 +20,22 @@
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6">
+                <div class="row align-items-center">
+                    <div class="col-lg-4">
                         <h2>Manage <b>Employee</b></h2>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-lg-2">
+                        <a href="/view/home_page.jsp"><span>Home Page</span></a><br>
+                    </div>
+                    <div class="col-lg-2">
                         <a href="/employees?action=create"><span>Add New Employee</span></a><br>
-                        <a href="/employees?action=search"><span>Search Employee</span></a>
 
-
+                    </div>
+                    <div class="col-lg-4">
+                        <form method="post" action="/employees?action=search" class="form-inline my-2 my-lg-0">
+                            <input name="name" id="name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -56,7 +63,7 @@
                         <td>
                             <span class="custom-checkbox">
                             	<input type="checkbox" id="selectAlls">
-                            	<label for="selectAll"></label>
+                            	<label for="selectAlls"></label>
                             </span>
 
                         </td>
@@ -77,22 +84,7 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <%--            <div class="row clearfix">--%>
-            <%--                <div class="hint-text col-lg-4">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-            <%--                <div class="col-lg-4"></div>--%>
-            <%--                <div class="col-lg-4">--%>
-            <%--                    <ul class="pagination">--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">Previous</a></li>--%>
-            <%--                        <li class="page-item active"><a href="#" class="page-link">1</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">3</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-            <%--                    </ul>--%>
-            <%--                </div>--%>
 
-            <%--            </div>--%>
         </div>
     </div>
 </div>

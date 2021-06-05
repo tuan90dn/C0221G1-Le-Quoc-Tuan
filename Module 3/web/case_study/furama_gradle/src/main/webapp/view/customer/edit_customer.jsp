@@ -31,6 +31,7 @@
                 <th>Type of customer</th>
                 <td>
                     <select name="idType" id="idType">
+                        <option value="${customer.customer_type_id.customer_type_id}" selected>${customer.customer_type_id.customer_type_name}</option>
                         <option value="1">Diamond</option>
                         <option value="2">Platinium</option>
                         <option value="3">Gold</option>
@@ -56,6 +57,7 @@
                 <th>Gender</th>
                 <td>
                     <select name="idGender" id="idGender">
+                        <option value="${customer.customer_gender}" ${customer.customer_gender==0?"selected":""}>Male</option>
                         <option value="0">Male</option>
                         <option value="1">Female</option>
                     </select>

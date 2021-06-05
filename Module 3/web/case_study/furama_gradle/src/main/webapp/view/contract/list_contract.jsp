@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: DELL
-  Date: 5/29/2021
-  Time: 9:02 PM
+  Date: 6/5/2021
+  Time: 10:16 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,30 +13,6 @@
     <link rel="stylesheet" href="../../bootstrap-4.6.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../datatables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script>
-        $(document).ready(function () {
-
-            $('[data-toggle="tooltip"]').tooltip();
-
-            var checkbox = $('table tbody input[type="checkbox"]');
-            $("#selectAll").click(function () {
-                if (this.checked) {
-                    checkbox.each(function () {
-                        this.checked = true;
-                    });
-                } else {
-                    checkbox.each(function () {
-                        this.checked = false;
-                    });
-                }
-            });
-            checkbox.click(function () {
-                if (!this.checked) {
-                    $("#selectAll").prop("checked", false);
-                }
-            });
-        });
-    </script>
 </head>
 <body>
 <div class="container-xl">
@@ -45,16 +21,17 @@
             <div class="table-title">
                 <div class="row align-items-center">
                     <div class="col-lg-4">
-                        <h2>Manage <b>Customer</b></h2>
+                        <h2>Manage <b>Contract</b></h2>
                     </div>
                     <div class="col-lg-2">
                         <a href="/view/home_page.jsp"><span>Home Page</span></a><br>
                     </div>
                     <div class="col-lg-2">
-                        <a href="/customers?action=create"><span>Add New Customer</span></a><br>
+                        <a href="/contracts?action=create"><span>Add New Contract</span></a><br>
+
                     </div>
                     <div class="col-lg-4">
-                        <form method="post" action="/customers?action=search" class="form-inline my-2 my-lg-0">
+                        <form method="post" action="/contracts?action=search" class="form-inline my-2 my-lg-0">
                             <input name="name" id="name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
@@ -70,15 +47,16 @@
                     	<label for="selectAll"></label>
                     </span>
                     </th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Email</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Name Of Employee</th>
+                    <th>Name Of Customer</th>
+                    <th>Name Of Service</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="customer" items="${listCustomer}">
+                <c:forEach var="contract" items="${listContract}">
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -87,17 +65,16 @@
                             </span>
 
                         </td>
-                        <td><a href="/customers?action=view&id=${customer.customer_id}"><c:out value="${customer.customer_name}"/></a></td>
-                        <td><c:out value="${customer.customer_address}"/></td>
-                        <td><c:out value="${customer.customer_phone}"/></td>
-                        <td><c:out value="${customer.customer_email}"/></td>
+                        <td><a href="/contracts?action=view&id=${contract.contract_id}"><c:out value="${contract.contract_start_date}"/></a></td>
+                        <td><c:out value="${contract.contract_end_date}"/></td>
+                        <td><c:out value="${contract.employee_id.employee_name}"/></td>
+                        <td><c:out value="${contract.customer_id.customer_name}"/></td>
+                        <td><c:out value="${contract.service_id.service_name}"/></td>
                         <td>
-
-                            <a href="/customers?action=edit&id=${customer.customer_id}"><i
+                            <a href="/contracts?action=edit&id=${contract.contract_id}"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${customer.customer_id})" class="delete" data-toggle="modal"><i
-                                class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
+                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${contract.contract_id})" class="delete" data-toggle="modal"><i
+                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
 
                     </tr>
@@ -112,9 +89,9 @@
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" action="/customers?action=delete">
+            <form method="post" action="/contracts?action=delete">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
+                    <h4 class="modal-title">Delete Contract</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -123,8 +100,8 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" id="idDelete" name="delete"  class="btn btn-danger" value="Delete">
-<%--                    <input id="idDelete" type="hidden" name="delete">--%>
+                    <input type="submit"class="btn btn-danger" value="Delete">
+                    <input id="idDelete" type="hidden" name="delete">
                 </div>
             </form>
         </div>

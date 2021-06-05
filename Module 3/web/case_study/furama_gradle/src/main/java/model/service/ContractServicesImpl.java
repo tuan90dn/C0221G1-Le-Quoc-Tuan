@@ -1,15 +1,17 @@
 package model.service;
 
-import model.bean.Contract;
+import model.bean.contract.Contract;
+import model.repository.ContractRepository;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class ContractServicesImpl implements IContractServices{
+    ContractRepository contractRepository=new ContractRepository();
 
     @Override
     public List<Contract> selectAllContracts() {
-        return null;
+        return contractRepository.selectAllContracts();
     }
 
     @Override
@@ -22,10 +24,6 @@ public class ContractServicesImpl implements IContractServices{
         return null;
     }
 
-    @Override
-    public List<Contract> selectContractByName(String name) {
-        return null;
-    }
 
     @Override
     public boolean deleteContract(int id) throws SQLException {
