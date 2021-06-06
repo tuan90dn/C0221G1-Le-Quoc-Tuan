@@ -45,4 +45,9 @@ public class CustomerServicesImpl implements ICustomerServices {
     public CustomerType selectCustomerTypeByID(int id) {
         return customerTypeRepository.selectCustomerTypeByID(id);
     }
+
+    @Override
+    public List<Customer> selectAllCustomersUsingService() {
+        return customerRepository.selectAllCustomersUsingService();
+    }
 }

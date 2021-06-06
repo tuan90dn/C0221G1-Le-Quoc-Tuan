@@ -68,6 +68,9 @@ public class CustomerServlet extends HttpServlet {
                 case "search":
                     showSearchForm(request, response);
                     break;
+                case "using":
+                    listCustomerUsingService(request,response);
+                    break;
                 default:
                     listCustomerOrderByName(request,response);
                     break;
@@ -76,6 +79,9 @@ public class CustomerServlet extends HttpServlet {
             throw new ServletException(ex);
         }
     }
+
+
+
     private void showSearchForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("view/customer/search_customer.jsp").forward(request,response);
     }
@@ -138,6 +144,13 @@ public class CustomerServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/list_customer.jsp");
         dispatcher.forward(request, response);
     }
+    private void listCustomerUsingService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException {
+        List<Customer> listCustomerUsingService = customerServices.selectAllCustomersUsingService();
+        request.setAttribute("listCustomerUsingService", listCustomerUsingService);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/test.jsp");
+        dispatcher.forward(request, response);
+    }
+
     private void insertCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException {
         CustomerType id= customerServices.selectCustomerTypeByID(Integer.parseInt(request.getParameter("idType")));
         String name = request.getParameter("name");

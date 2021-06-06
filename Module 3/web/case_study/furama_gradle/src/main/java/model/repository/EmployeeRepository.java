@@ -34,14 +34,19 @@ public class EmployeeRepository {
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                int id=rs.getInt("employee_id");
-                String name = rs.getString("employee_name");
+                int employeeId=rs.getInt("employee_id");
+                String nameEmployee = rs.getString("employee_name");
                 String birthday = rs.getString("employee_birthday");
+                String idCard = rs.getString("employee_id_card");
+                String salary = String.valueOf(rs.getBigDecimal("employee_salary"));
+                String phone = rs.getString("employee_phone");
+                String email = rs.getString("employee_email");
                 String address = rs.getString("employee_address");
-                EmployeePosition position_id = employeePositionRepo.selectEmployeePositionByID(rs.getInt("position_id"));
-                EmployeeEducationDegree education_degree_id = employeeEducationDegreeRepo.selectEmployeeEducationDegreeByID(rs.getInt("education_degree_id"));
-                EmployeeDivision division_id = employeeDivisionRepo.selectEmployeeDivisionByID(rs.getInt("division_id"));
-                employees.add(new Employee(id,name, birthday, address, position_id,education_degree_id,division_id));
+                EmployeePosition positionId = employeePositionRepo.selectEmployeePositionByID(rs.getInt("position_id"));
+                EmployeeEducationDegree educationDegreeId = employeeEducationDegreeRepo.selectEmployeeEducationDegreeByID(rs.getInt("education_degree_id"));
+                EmployeeDivision divisionId = employeeDivisionRepo.selectEmployeeDivisionByID(rs.getInt("division_id"));
+                String userName = rs.getString("username");
+                employees.add(new Employee(employeeId,nameEmployee,birthday,idCard,salary,phone, email, address,positionId,educationDegreeId,divisionId,userName));
             }
         } catch (SQLException e) {
             printSQLException(e);

@@ -38,7 +38,7 @@ public class ServiceServicesImpl implements IServiceServices {
 
     @Override
     public boolean updateService(Service service) throws SQLException {
-        return false;
+        return serviceRepository.updateService(service);
     }
 
     @Override

@@ -1,10 +1,14 @@
 package controller;
 
+import model.bean.contract.AttachService;
 import model.bean.contract.Contract;
+import model.bean.contract.ContractDetail;
 import model.bean.customer_class.Customer;
 import model.bean.employee_class.Employee;
 import model.bean.service_class.Service;
+import model.service.ContractDetailServicesImpl;
 import model.service.ContractServicesImpl;
+import model.service.IContractDetailServices;
 import model.service.IContractServices;
 
 import javax.servlet.RequestDispatcher;
@@ -17,14 +21,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "ContractServlet", value = "/contracts")
-public class ContractServlet extends HttpServlet {
-    IContractServices contractServices;
-
-    public void init() {
-        contractServices = new ContractServicesImpl();
+@WebServlet(name = "ContractDetailServlet",value = "/contractdetails")
+public class ContractDetailServlet extends HttpServlet {
+    IContractDetailServices contractDetailServices;
+    public void init(){
+        contractDetailServices=new ContractDetailServicesImpl();
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -49,7 +51,8 @@ public class ContractServlet extends HttpServlet {
 //                    showSearchForm(request, response);
 //                    break;
                 default:
-                    listContract(request, response);
+                    listContractDetail
+                            (request,response);
                     break;
             }
         } catch (SQLException ex) {
@@ -57,28 +60,21 @@ public class ContractServlet extends HttpServlet {
         }
     }
 
-
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Customer> customerList = contractServices.selectAllCustomers();
-        List<Employee> employeeList = contractServices.selectAllEmployees();
-        List<Service> serviceList = contractServices.selectAllServices();
-        request.setAttribute("customerList", customerList);
-        request.setAttribute("employeeList", employeeList);
-        request.setAttribute("serviceList", serviceList);
-        request.getRequestDispatcher("/view/contract/create_contract.jsp").forward(request, response);
+        List<Contract> contractList=contractDetailServices.selectAllContracts();
+        List<AttachService> attachServiceList=contractDetailServices.selectAllAttachServices();
+        request.setAttribute("contractList",contractList);
+        request.setAttribute("attachServiceList",attachServiceList);
 
+        request.getRequestDispatcher("/view/contract/create_contract_detail.jsp").forward(request,response);
     }
 
-    //    private void listContract(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException {
-//        List<Contract> listContract = contractServices.selectAllContracts();
-//        request.setAttribute("listContract", listContract);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("view/contract/list_contract_using_service.jsp");
-//        dispatcher.forward(request, response);
-//    }
-    private void listContract(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException {
-        List<Contract> listContract = contractServices.selectAllCustomerUsingService();
-        request.setAttribute("listContract", listContract);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/contract/list_contract_using_service.jsp");
+    private void listContractDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        List<ContractDetail> contractDetails = contractDetailServices.selectAllContractDetails();
+        request.setAttribute("contractDetails", contractDetails);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/contract/list_contract_detail.jsp");
         dispatcher.forward(request, response);
     }
+
+
 }

@@ -13,8 +13,26 @@ public class Contract {
     public Employee employee_id;
     public Customer customer_id;
     public Service service_id;
+    public AttachService attach_service_id;
 
     public Contract() {
+    }
+
+    public AttachService getAttach_service_id() {
+        return attach_service_id;
+    }
+
+    public Contract(int contract_id,  Employee employee_id,
+                    Customer customer_id, Service service_id, AttachService attach_service_id) {
+        this.contract_id = contract_id;
+        this.employee_id = employee_id;
+        this.customer_id = customer_id;
+        this.service_id = service_id;
+        this.attach_service_id = attach_service_id;
+    }
+
+    public void setAttach_service_id(AttachService attach_service_id) {
+        this.attach_service_id = attach_service_id;
     }
 
     public Contract(int contract_id, String contract_start_date, String contract_end_date, String contract_deposit,

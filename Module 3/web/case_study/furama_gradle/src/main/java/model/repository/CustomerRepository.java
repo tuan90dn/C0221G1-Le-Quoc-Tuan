@@ -21,6 +21,12 @@ public class CustomerRepository {
             "customer_address=?where customer_id=?;";
     private static final String SELECT_CUSTOMER_BY_ID = "select * from customer where customer_id=?;";
     private static final String SELECT_CUSTOMER_BY_NAME = "select * from customer where customer_name like ?;";
+    private static final String SELECT_ALL_CUSTOMER_USING_SERVICE = "select * from customer where customer_id in ( select customer_id from (select contract.service_id,customer.customer_id,contract.contract_id,contract_detail.attach_service_id\n" +
+            "from contract\n" +
+            "join customer\n" +
+            "on contract.customer_id=customer.customer_id\n" +
+            "join contract_detail\n" +
+            "on contract.contract_id=contract_detail.contract_id)x);";
     BaseRepository baseRepository = new BaseRepository();
     CustomerTypeRepository customerTypeRepository=new CustomerTypeRepository();
 
@@ -33,17 +39,48 @@ public class CustomerRepository {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int id=rs.getInt("customer_id");
+                CustomerType customerType=customerTypeRepository.selectCustomerTypeByID(rs.getInt("customer_type_id"));
                 String name = rs.getString("customer_name");
+                String birthday = rs.getString("customer_birthday");
+                int gender = rs.getInt("customer_gender");
+                String idCard = rs.getString("customer_id_card");
+                String phone = rs.getString("customer_phone");
                 String email = rs.getString("customer_email");
                 String address = rs.getString("customer_address");
-                String phone = rs.getString("customer_phone");
-                customers.add(new Customer(id,name, phone, email, address));
+                customers.add(new Customer(id,customerType,name,birthday,gender,idCard,phone, email, address));
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
         return customers;
     }
+
+    public List<Customer> selectAllCustomersUsingService() {
+        Connection connection = baseRepository.connectDataBase();
+        List<Customer> customers = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMER_USING_SERVICE);
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id=rs.getInt("customer_id");
+                CustomerType customerType=customerTypeRepository.selectCustomerTypeByID(rs.getInt("customer_type_id"));
+                String name = rs.getString("customer_name");
+                String birthday = rs.getString("customer_birthday");
+                int gender = rs.getInt("customer_gender");
+                String idCard = rs.getString("customer_id_card");
+                String phone = rs.getString("customer_phone");
+                String email = rs.getString("customer_email");
+                String address = rs.getString("customer_address");
+                customers.add(new Customer(id,customerType,name,birthday,gender,idCard,phone, email, address));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return customers;
+    }
+
+
     public Customer selectCustomerByID(int id) {
         Customer customer = null;
 

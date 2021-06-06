@@ -121,12 +121,20 @@ truncate table employee;
 
 
 create table attach_service(
-attach_service_id int auto_increment primary key,
+attach_service_id int  primary key,
 attach_service_name varchar(45),
 attach_service_cost double,
 attach_service_unit int,
 attach_service_status varchar(45)
 );
+
+insert into attach_service
+values (1,"massage",500000,1,"empty"),
+(2,"karaoke",300000,1,"empty"),
+(3,"food",200000,1,"empty"),
+(4,"drinks",100000,1,"empty"),
+(5,"car",400000,1,"empty");
+
 create table contract(
 contract_id int auto_increment primary key,
 contract_start_date date,
@@ -150,3 +158,11 @@ contract_id int,foreign key(contract_id) references contract(contract_id) on del
 attach_service_id int,foreign key (attach_service_id) references attach_service(attach_service_id) on delete cascade,
 quantity int
 );
+
+insert into contract_detail (contract_id,attach_service_id,quantity)
+values (1,1,1),
+(3,2,1),
+(5,4,1),
+(2,5,1),
+(4,3,1),
+(1,2,1);

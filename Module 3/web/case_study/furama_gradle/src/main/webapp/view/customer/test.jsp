@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: DELL
-  Date: 5/29/2021
-  Time: 9:02 PM
+  Date: 6/6/2021
+  Time: 3:56 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -39,19 +39,16 @@
     </script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-xl">
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row align-items-center">
-                    <div class="col-lg-3">
-                        <h3>Manage <b>Customer</b></h3>
-                    </div>
-                    <div class="col-lg-1">
-                        <a href="/view/home_page.jsp"><span>Home Page</span></a><br>
+                    <div class="col-lg-4">
+                        <h2>Manage <b>Customer</b></h2>
                     </div>
                     <div class="col-lg-2">
-                        <a href="/customers?action=using"><span>List Customers Using Service</span></a><br>
+                        <a href="/view/home_page.jsp"><span>Home Page</span></a><br>
                     </div>
                     <div class="col-lg-2">
                         <a href="/customers?action=create"><span>Add New Customer</span></a><br>
@@ -81,7 +78,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="customer" items="${listCustomer}">
+                <c:forEach var="customer" items="${listCustomerUsingService}">
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -99,7 +96,7 @@
                             <a href="/customers?action=edit&id=${customer.customer_id}"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" onclick="deleteCustomer(${customer.customer_id})" class="delete" data-toggle="modal"><i
-                                class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 
                         </td>
 
@@ -127,7 +124,7 @@
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" id="idDelete" name="delete"  class="btn btn-danger" value="Delete">
-<%--                    <input id="idDelete" type="hidden" name="delete">--%>
+                    <%--                    <input id="idDelete" type="hidden" name="delete">--%>
                 </div>
             </form>
         </div>

@@ -1,5 +1,6 @@
 package controller;
 
+import model.bean.employee_class.Employee;
 import model.bean.service_class.Service;
 import model.service.CustomerServicesImpl;
 import model.service.ICustomerServices;
@@ -37,7 +38,7 @@ public class ServiceServlet extends HttpServlet {
                     showNewForm(request, response);
                     break;
                 case "edit":
-//                    showEditForm(request, response);
+                    showEditForm(request, response);
                     break;
                 case "view":
 //                    showInformationOfCustomer(request, response);
@@ -52,6 +53,14 @@ public class ServiceServlet extends HttpServlet {
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
+    }
+
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Service existingUser = serviceServices.selectServiceByID(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/service/edit_service.jsp");
+        request.setAttribute("service", existingUser);
+        dispatcher.forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
