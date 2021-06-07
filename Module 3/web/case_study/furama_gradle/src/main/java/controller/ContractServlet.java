@@ -76,9 +76,9 @@ public class ContractServlet extends HttpServlet {
 //        dispatcher.forward(request, response);
 //    }
     private void listContract(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException {
-        List<Contract> listContract = contractServices.selectAllCustomerUsingService();
+        List<Contract> listContract = contractServices.selectAllContracts();
         request.setAttribute("listContract", listContract);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/contract/list_contract_using_service.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/contract/list_contract.jsp");
         dispatcher.forward(request, response);
     }
 }

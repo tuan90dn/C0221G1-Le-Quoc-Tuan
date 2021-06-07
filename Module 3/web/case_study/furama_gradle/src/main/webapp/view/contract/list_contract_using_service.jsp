@@ -56,12 +56,12 @@
                     <th>Phone Of Service</th>
                     <th>Address Of Service</th>
                     <th>Name Of Attach Service</th>
-<%--                    <th>Quantity Of Attach Service</th>--%>
+                    <th>Quantity Of Attach Service</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="contract" items="${listContract}">
+                <c:forEach var="contractDetail" items="${contractDetails}">
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -70,15 +70,15 @@
                             </span>
 
                         </td>
-                        <td><a href="/customers?action=view&id=${contract.customer_id.customer_id}"><c:out value="${contract.customer_id.customer_name}"/></a></td>
-                        <td><c:out value="${contract.contract_id}"/></td>
-                        <td><c:out value="${contract.customer_id.customer_birthday}"/></td>
-                        <td><c:out value="${contract.customer_id.customer_phone}"/></td>
-                        <td><c:out value="${contract.customer_id.customer_address}"/></td>
-                        <td><c:out value="${contract.attach_service_id.attach_service_name}"/></td>
-<%--                        <td><c:out value="${contract.contract_detail_id.quantity}"/></td>--%>
+                        <td><a href="/customers?action=view&id=${contractDetail.contract_id.customer_id.customer_id}"><c:out value="${contractDetail.contract_id.customer_id.customer_name}"/></a></td>
+                        <td><c:out value="${contractDetail.contract_id.contract_id}"/></td>
+                        <td><c:out value="${contractDetail.contract_id.customer_id.customer_birthday}"/></td>
+                        <td><c:out value="${contractDetail.contract_id.customer_id.customer_phone}"/></td>
+                        <td><c:out value="${contractDetail.contract_id.customer_id.customer_address}"/></td>
+                        <td><c:out value="${contractDetail.attach_service_id.attach_service_name}"/></td>
+                        <td><c:out value="${contractDetail.quantity}"/></td>
                         <td>
-                            <a href="/contracts?action=edit&id=${contract.service_id.service_id}"><i
+                            <a href="/contracts?action=edit&id=${contractDetail.contract_id.service_id.service_id}"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" onclick="deleteCustomer(${contract.contract_id})" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

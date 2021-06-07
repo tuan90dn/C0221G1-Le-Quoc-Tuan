@@ -47,12 +47,14 @@ public class ContractDetailServlet extends HttpServlet {
                 case "view":
 //                    showInformationOfEmployee(request, response);
                     break;
+                case "using":
+                    listContractDetailUsingService(request,response);
+                    break;
 //                case "search":
 //                    showSearchForm(request, response);
 //                    break;
                 default:
-                    listContractDetail
-                            (request,response);
+                    listContractDetail(request,response);
                     break;
             }
         } catch (SQLException ex) {
@@ -73,6 +75,12 @@ public class ContractDetailServlet extends HttpServlet {
         List<ContractDetail> contractDetails = contractDetailServices.selectAllContractDetails();
         request.setAttribute("contractDetails", contractDetails);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/contract/list_contract_detail.jsp");
+        dispatcher.forward(request, response);
+    }
+    private void listContractDetailUsingService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        List<ContractDetail> contractDetails = contractDetailServices.selectAllContractDetailsUsingService();
+        request.setAttribute("contractDetails", contractDetails);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/contract/list_contract_using_service.jsp");
         dispatcher.forward(request, response);
     }
 

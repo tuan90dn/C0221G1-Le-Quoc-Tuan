@@ -15,22 +15,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<div class="container-xl">
+<div class="container-fluid">
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row align-items-center">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 align-items-start">
                         <h2>Manage <b>Contract Detail</b></h2>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-1">
                         <a href="/view/home_page.jsp"><span>Home Page</span></a><br>
                     </div>
                     <div class="col-lg-2">
-                        <a href="/contractdetails?action=create"><span>Add New Contract Detail</span></a><br>
-
+                        <a href="/contractdetails?action=using"><span>List Customer Using Service</span></a><br>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-2">
+                        <a href="/contractdetails?action=create"><span>Add New Contract Detail</span></a><br>
+                    </div>
+                    <div class="col-lg-3 align-items-end">
                         <form method="post" action="/contractdetails?action=search" class="form-inline my-2 my-lg-0">
                             <input name="name" id="name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

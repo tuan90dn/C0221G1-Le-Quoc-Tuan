@@ -158,7 +158,7 @@ contract_id int,foreign key(contract_id) references contract(contract_id) on del
 attach_service_id int,foreign key (attach_service_id) references attach_service(attach_service_id) on delete cascade,
 quantity int
 );
-
+truncate table contract_detail;
 insert into contract_detail (contract_id,attach_service_id,quantity)
 values (1,1,1),
 (3,2,1),

@@ -19,5 +19,6 @@ public interface IContractDetailServices {
     public List<Contract> selectAllContracts();
     public List<AttachService> selectAllAttachServices();
     public ContractDetail selectContractDetailByID(int id);
+    public List<ContractDetail> selectAllContractDetailsUsingService();
 
 }

@@ -30,7 +30,7 @@ on contract.contract_id=contract_detail.contract_id
 group by customer.customer_id)x)
 ;
 
-select ct.customer_id,cd.contract_id, cd.attach_service_id,ct.service_id,ct.employee_id
+select ct.customer_id,cd.contract_id, cd.attach_service_id,ct.service_id,ct.employee_id,cd.quantity
 from contract ct
 join customer ctm
 on ct.customer_id=ctm.customer_id

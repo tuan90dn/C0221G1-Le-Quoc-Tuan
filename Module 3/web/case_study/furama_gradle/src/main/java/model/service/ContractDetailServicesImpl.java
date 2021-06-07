@@ -57,5 +57,10 @@ public class ContractDetailServicesImpl implements IContractDetailServices {
         return contractDetailRepository.selectContractDetailByID(id);
     }
 
+    @Override
+    public List<ContractDetail> selectAllContractDetailsUsingService() {
+        return contractDetailRepository.selectAllContractDetailsUsingService();
+    }
+
 
 }
