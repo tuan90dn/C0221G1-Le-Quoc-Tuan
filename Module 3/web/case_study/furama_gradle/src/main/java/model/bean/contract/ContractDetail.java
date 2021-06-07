@@ -5,80 +5,82 @@ import model.bean.employee_class.Employee;
 import model.bean.service_class.Service;
 
 public class ContractDetail {
-    public int contract_detail_id;
-    public Contract contract_id;
-    public AttachService attach_service_id;
+    public int contractDetailId;
+    public Contract contract;
+    public AttachService attachService;
     public int quantity;
-    public Employee employee_id;
-    public Customer customer_id;
-    public Service service_id;
+    public Employee employee;
+    public Customer customer;
+    public Service service;
 
-    public ContractDetail(int contract_detail_id, Contract contract_id, AttachService attach_service_id, int quantity, Employee employee_id, Customer customer_id, Service service_id) {
-        this.contract_detail_id = contract_detail_id;
-        this.contract_id = contract_id;
-        this.attach_service_id = attach_service_id;
+    public ContractDetail(int contractDetailId, Contract contract, AttachService attachService,
+                          int quantity, Employee employee, Customer customer, Service service) {
+        this.contractDetailId = contractDetailId;
+        this.contract = contract;
+        this.attachService = attachService;
         this.quantity = quantity;
-        this.employee_id = employee_id;
-        this.customer_id = customer_id;
-        this.service_id = service_id;
+        this.employee = employee;
+        this.customer = customer;
+        this.service = service;
     }
 
-    public Employee getEmployee_id() {
-        return employee_id;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployee_id(Employee employee_id) {
-        this.employee_id = employee_id;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public Customer getCustomer_id() {
-        return customer_id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomer_id(Customer customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public Service getService_id() {
-        return service_id;
+    public Service getService() {
+        return service;
     }
 
-    public void setService_id(Service service_id) {
-        this.service_id = service_id;
+    public void setService(Service service) {
+        this.service = service;
     }
 
     public ContractDetail() {
     }
 
-    public ContractDetail(int contract_detail_id, Contract contract_id, AttachService attach_service_id, int quantity) {
-        this.contract_detail_id = contract_detail_id;
-        this.contract_id = contract_id;
-        this.attach_service_id = attach_service_id;
+    public ContractDetail(int contractDetailId, Contract contract, AttachService attachService,
+                          int quantity) {
+        this.contractDetailId = contractDetailId;
+        this.contract = contract;
+        this.attachService = attachService;
         this.quantity = quantity;
     }
 
-    public int getContract_detail_id() {
-        return contract_detail_id;
+    public int getContractDetailId() {
+        return contractDetailId;
     }
 
-    public void setContract_detail_id(int contract_detail_id) {
-        this.contract_detail_id = contract_detail_id;
+    public void setContractDetailId(int contractDetailId) {
+        this.contractDetailId = contractDetailId;
     }
 
-    public Contract getContract_id() {
-        return contract_id;
+    public Contract getContract() {
+        return contract;
     }
 
-    public void setContract_id(Contract contract_id) {
-        this.contract_id = contract_id;
+    public void setContract(Contract contract) {
+        this.contract = contract;
     }
 
-    public AttachService getAttach_service_id() {
-        return attach_service_id;
+    public AttachService getAttachService() {
+        return attachService;
     }
 
-    public void setAttach_service_id(AttachService attach_service_id) {
-        this.attach_service_id = attach_service_id;
+    public void setAttachService(AttachService attachService) {
+        this.attachService = attachService;
     }
 
     public int getQuantity() {

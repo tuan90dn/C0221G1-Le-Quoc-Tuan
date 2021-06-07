@@ -24,15 +24,15 @@
                 <label for="idContract" class="form-label">Id Of Contract:</label>
                 <select name="idContract" id="idContract" class="form-select">
                     <c:forEach var="contract" items="${contractList}">
-                        <option value="${contract.contract_id}">${contract.contract_id}</option>
+                        <option value="${contract.contractId}">${contract.contractId}</option>
                     </c:forEach>
                 </select>
             </div>
             <div class="col-lg-6">
-                <label for="idAttach" class="form-label">Employee:</label>
+                <label for="idAttach" class="form-label">Attach Service:</label>
                 <select name="idAttach" id="idAttach" class="form-select">
                     <c:forEach var="attach" items="${attachServiceList}">
-                        <option value="${attach.attach_service_id}">${attach.attach_service_name}</option>
+                        <option value="${attach.attachServiceId}">${attach.attachServiceName}</option>
                     </c:forEach>
                 </select>
             </div>

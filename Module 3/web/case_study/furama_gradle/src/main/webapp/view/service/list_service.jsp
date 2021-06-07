@@ -71,6 +71,7 @@
                     	<label for="selectAll"></label>
                     </span>
                     </th>
+                    <th>Ordinal Numbers</th>
                     <th>Name of service</th>
                     <th>Rent type</th>
                     <th>Service type</th>
@@ -79,7 +80,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="service" items="${listService}">
+                <c:forEach var="service" varStatus="status" items="${listService}">
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -88,41 +89,25 @@
                             </span>
 
                         </td>
-                        <td><a href="/services?action=view&id=${service.service_id}"><c:out value="${service.service_name}"/></a></td>
-                        <td><c:out value="${service.rent_type_id.rent_type_name}"/></td>
-                        <td><c:out value="${service.service_type_id.service_type_name}"/></td>
-                        <td><c:out value="${service.number_of_floor}"/></td>
+                        <td>${status.count}</td>
+                        <td><a href="/services?action=view&id=${service.serviceId}"><c:out value="${service.serviceName}"/></a></td>
+                        <td><c:out value="${service.rentType.rentTypeName}"/></td>
+                        <td><c:out value="${service.serviceType.serviceTypeName}"/></td>
+                        <td><c:out value="${service.numberOfFloor}"/></td>
                         <td>
-                                <%--                            <a href="/customers?action=edit&id=${customer.customer_id}">Edit</a>--%>
-                            <a href="/services?action=edit&id=${service.service_id}"><i
+
+                            <a href="/services?action=edit&id=${service.serviceId}"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${service.service_id})" class="delete" data-toggle="modal"><i
+                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${service.serviceId})" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                <%--                            <input id="idDelete" value="${customer.customer_id}" type="hidden" name="idDelete">--%>
-                                <%--                            <a href="/customers?action=delete&id=${customer.customer_id}" class="delete" data-toggle="modal"><i--%>
-                                <%--                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
+
                         </td>
 
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
-            <%--            <div class="row clearfix">--%>
-            <%--                <div class="hint-text col-lg-4">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-            <%--                <div class="col-lg-4"></div>--%>
-            <%--                <div class="col-lg-4">--%>
-            <%--                    <ul class="pagination">--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">Previous</a></li>--%>
-            <%--                        <li class="page-item active"><a href="#" class="page-link">1</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">3</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-            <%--                        <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-            <%--                    </ul>--%>
-            <%--                </div>--%>
 
-            <%--            </div>--%>
         </div>
     </div>
 </div>

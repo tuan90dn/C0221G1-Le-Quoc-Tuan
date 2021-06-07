@@ -30,10 +30,10 @@
     <tbody>
     <c:forEach var="customer" items="${listCustomer}">
         <tr>
-            <td><a href="/customers?action=view&id=${customer.customer_id}"><c:out value="${customer.customer_name}"/></a></td>
-            <td><c:out value="${customer.customer_address}"/></td>
-            <td><c:out value="${customer.customer_phone}"/></td>
-            <td><c:out value="${customer.customer_email}"/></td>
+            <td><a href="/customers?action=view&id=${customer.customerId}"><c:out value="${customer.customerName}"/></a></td>
+            <td><c:out value="${customer.customerAddress}"/></td>
+            <td><c:out value="${customer.customerPhone}"/></td>
+            <td><c:out value="${customer.customerEmail}"/></td>
         </tr>
     </c:forEach>
     </tbody>

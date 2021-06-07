@@ -1,7 +1,5 @@
 package model.repository;
 
-import model.bean.customer_class.Customer;
-import model.bean.customer_class.CustomerType;
 import model.bean.employee_class.Employee;
 import model.bean.employee_class.EmployeeDivision;
 import model.bean.employee_class.EmployeeEducationDegree;
@@ -124,18 +122,18 @@ public class EmployeeRepository {
         boolean rowUpdated;
         Connection connection = baseRepository.connectDataBase();
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_EMPLOYEE_SQL);) {
-            preparedStatement.setString(1, employee.getEmployee_name());
-            preparedStatement.setString(2, employee.getEmployee_birthday());
-            preparedStatement.setString(3, employee.getEmployee_id_card());
-            preparedStatement.setString(4, employee.getEmployee_salary());
-            preparedStatement.setString(5, employee.getEmployee_phone());
-            preparedStatement.setString(6, employee.getEmployee_email());
-            preparedStatement.setString(7, employee.getEmployee_address());
-            preparedStatement.setInt(8, employee.getPosition_id().position_id);
-            preparedStatement.setInt(9, employee.getEducation_degree_id().education_degree_id);
-            preparedStatement.setInt(10, employee.getDivision_id().division_id);
-            preparedStatement.setString(11, employee.getUsername());
-            preparedStatement.setInt(12, employee.getEmployee_id());
+            preparedStatement.setString(1, employee.getEmployeeName());
+            preparedStatement.setString(2, employee.getEmployeeBirthday());
+            preparedStatement.setString(3, employee.getEmployeeIdCard());
+            preparedStatement.setString(4, employee.getEmployeeSalary());
+            preparedStatement.setString(5, employee.getEmployeePhone());
+            preparedStatement.setString(6, employee.getEmployeeEmail());
+            preparedStatement.setString(7, employee.getEmployeeAddress());
+            preparedStatement.setInt(8, employee.getEmployeePosition().positionId);
+            preparedStatement.setInt(9, employee.getEmployeeEducationDegree().educationDegreeId);
+            preparedStatement.setInt(10, employee.getEmployeeDivision().divisionId);
+            preparedStatement.setString(11, employee.getUserName());
+            preparedStatement.setInt(12, employee.getEmployeeId());
             rowUpdated = preparedStatement.executeUpdate() > 0;
         }
         return rowUpdated;
@@ -145,17 +143,17 @@ public class EmployeeRepository {
         Connection connection = baseRepository.connectDataBase();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_EMPLOYEE_SQL);
-            preparedStatement.setString(1, employee.getEmployee_name());
-            preparedStatement.setString(2, employee.getEmployee_birthday());
-            preparedStatement.setString(3, employee.getEmployee_id_card());
-            preparedStatement.setString(4, employee.getEmployee_salary());
-            preparedStatement.setString(5, employee.getEmployee_phone());
-            preparedStatement.setString(6, employee.getEmployee_email());
-            preparedStatement.setString(7, employee.getEmployee_address());
-            preparedStatement.setInt(8, employee.getPosition_id().position_id);
-            preparedStatement.setInt(9, employee.getEducation_degree_id().education_degree_id);
-            preparedStatement.setInt(10, employee.getDivision_id().division_id);
-            preparedStatement.setString(11, employee.getUsername());
+            preparedStatement.setString(1, employee.getEmployeeName());
+            preparedStatement.setString(2, employee.getEmployeeBirthday());
+            preparedStatement.setString(3, employee.getEmployeeIdCard());
+            preparedStatement.setString(4, employee.getEmployeeSalary());
+            preparedStatement.setString(5, employee.getEmployeePhone());
+            preparedStatement.setString(6, employee.getEmployeeEmail());
+            preparedStatement.setString(7, employee.getEmployeeAddress());
+            preparedStatement.setInt(8, employee.getEmployeePosition().positionId);
+            preparedStatement.setInt(9, employee.getEmployeeEducationDegree().educationDegreeId);
+            preparedStatement.setInt(10, employee.getEmployeeDivision().divisionId);
+            preparedStatement.setString(11, employee.getUserName());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

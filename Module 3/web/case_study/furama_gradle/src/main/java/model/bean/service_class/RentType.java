@@ -1,41 +1,41 @@
 package model.bean.service_class;
 
 public class RentType {
-    public int rent_type_id;
-    public String rent_type_name;
-    public String rent_type_cost;
+    public int rentTypeId;
+    public String rentTypeName;
+    public String rentTypeCost;
 
     public RentType() {
     }
 
-    public RentType(int rent_type_id, String rent_type_name, String rent_type_cost) {
-        this.rent_type_id = rent_type_id;
-        this.rent_type_name = rent_type_name;
-        this.rent_type_cost = rent_type_cost;
+    public RentType(int rentTypeId, String rentTypeName, String rentTypeCost) {
+        this.rentTypeId = rentTypeId;
+        this.rentTypeName = rentTypeName;
+        this.rentTypeCost = rentTypeCost;
     }
 
 
-    public int getRent_type_id() {
-        return rent_type_id;
+    public int getRentTypeId() {
+        return rentTypeId;
     }
 
-    public void setRent_type_id(int rent_type_id) {
-        this.rent_type_id = rent_type_id;
+    public void setRentTypeId(int rentTypeId) {
+        this.rentTypeId = rentTypeId;
     }
 
-    public String getRent_type_name() {
-        return rent_type_name;
+    public String getRentTypeName() {
+        return rentTypeName;
     }
 
-    public void setRent_type_name(String rent_type_name) {
-        this.rent_type_name = rent_type_name;
+    public void setRentTypeName(String rentTypeName) {
+        this.rentTypeName = rentTypeName;
     }
 
-    public String getRent_type_cost() {
-        return rent_type_cost;
+    public String getRentTypeCost() {
+        return rentTypeCost;
     }
 
-    public void setRent_type_cost(String rent_type_cost) {
-        this.rent_type_cost = rent_type_cost;
+    public void setRentTypeCost(String rentTypeCost) {
+        this.rentTypeCost = rentTypeCost;
     }
 }

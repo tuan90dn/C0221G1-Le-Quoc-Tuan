@@ -1,61 +1,61 @@
 package model.bean.contract;
 
 public class AttachService {
-    public int attach_service_id;
-    public String attach_service_name;
-    public String attach_service_cost;
-    public int attach_service_unit;
-    public String attach_service_status;
+    public int attachServiceId;
+    public String attachServiceName;
+    public String attachServiceCost;
+    public int attachServiceUnit;
+    public String attachServiceStatus;
 
     public AttachService() {
     }
 
-    public AttachService(int attach_service_id, String attach_service_name, String attach_service_cost,
-                         int attach_service_unit, String attach_service_status) {
-        this.attach_service_id = attach_service_id;
-        this.attach_service_name = attach_service_name;
-        this.attach_service_cost = attach_service_cost;
-        this.attach_service_unit = attach_service_unit;
-        this.attach_service_status = attach_service_status;
+    public AttachService(int attachServiceId, String attachServiceName, String attachServiceCost,
+                         int attachServiceUnit, String attachServiceStatus) {
+        this.attachServiceId = attachServiceId;
+        this.attachServiceName = attachServiceName;
+        this.attachServiceCost = attachServiceCost;
+        this.attachServiceUnit = attachServiceUnit;
+        this.attachServiceStatus = attachServiceStatus;
     }
 
-    public int getAttach_service_id() {
-        return attach_service_id;
+    public int getAttachServiceId() {
+        return attachServiceId;
     }
 
-    public void setAttach_service_id(int attach_service_id) {
-        this.attach_service_id = attach_service_id;
+    public void setAttachServiceId(int attachServiceId) {
+        this.attachServiceId = attachServiceId;
     }
 
-    public String getAttach_service_name() {
-        return attach_service_name;
+    public String getAttachServiceName() {
+        return attachServiceName;
     }
 
-    public void setAttach_service_name(String attach_service_name) {
-        this.attach_service_name = attach_service_name;
+    public void setAttachServiceName(String attachServiceName) {
+        this.attachServiceName = attachServiceName;
     }
 
-    public String getAttach_service_cost() {
-        return attach_service_cost;
+    public String getAttachServiceCost() {
+        return attachServiceCost;
     }
 
-    public void setAttach_service_cost(String attach_service_cost) {
-        this.attach_service_cost = attach_service_cost;
+    public void setAttachServiceCost(String attachServiceCost) {
+        this.attachServiceCost = attachServiceCost;
     }
 
-    public int getAttach_service_unit() {
-        return attach_service_unit;
+    public int getAttachServiceUnit() {
+        return attachServiceUnit;
     }
 
-    public void setAttach_service_unit(int attach_service_unit) {
-        this.attach_service_unit = attach_service_unit;
+    public void setAttachServiceUnit(int attachServiceUnit) {
+        this.attachServiceUnit = attachServiceUnit;
     }
 
-    public String getAttach_service_status() {
-        return attach_service_status;
+    public String getAttachServiceStatus() {
+        return attachServiceStatus;
     }
 
-    public void setAttach_service_status(String attach_service_status) {
-        this.attach_service_status = attach_service_status;
+    public void setAttachServiceStatus(String attachServiceStatus) {
+        this.attachServiceStatus = attachServiceStatus;
     }
 }

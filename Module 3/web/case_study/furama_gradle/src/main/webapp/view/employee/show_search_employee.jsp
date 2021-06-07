@@ -32,12 +32,12 @@
     <tbody>
     <c:forEach var="employee" items="${listEmployee}">
         <tr>
-            <td><a href="/employees?action=view&id=${employee.employee_id}"><c:out value="${employee.employee_name}"/></a></td>
-            <td><c:out value="${employee.employee_birthday}"/></td>
-            <td><c:out value="${employee.employee_address}"/></td>
-            <td><c:out value="${employee.position_id.position_name}"/></td>
-            <td><c:out value="${employee.education_degree_id.education_degree_name}"/></td>
-            <td><c:out value="${employee.division_id.division_name}"/></td>
+            <td><a href="/employees?action=view&id=${employee.employeeId}"><c:out value="${employee.employeeName}"/></a></td>
+            <td><c:out value="${employee.employeeBirthday}"/></td>
+            <td><c:out value="${employee.employeeAddress}"/></td>
+            <td><c:out value="${employee.employeePosition.positionName}"/></td>
+            <td><c:out value="${employee.employeeEducationDegree.educationDegreeName}"/></td>
+            <td><c:out value="${employee.employeeDivision.divisionName}"/></td>
         </tr>
     </c:forEach>
     </tbody>

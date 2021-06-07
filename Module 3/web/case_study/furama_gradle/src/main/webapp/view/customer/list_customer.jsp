@@ -44,14 +44,11 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row align-items-center">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <h3>Manage <b>Customer</b></h3>
                     </div>
-                    <div class="col-lg-1">
-                        <a href="/view/home_page.jsp"><span>Home Page</span></a><br>
-                    </div>
                     <div class="col-lg-2">
-                        <a href="/customers?action=using"><span>List Customers Using Service</span></a><br>
+                        <a href="/view/home_page.jsp"><span>Home Page</span></a><br>
                     </div>
                     <div class="col-lg-2">
                         <a href="/customers?action=create"><span>Add New Customer</span></a><br>
@@ -73,6 +70,7 @@
                     	<label for="selectAll"></label>
                     </span>
                     </th>
+                    <th>Ordinal Numbers</th>
                     <th>Name</th>
                     <th>Address</th>
                     <th>Phone</th>
@@ -81,7 +79,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="customer" items="${listCustomer}">
+                <c:forEach var="customer" varStatus="status" items="${listCustomer}">
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -90,15 +88,16 @@
                             </span>
 
                         </td>
-                        <td><a href="/customers?action=view&id=${customer.customer_id}"><c:out value="${customer.customer_name}"/></a></td>
-                        <td><c:out value="${customer.customer_address}"/></td>
-                        <td><c:out value="${customer.customer_phone}"/></td>
-                        <td><c:out value="${customer.customer_email}"/></td>
+                        <td>${status.count}</td>
+                        <td><a href="/customers?action=view&id=${customer.customerId}"><c:out value="${customer.customerName}"/></a></td>
+                        <td><c:out value="${customer.customerAddress}"/></td>
+                        <td><c:out value="${customer.customerPhone}"/></td>
+                        <td><c:out value="${customer.customerEmail}"/></td>
                         <td>
 
-                            <a href="/customers?action=edit&id=${customer.customer_id}"><i
+                            <a href="/customers?action=edit&id=${customer.customerId}"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${customer.customer_id})" class="delete" data-toggle="modal"><i
+                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${customer.customerId})" class="delete" data-toggle="modal"><i
                                 class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 
                         </td>
@@ -126,8 +125,8 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" id="idDelete" name="delete"  class="btn btn-danger" value="Delete">
-<%--                    <input id="idDelete" type="hidden" name="delete">--%>
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                    <input id="idDelete" type="hidden" name="delete">
                 </div>
             </form>
         </div>

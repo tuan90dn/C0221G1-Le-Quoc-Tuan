@@ -25,54 +25,54 @@
                 <h2>Edit Employee</h2>
             </caption>
             <c:if test="${employee != null}">
-                <input type="hidden" name="id" value="<c:out value='${employee.employee_id}'/>"/>
+                <input type="hidden" name="id" value="<c:out value='${employee.employeeId}'/>"/>
             </c:if>
             <tr>
                 <th>Employee's Name:</th>
                 <td>
-                    <input type="text" name="name" id="name" size="45" value="<c:out value='${employee.employee_name}'/>"/>
+                    <input type="text" name="name" id="name" size="45" value="<c:out value='${employee.employeeName}'/>"/>
                 </td>
             </tr>
             <tr>
                 <th>Employee's Birthday:</th>
                 <td>
-                    <input type="text" name="birthday" id="birthday" size="45" value="<c:out value='${employee.employee_birthday}'/>"/>
+                    <input type="text" name="birthday" id="birthday" size="45" value="<c:out value='${employee.employeeBirthday}'/>"/>
                 </td>
             </tr>
             <tr>
                 <th>Employee's Id Card:</th>
                 <td>
-                    <input type="text" name="idCard" id="idCard" size="45" value="<c:out value='${employee.employee_id_card}'/>"/>
+                    <input type="text" name="idCard" id="idCard" size="45" value="<c:out value='${employee.employeeIdCard}'/>"/>
                 </td>
             </tr>
             <tr>
                 <th>Employee's Salary:</th>
                 <td>
-                    <input type="text" name="salary" id="salary" size="45" value="<c:out value='${employee.employee_salary}'/>"/>
+                    <input type="text" name="salary" id="salary" size="45" value="<c:out value='${employee.employeeSalary}'/>"/>
                 </td>
             </tr>
             <tr>
                 <th>Employee's Phone:</th>
                 <td>
-                    <input type="text" name="phone" id="phone" size="45" value="<c:out value='${employee.employee_phone}'/>"/>
+                    <input type="text" name="phone" id="phone" size="45" value="<c:out value='${employee.employeePhone}'/>"/>
                 </td>
             </tr>
             <tr>
                 <th>Employee's Email:</th>
                 <td>
-                    <input type="text" name="email" id="email" size="45" value="<c:out value='${employee.employee_email}'/>"/>
+                    <input type="text" name="email" id="email" size="45" value="<c:out value='${employee.employeeEmail}'/>"/>
                 </td>
             </tr>
             <tr>
                 <th>Employee's Address:</th>
                 <td>
-                    <input type="text" name="address" id="address" size="45" value="<c:out value='${employee.employee_address}'/>"/>
+                    <input type="text" name="address" id="address" size="45" value="<c:out value='${employee.employeeAddress}'/>"/>
                 </td>
             </tr>
             <tr>
                 <th>Position: </th>
                 <td>
-                    <select name="idPosition" id="idPosition" value="<c:out value='${employee.position_id.position_name}'/>">
+                    <select name="idPosition" id="idPosition" value="<c:out value='${employee.employeePosition.positionName}'/>">
                         <option value="1">Lễ Tân</option>
                         <option value="2">Phục Vụ</option>
                         <option value="3">Chuyên Viên</option>
@@ -85,7 +85,7 @@
             <tr>
                 <th>Education Degree</th>
                 <td>
-                    <select name="idEducation" id="idEducation" value="<c:out value='${employee.education_degree_id.education_degree_name}'/>">
+                    <select name="idEducation" id="idEducation" value="<c:out value='${employee.employeeEducationDegree.educationDegreeName}'/>">
                         <option value="1">Trung Cấp</option>
                         <option value="2">Cao Đẳng</option>
                         <option value="3">Đại Học</option>
@@ -96,7 +96,7 @@
             <tr>
                 <th>Division</th>
                 <td>
-                    <select name="idDivision" id="idDivision" value="<c:out value='${employee.division_id.division_name}'/>">
+                    <select name="idDivision" id="idDivision" value="<c:out value='${employee.employeeDivision.divisionName}'/>">
                         <option value="1">Sale – Marketing</option>
                         <option value="2">Hành Chính</option>
                         <option value="3">Phục Vụ</option>
@@ -107,7 +107,7 @@
             <tr>
                 <th>Employee's Username:</th>
                 <td>
-                    <input type="text" name="username" id="username" size="45" value="<c:out value='${employee.username}'/>"/>
+                    <input type="text" name="username" id="username" size="45" value="<c:out value='${employee.userName}'/>"/>
                 </td>
             </tr>
             <tr>

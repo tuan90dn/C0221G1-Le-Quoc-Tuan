@@ -70,17 +70,17 @@
                             </span>
 
                         </td>
-                        <td><a href="/customers?action=view&id=${contractDetail.contract_id.customer_id.customer_id}"><c:out value="${contractDetail.contract_id.customer_id.customer_name}"/></a></td>
-                        <td><c:out value="${contractDetail.contract_id.contract_id}"/></td>
-                        <td><c:out value="${contractDetail.contract_id.customer_id.customer_birthday}"/></td>
-                        <td><c:out value="${contractDetail.contract_id.customer_id.customer_phone}"/></td>
-                        <td><c:out value="${contractDetail.contract_id.customer_id.customer_address}"/></td>
-                        <td><c:out value="${contractDetail.attach_service_id.attach_service_name}"/></td>
+                        <td><a href="/customers?action=view&id=${contractDetail.contract.customer.customerId}"><c:out value="${contractDetail.contract.customer.customerName}"/></a></td>
+                        <td><c:out value="${contractDetail.contract.contractId}"/></td>
+                        <td><c:out value="${contractDetail.contract.customer.customerBirthday}"/></td>
+                        <td><c:out value="${contractDetail.contract.customer.customerPhone}"/></td>
+                        <td><c:out value="${contractDetail.contract.customer.customerAddress}"/></td>
+                        <td><c:out value="${contractDetail.attachService.attachServiceName}"/></td>
                         <td><c:out value="${contractDetail.quantity}"/></td>
                         <td>
-                            <a href="/contracts?action=edit&id=${contractDetail.contract_id.service_id.service_id}"><i
+                            <a href="/contracts?action=edit&id=${contractDetail.contract.service.serviceId}"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${contract.contract_id})" class="delete" data-toggle="modal"><i
+                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${contract.contractId})" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
 

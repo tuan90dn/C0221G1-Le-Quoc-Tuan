@@ -66,14 +66,14 @@
                             </span>
 
                         </td>
-                        <td><c:out value="${contractDetail.contract_detail_id}"/></td>
-                        <td><c:out value="${contractDetail.contract_id.contract_id}"/></td>
-                        <td><c:out value="${contractDetail.attach_service_id.attach_service_name}"/></td>
+                        <td><c:out value="${contractDetail.contractDetailId}"/></td>
+                        <td><c:out value="${contractDetail.contract.contractId}"/></td>
+                        <td><c:out value="${contractDetail.attachService.attachServiceName}"/></td>
                         <td><c:out value="${contractDetail.quantity}"/></td>
                         <td>
-                            <a href="/contractdetails?action=edit&id=${contractDetail.contract_detail_id}"><i
+                            <a href="/contractdetails?action=edit&id=${contractDetail.contractDetailId}"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${contractDetail.contract_detail_id})" class="delete" data-toggle="modal"><i
+                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${contractDetail.contractDetailId})" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
 

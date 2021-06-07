@@ -48,6 +48,7 @@
                     	<label for="selectAll"></label>
                     </span>
                     </th>
+                    <th>Ordinal Numbers</th>
                     <th>Name of employee</th>
                     <th>Birthday of employee</th>
                     <th>Address of employee</th>
@@ -58,7 +59,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="employee" items="${listEmployee}">
+                <c:forEach var="employee" varStatus="status" items="${listEmployee}">
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -67,16 +68,17 @@
                             </span>
 
                         </td>
-                        <td><a href="/employees?action=view&id=${employee.employee_id}"><c:out value="${employee.employee_name}"/></a></td>
-                        <td><c:out value="${employee.employee_birthday}"/></td>
-                        <td><c:out value="${employee.employee_address}"/></td>
-                        <td><c:out value="${employee.position_id.position_name}"/></td>
-                        <td><c:out value="${employee.education_degree_id.education_degree_name}"/></td>
-                        <td><c:out value="${employee.division_id.division_name}"/></td>
+                        <td>${status.count}</td>
+                        <td><a href="/employees?action=view&id=${employee.employeeId}"><c:out value="${employee.employeeName}"/></a></td>
+                        <td><c:out value="${employee.employeeBirthday}"/></td>
+                        <td><c:out value="${employee.employeeAddress}"/></td>
+                        <td><c:out value="${employee.employeePosition.positionName}"/></td>
+                        <td><c:out value="${employee.employeeEducationDegree.educationDegreeName}"/></td>
+                        <td><c:out value="${employee.employeeDivision.divisionName}"/></td>
                         <td>
-                            <a href="/employees?action=edit&id=${employee.employee_id}"><i
+                            <a href="/employees?action=edit&id=${employee.employeeId}"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${employee.employee_id})" class="delete" data-toggle="modal"><i
+                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${employee.employeeId})" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
 

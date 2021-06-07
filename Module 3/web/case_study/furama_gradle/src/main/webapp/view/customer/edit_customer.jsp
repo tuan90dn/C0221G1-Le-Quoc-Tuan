@@ -25,13 +25,13 @@
                 <h2>Edit Customer</h2>
             </caption>
             <c:if test="${customer != null}">
-                <input type="hidden" name="id" value="<c:out value='${customer.customer_id}'/>"/>
+                <input type="hidden" name="id" value="<c:out value='${customer.customerId}'/>"/>
             </c:if>
             <tr>
                 <th>Type of customer</th>
                 <td>
                     <select name="idType" id="idType">
-                        <option value="${customer.customer_type_id.customer_type_id}" selected>${customer.customer_type_id.customer_type_name}</option>
+                        <option value="${customer.customerType.customerTypeId}" selected>${customer.customerType.customerTypeName}</option>
                         <option value="1">Diamond</option>
                         <option value="2">Platinium</option>
                         <option value="3">Gold</option>
@@ -44,20 +44,20 @@
             <tr>
                 <th>Customer's Name:</th>
                 <td>
-                    <input value="<c:out value='${customer.customer_name}'/>" type="text" name="name" id="name" size="45"/>
+                    <input value="<c:out value='${customer.customerName}'/>" type="text" name="name" id="name" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Customer's Birthday:</th>
                 <td>
-                    <input value="<c:out value='${customer.customer_birthday}'/>" type="text" name="birthday" id="birthday" size="45"/>
+                    <input value="<c:out value='${customer.customerBirthday}'/>" type="text" name="birthday" id="birthday" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Gender</th>
                 <td>
                     <select name="idGender" id="idGender">
-                        <option value="${customer.customer_gender}" ${customer.customer_gender==0?"selected":""}>Male</option>
+                        <option value="${customer.customerGender}" ${customer.customerGender==0?"selected":""}>Male</option>
                         <option value="0">Male</option>
                         <option value="1">Female</option>
                     </select>
@@ -66,25 +66,25 @@
             <tr>
                 <th>Identity Card:</th>
                 <td>
-                    <input value="<c:out value='${customer.customer_id_card}'/>" type="text" name="identity" id="identity" size="45"/>
+                    <input value="<c:out value='${customer.customerIdCard}'/>" type="text" name="identity" id="identity" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Phone Number:</th>
                 <td>
-                    <input value="<c:out value='${customer.customer_phone}'/>" type="text" name="phone" id="phone" size="45"/>
+                    <input value="<c:out value='${customer.customerPhone}'/>" type="text" name="phone" id="phone" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Customer's Email:</th>
                 <td>
-                    <input value="<c:out value='${customer.customer_email}'/>" type="text" name="email" id="email" size="45"/>
+                    <input value="<c:out value='${customer.customerEmail}'/>" type="text" name="email" id="email" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Customer's Address</th>
                 <td>
-                    <input value="<c:out value='${customer.customer_address}'/>" type="text" name="address" id="address" size="15"/>
+                    <input value="<c:out value='${customer.customerAddress}'/>" type="text" name="address" id="address" size="15"/>
                 </td>
             </tr>
             <tr>

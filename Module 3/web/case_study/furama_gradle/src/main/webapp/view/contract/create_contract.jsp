@@ -41,7 +41,7 @@
                 <label for="idCustomer" class="form-label">Customer:</label>
                 <select name="idCustomer" id="idCustomer" class="form-select">
                     <c:forEach var="idCustomer" items="${customerList}">
-                    <option value="${idCustomer.customer_id}">${idCustomer.customer_name}</option>
+                    <option value="${idCustomer.customerId}">${idCustomer.customerName}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -49,7 +49,7 @@
                 <label for="idEmployee" class="form-label">Employee:</label>
                 <select name="idEmployee" id="idEmployee" class="form-select">
                     <c:forEach var="idEmployee" items="${employeeList}">
-                        <option value="${idEmployee.employee_id}">${idEmployee.employee_name}</option>
+                        <option value="${idEmployee.employeeId}">${idEmployee.employeeName}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -57,7 +57,7 @@
                 <label for="idService" class="form-label">Service:</label>
                 <select name="idService" id="idService" class="form-select">
                     <c:forEach var="idService" items="${serviceList}">
-                        <option value="${idService.service_id}">${idService.service_name}</option>
+                        <option value="${idService.serviceId}">${idService.serviceName}</option>
                     </c:forEach>
                 </select>
             </div>

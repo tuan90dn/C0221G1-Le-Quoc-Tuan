@@ -1,30 +1,30 @@
 package model.bean.employee_class;
 
 public class EmployeeDivision {
-    public int division_id;
-    public String division_name;
+    public int divisionId;
+    public String divisionName;
 
     public EmployeeDivision() {
     }
 
-    public EmployeeDivision(int division_id, String division_name) {
-        this.division_id = division_id;
-        this.division_name = division_name;
+    public EmployeeDivision(int divisionId, String divisionName) {
+        this.divisionId = divisionId;
+        this.divisionName = divisionName;
     }
 
-    public int getDivision_id() {
-        return division_id;
+    public int getDivisionId() {
+        return divisionId;
     }
 
-    public void setDivision_id(int division_id) {
-        this.division_id = division_id;
+    public void setDivisionId(int divisionId) {
+        this.divisionId = divisionId;
     }
 
-    public String getDivision_name() {
-        return division_name;
+    public String getDivisionName() {
+        return divisionName;
     }
 
-    public void setDivision_name(String division_name) {
-        this.division_name = division_name;
+    public void setDivisionName(String divisionName) {
+        this.divisionName = divisionName;
     }
 }

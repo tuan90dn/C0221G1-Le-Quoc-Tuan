@@ -111,14 +111,14 @@ public class CustomerRepository {
         Connection connection = baseRepository.connectDataBase();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMER_SQL);
-            preparedStatement.setInt(1, customer.getCustomer_type_id().customer_type_id);
-            preparedStatement.setString(2, customer.getCustomer_name());
-            preparedStatement.setString(3, customer.getCustomer_birthday());
-            preparedStatement.setInt(4, customer.getCustomer_gender());
-            preparedStatement.setString(5, customer.getCustomer_id_card());
-            preparedStatement.setString(6, customer.getCustomer_phone());
-            preparedStatement.setString(7, customer.getCustomer_email());
-            preparedStatement.setString(8, customer.getCustomer_address());
+            preparedStatement.setInt(1, customer.getCustomerType().customerTypeId);
+            preparedStatement.setString(2, customer.getCustomerName());
+            preparedStatement.setString(3, customer.getCustomerBirthday());
+            preparedStatement.setInt(4, customer.getCustomerGender());
+            preparedStatement.setString(5, customer.getCustomerIdCard());
+            preparedStatement.setString(6, customer.getCustomerPhone());
+            preparedStatement.setString(7, customer.getCustomerEmail());
+            preparedStatement.setString(8, customer.getCustomerAddress());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -156,15 +156,15 @@ public class CustomerRepository {
         boolean rowUpdated;
         Connection connection = baseRepository.connectDataBase();
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUSTOMER_SQL);) {
-            preparedStatement.setInt(1, customer.getCustomer_type_id().customer_type_id);
-            preparedStatement.setString(2, customer.getCustomer_name());
-            preparedStatement.setString(3, customer.getCustomer_birthday());
-            preparedStatement.setInt(4, customer.getCustomer_gender());
-            preparedStatement.setString(5, customer.getCustomer_id_card());
-            preparedStatement.setString(6, customer.getCustomer_phone());
-            preparedStatement.setString(7, customer.getCustomer_email());
-            preparedStatement.setString(8, customer.getCustomer_address());
-            preparedStatement.setInt(9, customer.getCustomer_id());
+            preparedStatement.setInt(1, customer.getCustomerType().customerTypeId);
+            preparedStatement.setString(2, customer.getCustomerName());
+            preparedStatement.setString(3, customer.getCustomerBirthday());
+            preparedStatement.setInt(4, customer.getCustomerGender());
+            preparedStatement.setString(5, customer.getCustomerIdCard());
+            preparedStatement.setString(6, customer.getCustomerPhone());
+            preparedStatement.setString(7, customer.getCustomerEmail());
+            preparedStatement.setString(8, customer.getCustomerAddress());
+            preparedStatement.setInt(9, customer.getCustomerId());
 
             rowUpdated = preparedStatement.executeUpdate() > 0;
         }

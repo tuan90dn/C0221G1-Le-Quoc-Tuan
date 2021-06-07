@@ -1,30 +1,30 @@
 package model.bean.employee_class;
 
 public class EmployeePosition {
-    public int position_id;
-    public String position_name;
+    public int positionId;
+    public String positionName;
 
     public EmployeePosition() {
     }
 
-    public EmployeePosition(int position_id, String position_name) {
-        this.position_id = position_id;
-        this.position_name = position_name;
+    public EmployeePosition(int positionId, String positionName) {
+        this.positionId = positionId;
+        this.positionName = positionName;
     }
 
-    public int getPosition_id() {
-        return position_id;
+    public int getPositionId() {
+        return positionId;
     }
 
-    public void setPosition_id(int position_id) {
-        this.position_id = position_id;
+    public void setPositionId(int positionId) {
+        this.positionId = positionId;
     }
 
-    public String getPosition_name() {
-        return position_name;
+    public String getPositionName() {
+        return positionName;
     }
 
-    public void setPosition_name(String position_name) {
-        this.position_name = position_name;
+    public void setPositionName(String positionName) {
+        this.positionName = positionName;
     }
 }

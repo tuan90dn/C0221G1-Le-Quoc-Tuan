@@ -19,52 +19,52 @@
 <table>
     <tr>
         <td>ID of employee: </td>
-        <td>${employee.employee_id}</td>
+        <td>${employee.employeeId}</td>
     </tr>
     <tr>
 
         <td>Name of employee: </td>
-        <td>${employee.employee_name}</td>
+        <td>${employee.employeeName}</td>
     </tr>
     <tr>
         <td>Birthday of employee: </td>
-        <td>${employee.employee_birthday}</td>
+        <td>${employee.employeeBirthday}</td>
     </tr>
     <tr>
         <td>Id card of employee: </td>
-        <td>${employee.employee_id_card}</td>
+        <td>${employee.employeeIdCard}</td>
     </tr>
     <tr>
         <td>Salary of employee: </td>
-        <td>${employee.employee_salary}</td>
+        <td>${employee.employeeSalary}</td>
     </tr>
     <tr>
         <td>Phone of employee: </td>
-        <td>${employee.employee_phone}</td>
+        <td>${employee.employeePhone}</td>
     </tr>
     <tr>
         <td>Email of employee: </td>
-        <td>${employee.employee_email}</td>
+        <td>${employee.employeeEmail}</td>
     </tr>
     <tr>
         <td>Address of employee: </td>
-        <td>${employee.employee_address}</td>
+        <td>${employee.employeeAddress}</td>
     </tr>
     <tr>
         <td>Position of employee: </td>
-        <td>${employee.position_id.position_name}</td>
+        <td>${employee.employeePosition.positionName}</td>
     </tr>
     <tr>
         <td>Education Degree of employee: </td>
-        <td>${employee.education_degree_id.education_degree_name}</td>
+        <td>${employee.employeeEducationDegree.educationDegreeName}</td>
     </tr>
     <tr>
         <td>Division of employee: </td>
-        <td>${employee.division_id.division_name}</td>
+        <td>${employee.employeeDivision.divisionName}</td>
     </tr>
     <tr>
         <td>User's name of employee: </td>
-        <td>${employee.username}</td>
+        <td>${employee.userName}</td>
     </tr>
 
 </table>

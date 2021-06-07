@@ -49,6 +49,7 @@
                     	<label for="selectAll"></label>
                     </span>
                     </th>
+                    <th>Ordinal Numbers</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Name Of Employee</th>
@@ -58,7 +59,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="contract" items="${listContract}">
+                <c:forEach var="contract" varStatus="status" items="${listContract}">
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -67,15 +68,16 @@
                             </span>
 
                         </td>
-                        <td><a href="/contracts?action=view&id=${contract.contract_id}"><c:out value="${contract.contract_start_date}"/></a></td>
-                        <td><c:out value="${contract.contract_end_date}"/></td>
-                        <td><c:out value="${contract.employee_id.employee_name}"/></td>
-                        <td><c:out value="${contract.customer_id.customer_name}"/></td>
-                        <td><c:out value="${contract.service_id.service_name}"/></td>
+                        <td>${status.count}</td>
+                        <td><a href="/contracts?action=view&id=${contract.contractId}"><c:out value="${contract.contractStartDate}"/></a></td>
+                        <td><c:out value="${contract.contractEndDate}"/></td>
+                        <td><c:out value="${contract.employee.employeeName}"/></td>
+                        <td><c:out value="${contract.customer.customerName}"/></td>
+                        <td><c:out value="${contract.service.serviceName}"/></td>
                         <td>
-                            <a href="/contracts?action=edit&id=${contract.contract_id}"><i
+                            <a href="/contracts?action=edit&id=${contract.contractId}"><i
                                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${contract.contract_id})" class="delete" data-toggle="modal"><i
+                            <a href="#deleteEmployeeModal" onclick="deleteCustomer(${contract.contractId})" class="delete" data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
 

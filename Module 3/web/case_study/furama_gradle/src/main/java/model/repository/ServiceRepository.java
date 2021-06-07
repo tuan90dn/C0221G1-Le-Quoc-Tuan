@@ -1,10 +1,5 @@
 package model.repository;
 
-import model.bean.customer_class.Customer;
-import model.bean.employee_class.Employee;
-import model.bean.employee_class.EmployeeDivision;
-import model.bean.employee_class.EmployeeEducationDegree;
-import model.bean.employee_class.EmployeePosition;
 import model.bean.service_class.RentType;
 import model.bean.service_class.Service;
 import model.bean.service_class.ServiceType;
@@ -86,16 +81,16 @@ public class ServiceRepository {
         boolean rowUpdated;
         Connection connection = baseRepository.connectDataBase();
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SERVICE_SQL);) {
-            preparedStatement.setString(1, service.getService_name());
-            preparedStatement.setString(2, service.getService_area());
-            preparedStatement.setString(3, service.getService_cost());
-            preparedStatement.setString(4, service.getService_max_people());
-            preparedStatement.setString(5, String.valueOf(service.getRent_type_id().rent_type_id));
-            preparedStatement.setString(6, String.valueOf(service.getService_type_id().service_type_id));
-            preparedStatement.setString(7, service.getStandard_room());
-            preparedStatement.setString(8, service.getDescription_other_convenience());
-            preparedStatement.setString(9, service.getPool_area());
-            preparedStatement.setString(9, service.getNumber_of_floor());
+            preparedStatement.setString(1, service.getServiceName());
+            preparedStatement.setString(2, service.getServiceArea());
+            preparedStatement.setString(3, service.getServiceCost());
+            preparedStatement.setString(4, service.getServiceMaxPeople());
+            preparedStatement.setString(5, String.valueOf(service.getRentType().rentTypeId));
+            preparedStatement.setString(6, String.valueOf(service.getServiceType().serviceTypeId));
+            preparedStatement.setString(7, service.getStandardRoom());
+            preparedStatement.setString(8, service.getDescriptionOtherConvenience());
+            preparedStatement.setString(9, service.getPoolArea());
+            preparedStatement.setString(9, service.getNumberOfFloor());
 
             rowUpdated = preparedStatement.executeUpdate() > 0;
         }

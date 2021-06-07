@@ -1,30 +1,30 @@
 package model.bean.employee_class;
 
 public class EmployeeEducationDegree {
-    public int education_degree_id;
-    public String education_degree_name;
+    public int educationDegreeId;
+    public String educationDegreeName;
 
     public EmployeeEducationDegree() {
     }
 
-    public EmployeeEducationDegree(int education_degree_id, String education_degree_name) {
-        this.education_degree_id = education_degree_id;
-        this.education_degree_name = education_degree_name;
+    public EmployeeEducationDegree(int educationDegreeId, String educationDegreeName) {
+        this.educationDegreeId = educationDegreeId;
+        this.educationDegreeName = educationDegreeName;
     }
 
-    public int getEducation_degree_id() {
-        return education_degree_id;
+    public int getEducationDegreeId() {
+        return educationDegreeId;
     }
 
-    public void setEducation_degree_id(int education_degree_id) {
-        this.education_degree_id = education_degree_id;
+    public void setEducationDegreeId(int educationDegreeId) {
+        this.educationDegreeId = educationDegreeId;
     }
 
-    public String getEducation_degree_name() {
-        return education_degree_name;
+    public String getEducationDegreeName() {
+        return educationDegreeName;
     }
 
-    public void setEducation_degree_name(String education_degree_name) {
-        this.education_degree_name = education_degree_name;
+    public void setEducationDegreeName(String educationDegreeName) {
+        this.educationDegreeName = educationDegreeName;
     }
 }

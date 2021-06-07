@@ -5,109 +5,109 @@ import model.bean.employee_class.Employee;
 import model.bean.service_class.Service;
 
 public class Contract {
-    public int contract_id;
-    public String contract_start_date;
-    public String contract_end_date;
-    public String contract_deposit;
-    public String contract_total_money;
-    public Employee employee_id;
-    public Customer customer_id;
-    public Service service_id;
-    public AttachService attach_service_id;
+    public int contractId;
+    public String contractStartDate;
+    public String contractEndDate;
+    public String contractDeposit;
+    public String contractTotalMoney;
+    public Employee employee;
+    public Customer customer;
+    public Service service;
+    public AttachService attachService;
 
     public Contract() {
     }
 
-    public AttachService getAttach_service_id() {
-        return attach_service_id;
+    public AttachService getAttachService() {
+        return attachService;
     }
 
-    public Contract(int contract_id,  Employee employee_id,
-                    Customer customer_id, Service service_id, AttachService attach_service_id) {
-        this.contract_id = contract_id;
-        this.employee_id = employee_id;
-        this.customer_id = customer_id;
-        this.service_id = service_id;
-        this.attach_service_id = attach_service_id;
+    public Contract(int contractId, Employee employee,
+                    Customer customer, Service service, AttachService attachService) {
+        this.contractId = contractId;
+        this.employee = employee;
+        this.customer = customer;
+        this.service = service;
+        this.attachService = attachService;
     }
 
-    public void setAttach_service_id(AttachService attach_service_id) {
-        this.attach_service_id = attach_service_id;
+    public void setAttachService(AttachService attachService) {
+        this.attachService = attachService;
     }
 
-    public Contract(int contract_id, String contract_start_date, String contract_end_date, String contract_deposit,
-                    String contract_total_money, Employee employee_id, Customer customer_id, Service service_id) {
-        this.contract_id = contract_id;
-        this.contract_start_date = contract_start_date;
-        this.contract_end_date = contract_end_date;
-        this.contract_deposit = contract_deposit;
-        this.contract_total_money = contract_total_money;
-        this.employee_id = employee_id;
-        this.customer_id = customer_id;
-        this.service_id = service_id;
+    public Contract(int contractId, String contractStartDate, String contractEndDate, String contractDeposit,
+                    String contractTotalMoney, Employee employee, Customer customer, Service service) {
+        this.contractId = contractId;
+        this.contractStartDate = contractStartDate;
+        this.contractEndDate = contractEndDate;
+        this.contractDeposit = contractDeposit;
+        this.contractTotalMoney = contractTotalMoney;
+        this.employee = employee;
+        this.customer = customer;
+        this.service = service;
     }
 
-    public int getContract_id() {
-        return contract_id;
+    public int getContractId() {
+        return contractId;
     }
 
-    public void setContract_id(int contract_id) {
-        this.contract_id = contract_id;
+    public void setContractId(int contractId) {
+        this.contractId = contractId;
     }
 
-    public String getContract_start_date() {
-        return contract_start_date;
+    public String getContractStartDate() {
+        return contractStartDate;
     }
 
-    public void setContract_start_date(String contract_start_date) {
-        this.contract_start_date = contract_start_date;
+    public void setContractStartDate(String contractStartDate) {
+        this.contractStartDate = contractStartDate;
     }
 
-    public String getContract_end_date() {
-        return contract_end_date;
+    public String getContractEndDate() {
+        return contractEndDate;
     }
 
-    public void setContract_end_date(String contract_end_date) {
-        this.contract_end_date = contract_end_date;
+    public void setContractEndDate(String contractEndDate) {
+        this.contractEndDate = contractEndDate;
     }
 
-    public String getContract_deposit() {
-        return contract_deposit;
+    public String getContractDeposit() {
+        return contractDeposit;
     }
 
-    public void setContract_deposit(String contract_deposit) {
-        this.contract_deposit = contract_deposit;
+    public void setContractDeposit(String contractDeposit) {
+        this.contractDeposit = contractDeposit;
     }
 
-    public String getContract_total_money() {
-        return contract_total_money;
+    public String getContractTotalMoney() {
+        return contractTotalMoney;
     }
 
-    public void setContract_total_money(String contract_total_money) {
-        this.contract_total_money = contract_total_money;
+    public void setContractTotalMoney(String contractTotalMoney) {
+        this.contractTotalMoney = contractTotalMoney;
     }
 
-    public Employee getEmployee_id() {
-        return employee_id;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployee_id(Employee employee_id) {
-        this.employee_id = employee_id;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public Customer getCustomer_id() {
-        return customer_id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomer_id(Customer customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public Service getService_id() {
-        return service_id;
+    public Service getService() {
+        return service;
     }
 
-    public void setService_id(Service service_id) {
-        this.service_id = service_id;
+    public void setService(Service service) {
+        this.service = service;
     }
 }

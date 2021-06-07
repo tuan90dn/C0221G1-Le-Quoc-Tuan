@@ -19,47 +19,47 @@
 <table>
     <tr>
         <td>ID of customer: </td>
-        <td>${customer.customer_id}</td>
+        <td>${customer.customerId}</td>
     </tr>
     <tr>
 
     <td>Name of customer type: </td>
-    <td>${customer.customer_type_id.customer_type_name}</td>
+    <td>${customer.customerType.customerTypeName}</td>
     </tr>
     <tr>
         <td>Name of customer: </td>
-        <td>${customer.customer_name}</td>
+        <td>${customer.customerName}</td>
     </tr>
     <tr>
         <td>Birthday of customer: </td>
-        <td>${customer.customer_birthday}</td>
+        <td>${customer.customerBirthday}</td>
     </tr>
 
     <tr>
-        <c:if test="${customer.customer_gender == 0}">
+        <c:if test="${customer.customerGender == 0}">
             <td>Gender of customer : </td>
             <td>Male </td>
         </c:if>
-        <c:if test="${customer.customer_gender == 1}">
+        <c:if test="${customer.customerGender == 1}">
             <td>Gender of customer : </td>
             <td>Female </td>
         </c:if>
     </tr>
     <tr>
         <td>Id card of customer: </td>
-        <td>${customer.customer_id_card}</td>
+        <td>${customer.customerIdCard}</td>
     </tr>
     <tr>
         <td>Phone number of customer: </td>
-        <td>${customer.customer_phone}</td>
+        <td>${customer.customerPhone}</td>
     </tr>
     <tr>
         <td>Email of customer: </td>
-        <td>${customer.customer_email}</td>
+        <td>${customer.customerEmail}</td>
     </tr>
     <tr>
         <td>Address of customer: </td>
-        <td>${customer.customer_address}</td>
+        <td>${customer.customerAddress}</td>
     </tr>
 </table>
 </body>

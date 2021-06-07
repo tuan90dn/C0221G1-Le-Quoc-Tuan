@@ -1,157 +1,162 @@
 package model.bean.employee_class;
 
 public class Employee {
-    protected int employee_id;
-    protected String employee_name;
-    protected String employee_birthday;
-    protected String employee_id_card;
-    protected String employee_salary;
-    protected String employee_phone;
-    protected String employee_email;
-    protected String employee_address;
-    protected EmployeePosition position_id;
-    protected EmployeeEducationDegree education_degree_id;
-    protected EmployeeDivision division_id;
-    protected String username;
+    protected int employeeId;
+    protected String employeeName;
+    protected String employeeBirthday;
+    protected String employeeIdCard;
+    protected String employeeSalary;
+    protected String employeePhone;
+    protected String employeeEmail;
+    protected String employeeAddress;
+    protected EmployeePosition employeePosition;
+    protected EmployeeEducationDegree employeeEducationDegree;
+    protected EmployeeDivision employeeDivision;
+    protected String userName;
 
     public Employee() {
     }
 
-    public Employee(int employee_id, String employee_name, String employee_birthday, String employee_id_card,
-                    String employee_salary, String employee_phone, String employee_email, String employee_address,
-                    EmployeePosition position_id, EmployeeEducationDegree education_degree_id, EmployeeDivision division_id, String username) {
-        this.employee_id = employee_id;
-        this.employee_name = employee_name;
-        this.employee_birthday = employee_birthday;
-        this.employee_id_card = employee_id_card;
-        this.employee_salary = employee_salary;
-        this.employee_phone = employee_phone;
-        this.employee_email = employee_email;
-        this.employee_address = employee_address;
-        this.position_id = position_id;
-        this.education_degree_id = education_degree_id;
-        this.division_id = division_id;
-        this.username = username;
+    public Employee(int employeeId, String employeeName, String employeeBirthday, String employeeIdCard,
+                    String employeeSalary, String employeePhone, String employeeEmail,
+                    String employeeAddress, EmployeePosition employeePosition,
+                    EmployeeEducationDegree employeeEducationDegree, EmployeeDivision employeeDivision, String userName) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.employeeBirthday = employeeBirthday;
+        this.employeeIdCard = employeeIdCard;
+        this.employeeSalary = employeeSalary;
+        this.employeePhone = employeePhone;
+        this.employeeEmail = employeeEmail;
+        this.employeeAddress = employeeAddress;
+        this.employeePosition = employeePosition;
+        this.employeeEducationDegree = employeeEducationDegree;
+        this.employeeDivision = employeeDivision;
+        this.userName = userName;
     }
 
-    public Employee(String employee_name, String employee_birthday, String employee_id_card, String employee_salary, String employee_phone, String employee_email, String employee_address, EmployeePosition position_id, EmployeeEducationDegree education_degree_id, EmployeeDivision division_id, String username) {
-        this.employee_name = employee_name;
-        this.employee_birthday = employee_birthday;
-        this.employee_id_card = employee_id_card;
-        this.employee_salary = employee_salary;
-        this.employee_phone = employee_phone;
-        this.employee_email = employee_email;
-        this.employee_address = employee_address;
-        this.position_id = position_id;
-        this.education_degree_id = education_degree_id;
-        this.division_id = division_id;
-        this.username = username;
+    public Employee(String employeeName, String employeeBirthday, String employeeIdCard, String employeeSalary,
+                    String employeePhone, String employeeEmail, String employeeAddress,
+                    EmployeePosition employeePosition, EmployeeEducationDegree employeeEducationDegree,
+                    EmployeeDivision employeeDivision, String userName) {
+        this.employeeName = employeeName;
+        this.employeeBirthday = employeeBirthday;
+        this.employeeIdCard = employeeIdCard;
+        this.employeeSalary = employeeSalary;
+        this.employeePhone = employeePhone;
+        this.employeeEmail = employeeEmail;
+        this.employeeAddress = employeeAddress;
+        this.employeePosition = employeePosition;
+        this.employeeEducationDegree = employeeEducationDegree;
+        this.employeeDivision = employeeDivision;
+        this.userName = userName;
     }
 
-    public Employee(int employee_id, String employee_name, String employee_birthday, String employee_address,
-                    EmployeePosition position_id, EmployeeEducationDegree education_degree_id, EmployeeDivision division_id) {
-        this.employee_id = employee_id;
-        this.employee_name = employee_name;
-        this.employee_birthday = employee_birthday;
-        this.employee_address = employee_address;
-        this.position_id = position_id;
-        this.education_degree_id = education_degree_id;
-        this.division_id = division_id;
+    public Employee(int employeeId, String employeeName, String employeeBirthday, String employeeAddress,
+                    EmployeePosition employeePosition, EmployeeEducationDegree employeeEducationDegree,
+                    EmployeeDivision employeeDivision) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.employeeBirthday = employeeBirthday;
+        this.employeeAddress = employeeAddress;
+        this.employeePosition = employeePosition;
+        this.employeeEducationDegree = employeeEducationDegree;
+        this.employeeDivision = employeeDivision;
     }
 
-    public int getEmployee_id() {
-        return employee_id;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public String getEmployee_name() {
-        return employee_name;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
-    public void setEmployee_name(String employee_name) {
-        this.employee_name = employee_name;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
-    public String getEmployee_birthday() {
-        return employee_birthday;
+    public String getEmployeeBirthday() {
+        return employeeBirthday;
     }
 
-    public void setEmployee_birthday(String employee_birthday) {
-        this.employee_birthday = employee_birthday;
+    public void setEmployeeBirthday(String employeeBirthday) {
+        this.employeeBirthday = employeeBirthday;
     }
 
-    public String getEmployee_id_card() {
-        return employee_id_card;
+    public String getEmployeeIdCard() {
+        return employeeIdCard;
     }
 
-    public void setEmployee_id_card(String employee_id_card) {
-        this.employee_id_card = employee_id_card;
+    public void setEmployeeIdCard(String employeeIdCard) {
+        this.employeeIdCard = employeeIdCard;
     }
 
-    public String getEmployee_salary() {
-        return employee_salary;
+    public String getEmployeeSalary() {
+        return employeeSalary;
     }
 
-    public void setEmployee_salary(String employee_salary) {
-        this.employee_salary = employee_salary;
+    public void setEmployeeSalary(String employeeSalary) {
+        this.employeeSalary = employeeSalary;
     }
 
-    public String getEmployee_phone() {
-        return employee_phone;
+    public String getEmployeePhone() {
+        return employeePhone;
     }
 
-    public void setEmployee_phone(String employee_phone) {
-        this.employee_phone = employee_phone;
+    public void setEmployeePhone(String employeePhone) {
+        this.employeePhone = employeePhone;
     }
 
-    public String getEmployee_email() {
-        return employee_email;
+    public String getEmployeeEmail() {
+        return employeeEmail;
     }
 
-    public void setEmployee_email(String employee_email) {
-        this.employee_email = employee_email;
+    public void setEmployeeEmail(String employeeEmail) {
+        this.employeeEmail = employeeEmail;
     }
 
-    public String getEmployee_address() {
-        return employee_address;
+    public String getEmployeeAddress() {
+        return employeeAddress;
     }
 
-    public void setEmployee_address(String employee_address) {
-        this.employee_address = employee_address;
+    public void setEmployeeAddress(String employeeAddress) {
+        this.employeeAddress = employeeAddress;
     }
 
-    public EmployeePosition getPosition_id() {
-        return position_id;
+    public EmployeePosition getEmployeePosition() {
+        return employeePosition;
     }
 
-    public void setPosition_id(EmployeePosition position_id) {
-        this.position_id = position_id;
+    public void setEmployeePosition(EmployeePosition employeePosition) {
+        this.employeePosition = employeePosition;
     }
 
-    public EmployeeEducationDegree getEducation_degree_id() {
-        return education_degree_id;
+    public EmployeeEducationDegree getEmployeeEducationDegree() {
+        return employeeEducationDegree;
     }
 
-    public void setEducation_degree_id(EmployeeEducationDegree education_degree_id) {
-        this.education_degree_id = education_degree_id;
+    public void setEmployeeEducationDegree(EmployeeEducationDegree employeeEducationDegree) {
+        this.employeeEducationDegree = employeeEducationDegree;
     }
 
-    public EmployeeDivision getDivision_id() {
-        return division_id;
+    public EmployeeDivision getEmployeeDivision() {
+        return employeeDivision;
     }
 
-    public void setDivision_id(EmployeeDivision division_id) {
-        this.division_id = division_id;
+    public void setEmployeeDivision(EmployeeDivision employeeDivision) {
+        this.employeeDivision = employeeDivision;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

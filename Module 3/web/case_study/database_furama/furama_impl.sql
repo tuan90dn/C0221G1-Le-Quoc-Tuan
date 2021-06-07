@@ -30,11 +30,20 @@ on contract.contract_id=contract_detail.contract_id
 group by customer.customer_id)x)
 ;
 
-select ct.customer_id,cd.contract_id, cd.attach_service_id,ct.service_id,ct.employee_id,cd.quantity
-from contract ct
+select cd.contract_detail_id,ct.customer_id,cd.contract_id, cd.attach_service_id,ct.service_id,ct.employee_id,cd.quantity
+from contract_detail cd
+join contract ct
+on ct.contract_id=cd.contract_id
 join customer ctm
 on ct.customer_id=ctm.customer_id
-join contract_detail cd
+join attach_service ats
+on ats.attach_service_id=cd.attach_service_id;
+
+select cd.contract_detail_id,cd.contract_id, cd.attach_service_id,cd.quantity
+from contract_detail cd
+join contract ct
 on ct.contract_id=cd.contract_id
+join customer ctm
+on ct.customer_id=ctm.customer_id
 join attach_service ats
 on ats.attach_service_id=cd.attach_service_id;
