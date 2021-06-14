@@ -47,3 +47,5 @@ join customer ctm
 on ct.customer_id=ctm.customer_id
 join attach_service ats
 on ats.attach_service_id=cd.attach_service_id;
+
+SET FOREIGN_KEY_CHECKS = 0;

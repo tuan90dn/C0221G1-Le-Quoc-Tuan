@@ -123,13 +123,17 @@ public class CustomerServlet extends HttpServlet {
 
         Customer book = new Customer(id,customerTypeId, name,birthday,gender,idCard,phone, email, address);
         customerServices.updateCustomer(book);
-        response.sendRedirect("/customers");
+        request.setAttribute("message","Update successful");
+        request.getRequestDispatcher("view/customer/edit_customer.jsp").forward(request,response);
+//        response.sendRedirect("/customers");
     }
 
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("delete"));
         customerServices.deleteCustomer(id);
-        response.sendRedirect("/customers");
+        request.setAttribute("message","Delete successful");
+        request.getRequestDispatcher("/customers").forward(request,response);
+//        response.sendRedirect("/customers");
 
     }
 

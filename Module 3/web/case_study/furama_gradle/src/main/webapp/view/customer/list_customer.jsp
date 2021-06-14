@@ -60,6 +60,12 @@
                         </form>
                     </div>
                 </div>
+                <c:if test="${message!=null}">
+                    <div class="row">
+                        <h3 style="color: red">${message}</h3>
+                    </div>
+                </c:if>
+
             </div>
             <table id="idTable" class="table table-striped table-hover">
                 <thead>

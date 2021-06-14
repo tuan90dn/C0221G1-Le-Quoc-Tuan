@@ -24,9 +24,15 @@
             <caption>
                 <h2>Edit Customer</h2>
             </caption>
-            <c:if test="${customer != null}">
-                <input type="hidden" name="id" value="<c:out value='${customer.customerId}'/>"/>
+            <c:if test="${message!=null}">
+                <div class="row">
+                    <h3 style="color: red">${message}</h3>
+                </div>
             </c:if>
+
+<%--            <c:if test="${customer != null}">--%>
+<%--                <input type="hidden" name="id" value="<c:out value='${customer.customerId}'/>"/>--%>
+<%--            </c:if>--%>
             <tr>
                 <th>Type of customer</th>
                 <td>

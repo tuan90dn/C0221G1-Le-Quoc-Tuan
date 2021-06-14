@@ -24,9 +24,12 @@
             <caption>
                 <h2>Edit Employee</h2>
             </caption>
-            <c:if test="${employee != null}">
-                <input type="hidden" name="id" value="<c:out value='${employee.employeeId}'/>"/>
+            <c:if test="${message!=null}">
+                <h3>${message}</h3>
             </c:if>
+<%--            <c:if test="${employee != null}">--%>
+<%--                <input type="hidden" name="id" value="<c:out value='${employee.employeeId}'/>"/>--%>
+<%--            </c:if>--%>
             <tr>
                 <th>Employee's Name:</th>
                 <td>

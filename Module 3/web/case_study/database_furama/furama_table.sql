@@ -8,6 +8,7 @@ values (1,"Diamond"),(2,"Platinium"),(3,"Gold"),(4,"Silver"),(5,"Member");
 
 create table customer(
 customer_id int primary key auto_increment,
+customer_code varchar(10) unique,
 customer_type_id int not null,
 foreign key (customer_type_id) references customer_type(customer_type_id) on delete cascade,
 customer_name varchar(45),
@@ -41,6 +42,7 @@ insert into rent_type
 values (1,"Year",100000000),(2,"Month",10000000),(3,"Day",500000),(4,"Hour",100000);
 create table service(
 service_id int auto_increment primary key,
+service_code varchar(10) unique,
 service_name varchar(45),
 service_area int,
 service_cost double,
