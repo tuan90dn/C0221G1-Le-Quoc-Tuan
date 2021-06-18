@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+</head>
+<body>
+<h3>Customers</h3>
+<p>
+    <a th:href="@{/products/create}">
+        Add new customer
+    </a>
+</p>
+<div style="padding-left: 800px" id="form">
+    <form method="post" action="/products/search">
+        <input style="width: 200px;" type="text" name="name" id="name">
+        <input style="width: 100px;" type="submit" value="Search">
+    </form>
+</div>
+<!--<p>-->
+<!--    <a th:href="@{/products/search}">-->
+<!--        Search customer-->
+<!--    </a>-->
+<!--</p>-->
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+
+<table id = "products">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Manufactory</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${products}">
+        <td th:text="${row.getNameOfProduct()}"></td>
+        <td th:text="${row.getPriceOfProduct()}"></td>
+        <td th:text="${row.getDescriptionOfProduct()}"></td>
+        <td th:text="${row.getManufactoryOfProduct()}"></td>
+        <td><a th:href="@{/products/edit/{idProduct}(idProduct=${row.getIdOfProduct()})}">Edit</a></td>
+
+        <td><a th:href="@{/products/delete/{idProduct}(idProduct=${row.getIdOfProduct()})}">Delete</a></td>
+<!--        <td><a href="#deleteEmployeeModal" data-toggle="modal">Delete</a></td>-->
+        <td><a th:href="@{/products/view/{idProduct}(idProduct=${row.getIdOfProduct()})}">View</a></td>
+    </tr>
+    </tbody>
+</table>
+<!--<div id="deleteProductModal" class="modal fade">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <form method="post" action="/employees?action=delete">-->
+<!--                <div class="modal-header">-->
+<!--                    <h4 class="modal-title">Delete Employee</h4>-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <p>Are you sure you want to delete these Records?</p>-->
+<!--                    <p class="text-warning"><small>This action cannot be undone.</small></p>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">-->
+<!--                    <input type="submit"class="btn btn-danger" value="Delete">-->
+<!--                    <input id="idDelete" type="hidden" name="delete">-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<footer th:replace="/layout :: footer"></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+</body>
+</html>

@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class EmailController {
+
     @GetMapping(value = {"/","/create"})
     public ModelAndView showCreatForm(){
         ModelAndView modelAndView=new ModelAndView("create");
