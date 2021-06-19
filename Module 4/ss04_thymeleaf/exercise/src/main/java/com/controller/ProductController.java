@@ -56,18 +56,18 @@ public class ProductController {
     @PostMapping(value = "/search")
     public String searchProductByName(@RequestParam String name,Model model){
         List<Product> productList=productServices.findProductByName(name);
-        model.addAttribute("products",productList);        ;
+        model.addAttribute("products",productList);
         return ("index");
     }
-    @GetMapping(value = "/delete/{idProduct}")
-    public String showDelete(Model model,@PathVariable int idProduct){
-        Product product = productServices.findProductById(idProduct);
-        model.addAttribute("product",product);
-        return ("delete");
-    }
+//    @GetMapping(value = "/delete/{idProduct}")
+//    public String showDelete(Model model,@PathVariable int idProduct){
+//        Product product = productServices.findProductById(idProduct);
+//        model.addAttribute("product",product);
+//        return ("redirect:/products/");
+//    }
     @PostMapping(value = "/delete")
-    public String deleteProduct(Product product,RedirectAttributes redirectAttributes){
-        productServices.deleteProduct(product.idOfProduct);
+    public String deleteProduct(@RequestParam int idProduct,RedirectAttributes redirectAttributes){
+        productServices.deleteProduct(idProduct);
         redirectAttributes.addFlashAttribute("success","Delete Successful!");
         return "redirect:/products/";
     }
