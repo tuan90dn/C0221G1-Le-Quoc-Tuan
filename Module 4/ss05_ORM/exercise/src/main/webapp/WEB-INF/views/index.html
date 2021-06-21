@@ -40,9 +40,10 @@
     </div>
     <input type="submit" value="Comment"/>
 </form>
-<div th:each="row,rowStat:${images}">
+<div  th:each="row,rowStat:${images}">
     <span th:text="${'+'+row.getMark()+row.getFeedback()}"></span>
     <span th:text="*{row.getLikeComment()}"></span><a th:href="@{/images/increment/{id}(id=${row.getId()})}">Like</a>
+
 </div>
 <!--<table style="size: A5">-->
 <!--    <tr th:each="row,rowStat:${images}">-->

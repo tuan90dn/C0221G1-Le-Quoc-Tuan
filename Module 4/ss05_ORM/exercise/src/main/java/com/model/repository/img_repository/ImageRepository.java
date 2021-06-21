@@ -17,9 +17,10 @@ public class ImageRepository implements IImgRepository {
 
     @Override
     public List<Image> findAll() {
-        String queryStr = "SELECT c FROM Image AS c";
-        TypedQuery<Image> query = BaseRepository.entityManager.createQuery(queryStr, Image.class);
-        return query.getResultList();
+        return BaseRepository.entityManager.createNativeQuery("select * from image i where i.date_comment=curdate();",Image.class).getResultList();
+//        String queryStr = "SELECT c FROM Image AS c ";
+//        TypedQuery<Image> query = BaseRepository.entityManager.createQuery(queryStr, Image.class);
+//        return query.getResultList();
     }
 
     @Override
