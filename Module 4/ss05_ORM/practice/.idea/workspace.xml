@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8c2fdc6f-0856-4ca2-8e69-5005079489b4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../ss01_spring_MVC_overviews/practices/practice_02/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss01_spring_MVC_overviews/practices/practice_02/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss02_spring_controller/practices/practice_03/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss02_spring_controller/practices/practice_03/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss04_thymeleaf/exercise/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss04_thymeleaf/exercise/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-management/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/customer-management/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-management/src/main/java/cg/wbd/grandemonstration/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-management/src/main/java/cg/wbd/grandemonstration/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-management/src/main/java/cg/wbd/grandemonstration/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-management/src/main/java/cg/wbd/grandemonstration/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-management/src/main/webapp/WEB-INF/templates/customers/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/customer-management/src/main/webapp/WEB-INF/templates/customers/list.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1uEhGSqoiBYNby5lduhLU1lovFy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c2fdc6f-0856-4ca2-8e69-5005079489b4" name="Default Changelist" comment="" />
+      <created>1624236559971</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624236559971</updated>
+      <workItem from="1624236561267" duration="28000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
