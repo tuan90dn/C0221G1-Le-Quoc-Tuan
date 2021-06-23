@@ -66,8 +66,8 @@ public class BlogController {
         return "redirect:/blogs/";
     }
     @PostMapping(value = "/search")
-    public String searchBlogByName(@RequestParam String name,Model model){
-        List<Blog> blogList=blogService.findByName(name);
+    public String searchBlogByName(@RequestParam String name,Model model,@RequestParam(defaultValue = "0") int page){
+        Page<Blog> blogList=blogService.findByName(name,PageRequest.of(page,2));
         model.addAttribute("blogs",blogList);
         return ("/blog/display");
     }

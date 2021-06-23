@@ -36,7 +36,7 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public List<Category> findByName(String name) {
-        return categoryRepository.findIndexByName(name);
+    public Page<Category> findByName(String name,Pageable pageable) {
+        return categoryRepository.findCategoryByName(name,pageable);
     }
 }
