@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+</head>
+<body>
+<h3>Index</h3>
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-lg-4 text-center">
+            <!--            <button type="button" class="btn btn-primary"><a th:href="@{/products/create}">Add New Product</a></button>-->
+
+            <a th:href="@{/category/create}">
+                <h4>Add new category</h4>
+            </a>
+
+        </div>
+        <div class="col-lg-8 d-flex justify-content-end">
+            <form method="post" action="/category/search">
+                <input style="width: 200px;" type="text" name="name" id="name">
+                <input style="width: 100px;" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<p>-->
+<!--    <a th:href="@{/products/search}">-->
+<!--        Search customer-->
+<!--    </a>-->
+<!--</p>-->
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+
+<table id="products">
+    <thead>
+    <tr>
+        <th>Ordinal Number</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${categoryList}">
+        <td th:text="${rowStat.count}"></td>
+        <td th:text="${row.getName()}"></td>
+
+        <td><a th:href="@{/category/edit/{idIndex}(idIndex=${row.getId()})}">Edit</a></td>
+
+        <!--        <td><a th:href="@{/products/delete/{idProduct}(idProduct=${row.getIdOfProduct()})}">Delete</a></td>-->
+        <td>
+            <button th:onclick="|deleteBlog(${row.getId()})|" type="button" class="btn btn-primary"
+                    data-toggle="modal" data-target="#exampleModal">
+                Delete
+            </button>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="#" th:action="@{/category/delete}"
+              method="POST" novalidate="novalidate">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Blog</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                    <input id="idDelete" type="hidden" name="idIndex">
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+<script>
+    function deleteBlog(id) {
+        document.getElementById("idDelete").value = id;
+    }
+</script>
+</body>
+</body>
+</html>
