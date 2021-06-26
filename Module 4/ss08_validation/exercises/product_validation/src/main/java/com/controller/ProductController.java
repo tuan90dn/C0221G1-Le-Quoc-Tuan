@@ -1,18 +1,22 @@
 package com.controller;
 
 
+import com.dto.ProductDto;
 import com.model.entity.Product;
 import com.model.service.category_service.ICategoryService;
 import com.model.service.product_service.IProductService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -36,12 +40,17 @@ public class ProductController {
     }
     @GetMapping(value = "/create")
     public String showCreate(Model model){
-        model.addAttribute("product",new Product());
+        model.addAttribute("productDto",new ProductDto());
         model.addAttribute("category",this.categoryService.findAllCategory());
-        return ("/product/create");
+        return "/product/create";
     }
     @PostMapping(value = "/save")
-    public String saveProduct(Product product, RedirectAttributes redirectAttributes){
+    public String saveProduct(@Valid @ModelAttribute("productDto") ProductDto productDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()){
+            return "/product/create";
+        }
+        Product product=new Product();
+        BeanUtils.copyProperties(productDto,product);
         productService.save(product);
         redirectAttributes.addFlashAttribute("success","Create Successful!");
         return "redirect:/product/";
@@ -49,12 +58,19 @@ public class ProductController {
     @GetMapping(value = "/edit/{idProduct}")
     public String showEdit(Model model, @PathVariable int idProduct){
         Product product = productService.findById(idProduct);
-        model.addAttribute("product", product);
+        ProductDto productDto=new ProductDto();
+        BeanUtils.copyProperties(product,productDto);
+        model.addAttribute("productDto", productDto);
         model.addAttribute("category",this.categoryService.findAllCategory());
-        return ("/product/edit");
+        return "/product/edit";
     }
     @PostMapping(value = "/update")
-    public String updateProduct(Product product, RedirectAttributes redirectAttributes){
+    public String updateProduct(@Valid @ModelAttribute ProductDto productDto,BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        if (bindingResult.hasErrors()){
+            return "/product/edit";
+        }
+        Product product=new Product();
+        BeanUtils.copyProperties(productDto,product);
         productService.save(product);
         redirectAttributes.addFlashAttribute("success","Edit Successful!");
         return "redirect:/product/";
