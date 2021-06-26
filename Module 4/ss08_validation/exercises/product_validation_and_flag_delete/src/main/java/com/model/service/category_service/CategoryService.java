@@ -19,7 +19,7 @@ public class CategoryService implements ICategoryService {
         return categoryRepository.findAll(pageable);
     }
     public List<Category> findAllCategory(){
-        return (List<Category>) categoryRepository.findAll();
+        return categoryRepository.findAllCategoryActive();
     }
 
     @Override
@@ -35,6 +35,11 @@ public class CategoryService implements ICategoryService {
     @Override
     public void remove(Integer id) {
         categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteByFlag(Integer id) {
+        categoryRepository.deleteByFlag(id);
     }
 
     @Override

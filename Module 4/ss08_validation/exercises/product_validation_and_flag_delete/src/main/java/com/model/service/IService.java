@@ -12,5 +12,6 @@ public interface IService<T> {
     void save(T t);
 
     void remove(Integer id);
+    void deleteByFlag(Integer id);
     Page<T> findByName(String name,Pageable pageable);
 }

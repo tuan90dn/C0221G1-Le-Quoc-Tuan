@@ -32,6 +32,11 @@ public class ProductService implements IProductService{
     }
 
     @Override
+    public void deleteByFlag(Integer id) {
+
+    }
+
+    @Override
     public Page<Product> findByName(String name, Pageable pageable) {
         return productRepository.findProductByName("%"+name+"%",pageable);
     }

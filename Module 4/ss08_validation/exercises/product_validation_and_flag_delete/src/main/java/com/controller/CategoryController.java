@@ -61,8 +61,8 @@ public class CategoryController {
 //        return ("/index/view");
 //    }
     @PostMapping(value = "/delete")
-    public String deleteCategory(@RequestParam int idCategory, RedirectAttributes redirectAttributes){
-        categoryService.remove(idCategory);
+    public String deleteCategory(@RequestParam Integer idCategory, RedirectAttributes redirectAttributes){
+        categoryService.deleteByFlag(idCategory);
         redirectAttributes.addFlashAttribute("success","Delete Successful!");
         return "redirect:/category/";
     }

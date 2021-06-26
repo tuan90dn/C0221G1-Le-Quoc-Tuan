@@ -9,8 +9,18 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @Column(name = "is_active")
+    private boolean isActive=true;
     @OneToMany(mappedBy = "category")
     private List<Product> productList;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
     public List<Product> getProductList() {
         return productList;

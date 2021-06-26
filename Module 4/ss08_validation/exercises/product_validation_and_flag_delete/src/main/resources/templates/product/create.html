@@ -10,7 +10,7 @@
 <div id="form">
     <form th:action="@{/product/save}" th:object="${productDto}"
           method="POST" novalidate="novalidate">
-        <input type="hidden" th:field="*{id}"/>
+
         <div>
             <label>Name</label>
             <input type="text" th:field="*{name}"/>

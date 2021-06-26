@@ -56,7 +56,10 @@
         <td th:text="${row.name}"></td>
         <td th:text="${row.description}"></td>
         <td th:text="${row.manufactory}"></td>
-        <td th:text="${row.category.name}"></td>
+        <div th:switch="${row.category.isActive()}">
+            <p th:case="true"><td th:text="${row.category.name}"></td></p>
+            <p th:case="false"><td>No Category</td></p>
+        </div>
 
         <td><a th:href="@{/product/edit/{idProduct}(idProduct=${row.getId()})}">Edit</a></td>
 
