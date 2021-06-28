@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+</head>
+<body>
+
+<form method="post" action="/book/return">
+  <input style="width: 200px;" type="text" name="code" id="code">
+  <input style="width: 100px;" type="submit" value="Return">
+</form>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
