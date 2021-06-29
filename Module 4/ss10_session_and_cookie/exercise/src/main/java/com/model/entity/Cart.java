@@ -44,9 +44,10 @@ public class Cart {
         }
     }
     public void delProduct(Product product){
-        if (checkItemInCart(product)){
-            products.clear();
-        }
+
+        Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
+        assert itemEntry != null;
+        products.remove(itemEntry.getKey());
     }
     public void subProduct(Product product){
             Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
