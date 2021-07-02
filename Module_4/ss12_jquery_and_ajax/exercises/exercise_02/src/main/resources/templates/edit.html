@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<h3>Edit Smartphone</h3>
+
+<div id="form">
+    <form  th:object="${smartphone}">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Product</label>
+            <input type="text" th:field="*{producer}"/>
+        </div>
+        <div>
+            <label>Model</label>
+            <input type="text" th:field="*{model}"/>
+        </div>
+        <div>
+            <label>Price</label>
+            <input type="text" th:field="*{price}"/>
+        </div>
+        <input type="submit" value="Edit" onclick="editSmartphone()"/>
+    </form>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Producer</th>
+        <th scope="col">Model</th>
+        <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody id="smartphoneList">
+    </tbody>
+</table>
+<!--<table id="smartphoneList">-->
+<!--    <tr>-->
+<!--        <td>Producer</td>-->
+<!--        <td>Model</td>-->
+<!--        <td>Price</td>-->
+<!--        <td>Delete</td>-->
+<!--    </tr>-->
+<!--    <th:block th:each="smartphone: ${smartphones}">-->
+<!--        <tr>-->
+<!--            <td th:text="${smartphone.producer}"></td>-->
+<!--            <td th:text="${smartphone.model}"></td>-->
+<!--            <td th:text="${smartphone.price}"></td>-->
+<!--            <td><a class="deleteSmartphone" th:href="${smartphone.getId()}">Delete</a></td>-->
+<!--            <td><a th:href="@{/smartphones/edit/{idSmartphone}(idSmartphone=${smartphone.id})}">Edit</a></td>-->
+
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+<!--<script src="jquery/jquery-3.6.0.min.js"></script>-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    let id=$('#id').val();
+    function editSmartphone(){
+
+        let producer = $('#producer').val();
+        let model = $('#model').val();
+        let price = $('#price').val();
+        let newSmartphone = {
+
+            producer: producer,
+            model: model,
+            price: price
+        };
+        // goi ajax
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "PUT",
+            data: JSON.stringify(newSmartphone),
+            //tên API
+            url: "/smartphones/update/"+id,
+            //xử lý khi thành công
+            // success: showEdit()
+            success: function (data){
+                let resultHTML ="";
+
+                resultHTML += "<tr>";
+
+                resultHTML += "<td>" + data.id + "</td>";
+                resultHTML += "<td>" + data.producer + "</td>";
+                resultHTML += "<td>" + data.model + "</td>";
+                resultHTML += "<td>" + data.price + "</td>";
+                resultHTML += "</tr>";
+                document.getElementById('smartphoneList').innerHTML = resultHTML;
+            }
+
+        });
+        //chặn sự kiện mặc định của thẻ
+        event.preventDefault();
+    }
+    // function showEdit() {
+    //     $.ajax({
+    //         type: "PUT",
+    //         //tên API
+    //         url: "/smartphones/update/"+id,
+    //         //xử lý khi thành công
+    //         success: function (data) {
+    //             // hien thi danh sach o day
+    //             let content = '    <tr>\n' +
+    //                 '        <td>data.id</td>\n' +
+    //                 '        <td>data.model</td>\n' +
+    //                 '        <td>data.price</td>\n' +
+    //                 '        <td>data.producer</td>\n' +
+    //                 '    </tr>';
+    //
+    //             document.getElementById('smartphoneList').innerHTML = content;
+    //         }
+    //     });
+    // }
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>List Smartphone</title>
+<!--    <script src="/jquery/jquery-3.6.0.min.js"></script>-->
+
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="row w-50 mx-auto">
+        <div class="col-lg-12">
+            <h2>List student other</h2>
+<!--            <input type="search" value="Search" id="search">-->
+
+                <input type="text" id="nameSearch">
+                <input id="btnSearch" type="submit" value="Search">
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Creating time</th>
+                    <th scope="col">Category</th>
+                </tr>
+                </thead>
+                <tbody id="tableBodyBlog">
+                </tbody>
+            </table>
+            <input type="button" value="Show Full List" id="btnShowList">
+        </div>
+    </div>
+</div>
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="jquery/jquery-3.6.0.min.js"></script>
+
+<script>
+    let page=0;
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "GET", //GET, DELETE, PUT...
+        url: "http://localhost:8080/blogRest/page_blog?page="+page,
+        success: function(resultSuccess){
+            console.log("Success");
+            console.log(resultSuccess);
+            page++;
+            let list=resultSuccess.content;
+            let resultHTML = "";
+            for (let i = 0; i < list.length; i++) {
+                resultHTML += "<tr>";
+                resultHTML += "<th scope='row'>" + (i + 1) + "</th>";
+                resultHTML += "<td>" + list[i].id + "</td>";
+                resultHTML += "<td>" + list[i].name + "</td>";
+                resultHTML += "<td>" + list[i].content + "</td>";
+                resultHTML += "<td>" + list[i].dateComment + "</td>";
+                resultHTML += "<td>" + list[i].category.name + "</td>";
+                resultHTML += "</tr>";
+            }
+
+            console.log(resultHTML);
+            // innerHTML
+            $("#tableBodyBlog").append(resultHTML);
+        },
+        error: function(resultError) {
+            console.log("Error: ");
+            console.log(resultError);
+        }
+    });
+    $("#btnShowList").click(function (){
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "GET", //GET, DELETE, PUT...
+            url: "http://localhost:8080/blogRest/page_blog?page="+page,
+            success: function(resultSuccess){
+                console.log("Success");
+                console.log(resultSuccess);
+                page++;
+                let list=resultSuccess.content;
+                let resultHTML = "";
+                for (let i = 0; i < list.length; i++) {
+                    resultHTML += "<tr>";
+                    resultHTML += "<th scope='row'>" + (i + 1) + "</th>";
+                    resultHTML += "<td>" + list[i].id + "</td>";
+                    resultHTML += "<td>" + list[i].name + "</td>";
+                    resultHTML += "<td>" + list[i].content + "</td>";
+                    resultHTML += "<td>" + list[i].dateComment + "</td>";
+                    resultHTML += "<td>" + list[i].category.name + "</td>";
+                    resultHTML += "</tr>";
+                }
+
+                console.log(resultHTML);
+                // innerHTML
+                $("#tableBodyBlog").append(resultHTML);
+            },
+            error: function(resultError) {
+                console.log("Error: ");
+                console.log(resultError);
+            }
+        });
+    });
+    $("#btnSearch").click(function () {
+        let name=$("#nameSearch").val();
+        // alert(name);
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "GET", //GET, DELETE, PUT...
+            url: "http://localhost:8080/blogRest/search?name="+name,
+            success: function(searcg){
+                console.log("Success");
+                console.log(searcg);
+                let resultHTML = "";
+                for (let i = 0; i < searcg.length; i++) {
+                    resultHTML += "<tr>";
+                    resultHTML += "<th scope='row'>" + (i + 1) + "</th>";
+                    resultHTML += "<td>" + searcg[i].id + "</td>";
+                    resultHTML += "<td>" + searcg[i].name + "</td>";
+                    resultHTML += "<td>" + searcg[i].content + "</td>";
+                    resultHTML += "<td>" + searcg[i].dateComment + "</td>";
+                    resultHTML += "<td>" + searcg[i].category.name + "</td>";
+                    resultHTML += "</tr>";
+                }
+
+                console.log(resultHTML);
+                // innerHTML
+                $("#tableBodyBlog").html(resultHTML);
+            },
+            error: function(resultError) {
+                console.log("Error: ");
+                console.log(resultError);
+            }
+        })
+    })
+</script>
+</body>
+</html>
