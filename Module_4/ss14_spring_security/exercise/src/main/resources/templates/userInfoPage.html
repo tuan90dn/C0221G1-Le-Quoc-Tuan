@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+  <title>User Info</title>
+</head>
+<body>
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+
+<h2>User Info Page</h2>
+<h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
+<b>This is protected page!</b>
+
+<br/><br/>
+
+<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+
+<table id="products">
+  <thead>
+  <tr>
+    <th>Ordinal Number</th>
+    <th>Creating Time</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>View</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="row,rowStat : ${blogs}">
+    <td th:text="${rowStat.count}"></td>
+    <td th:text="${row.dateComment}"></td>
+    <td th:text="${row.name}"></td>
+    <td th:text="${row.category.name}"></td>
+    <td><a th:href="@{/blogs/view/{idBlog}(idBlog=${row.getId()})}">View</a></td>
+  </tr>
+  </tbody>
+</table>
+
+<footer th:replace="/layout :: footer"></footer>
+</body>
+
+</html>
