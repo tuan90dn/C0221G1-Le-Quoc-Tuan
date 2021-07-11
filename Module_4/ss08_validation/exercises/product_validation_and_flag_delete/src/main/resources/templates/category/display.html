@@ -51,7 +51,7 @@
         <td th:text="${rowStat.count}"></td>
         <td th:text="${row.getName()}"></td>
 
-        <td><a th:href="@{/category/edit/{idIndex}(idIndex=${row.getId()})}">Edit</a></td>
+        <td><a th:href="@{/category/edit/{id}(id=${row.getId()})}">Edit</a></td>
 
         <!--        <td><a th:href="@{/products/delete/{idProduct}(idProduct=${row.getIdOfProduct()})}">Delete</a></td>-->
         <td>
@@ -91,7 +91,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Delete</button>
-                    <input id="idDelete" type="hidden" name="idCategory">
+                    <input id="idDelete" type="hidden" name="id">
                 </div>
             </div>
         </form>

@@ -55,9 +55,9 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("success","Create Successful!");
         return "redirect:/product/";
     }
-    @GetMapping(value = "/edit/{idProduct}")
-    public String showEdit(Model model, @PathVariable int idProduct){
-        Product product = productService.findById(idProduct);
+    @GetMapping(value = "/edit/{id}")
+    public String showEdit(Model model, @PathVariable int id){
+        Product product = productService.findById(id);
         ProductDto productDto=new ProductDto();
         BeanUtils.copyProperties(product,productDto);
         model.addAttribute("productDto", productDto);
@@ -82,8 +82,8 @@ public class ProductController {
 //        return ("/index/view");
 //    }
     @PostMapping(value = "/delete")
-    public String deleteProduct(@RequestParam int idProduct, RedirectAttributes redirectAttributes){
-        productService.remove(idProduct);
+    public String deleteProduct(@RequestParam int id, RedirectAttributes redirectAttributes){
+        productService.remove(id);
         redirectAttributes.addFlashAttribute("success","Delete Successful!");
         return "redirect:/product/";
     }

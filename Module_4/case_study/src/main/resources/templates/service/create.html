@@ -1,0 +1,74 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<header th:replace="/layout::header"></header>
+
+<h3>Add Service</h3>
+<p>
+    <a th:href="@{/services}">
+        Back to service list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/services/save}" th:object="${serviceDto}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</p>
+        </div>
+        <div>
+            <label>Area</label>
+            <input type="text" th:field="*{area}"/>
+            <p th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></p>
+        </div>
+        <div>
+            <label>Cost</label>
+            <input type="text" th:field="*{cost}"/>
+            <p th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}"></p>
+        </div>
+        <div>
+            <label>Max People</label>
+            <input type="text" th:field="*{maxPeople}"/>
+            <p th:if="${#fields.hasErrors('maxPeople')}" th:errors="*{maxPeople}"></p>
+        </div>
+        <div>
+            <label>Type Of Service</label>
+            <select th:field="*{serviceType}">
+                <option th:each="p : ${serviceType}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label>Type Of Rent</label>
+            <select th:field="*{rentType}">
+                <option th:each="p : ${rentType}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label>Standard Room</label>
+            <input type="text" th:field="*{standardRoom}"/>
+            <p th:if="${#fields.hasErrors('standardRoom')}" th:errors="*{standardRoom}"></p>
+        </div>
+        <div>
+            <label>Description Other Convenience</label>
+            <input type="text" th:field="*{descriptionOtherConvenience}"/>
+            <p th:if="${#fields.hasErrors('descriptionOtherConvenience')}" th:errors="*{descriptionOtherConvenience}"></p>
+        </div>
+        <div>
+            <label>Pool Area</label>
+            <input type="text" th:field="*{poolArea}"/>
+            <p th:if="${#fields.hasErrors('poolArea')}" th:errors="*{poolArea}"></p>
+        </div>
+        <div>
+            <label>Number Of Floors</label>
+            <input type="text" th:field="*{numberOfFloors}"/>
+            <p th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></p>
+        </div>
+
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

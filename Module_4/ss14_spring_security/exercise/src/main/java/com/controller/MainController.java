@@ -9,7 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,12 +29,16 @@ public class MainController {
     private IBlogService blogService;
     @Autowired
     private ICategoryService categoryService;
+//    @Autowired
+//    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
         model.addAttribute("title", "Welcome");
         model.addAttribute("message", "This is welcome page!");
+//        String password=bCryptPasswordEncoder.encode("123");
+//        System.out.println(password);
         return "welcomePage";
     }
 
@@ -41,14 +49,6 @@ public class MainController {
 
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
-        String keyword="";
-        if (name.isPresent()){
-            keyword=name.get();
-        }
-        Page<Blog> blogList=blogService.findByName(keyword,pageable);
-        model.addAttribute("blogs",blogList);
-        model.addAttribute("keyword",keyword);
-        model.addAttribute("success","");
 
         return "adminPage";
     }
@@ -74,10 +74,14 @@ public class MainController {
         System.out.println("User Name: " + userName);
 
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
+//        for (GrantedAuthority grantedAuthority:loginedUser.getAuthorities()){
+//            System.out.println(grantedAuthority);
+//        }
+
 
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
-        model.addAttribute("blogs",blogService.findAllBlog());
+
 
         return "userInfoPage";
     }

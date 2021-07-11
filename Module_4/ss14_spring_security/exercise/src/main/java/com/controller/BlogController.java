@@ -8,11 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -22,8 +28,8 @@ public class BlogController {
     private IBlogService blogService;
     @Autowired
     private ICategoryService categoryService;
-    @GetMapping(value = "")
-    public String display(Model model, @PageableDefault(size = 2) Pageable pageable, @RequestParam Optional<String> name){
+    @GetMapping(value = "/list")
+    public String display(Model model, Principal principal, @PageableDefault(size = 2) Pageable pageable, @RequestParam Optional<String> name){
         String keyword="";
         if (name.isPresent()){
             keyword=name.get();
@@ -32,6 +38,19 @@ public class BlogController {
         model.addAttribute("blogs",blogList);
         model.addAttribute("keyword",keyword);
         model.addAttribute("success","");
+        int flag=0;
+        User loginedUser = (User) ((Authentication) principal).getPrincipal();
+        List<GrantedAuthority> grantedAuthorityList= new ArrayList<>(loginedUser.getAuthorities());
+        List<String> listString=new ArrayList<>();
+        for (GrantedAuthority grantedAuthority:grantedAuthorityList){
+            listString.add(grantedAuthority+"");
+        }
+        for (String role:listString){
+            if (role.equals("ROLE_ADMIN")){
+                flag=1;
+            }
+        }
+        model.addAttribute("flag", flag);
         return "/blog/display";
     }
     @GetMapping(value = "/create")

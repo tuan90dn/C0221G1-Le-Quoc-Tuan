@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<header th:replace="/layout::header"></header>
+
+<h3>Edit Contract</h3>
+<p>
+    <a th:href="@{/contracts}">
+        Back to contract list
+    </a>
+</p>
+<div id="form">
+    <form action="#" th:action="@{/contracts/update}" th:object="${contractDto}"
+          method="post" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Start Date</label>
+            <input type="date" th:field="*{startDate}"/>
+            <p th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">Name error</p>
+        </div>
+        <div>
+            <label>End Date</label>
+            <input type="date" th:field="*{endDate}"/>
+            <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p>
+            <p th:if="${message}">
+                <span style="color: red" th:text="${message}"></span>
+            </p>
+        </div>
+        <div>
+            <p>Employee</p>
+            <select th:field="*{employee}">
+                <option th:each="e: ${employee}" th:value="${e.id}" th:text="${e.name}"></option>
+            </select>
+        </div>
+        <div>
+            <p>Customer</p>
+            <select th:field="*{customer}">
+                <option th:each="c: ${customer}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+        </div>
+        <div>
+            <p>Service</p>
+            <select th:field="*{service}">
+                <option th:each="c: ${service}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="deposit">Deposit</label>
+            <input id="deposit" type="text" th:field="*{deposit}"/>
+            <p th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></p>
+        </div>
+        <input type="submit" value="Edit"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

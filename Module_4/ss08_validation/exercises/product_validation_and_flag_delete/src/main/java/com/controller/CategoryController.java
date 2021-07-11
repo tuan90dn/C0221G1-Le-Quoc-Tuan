@@ -42,9 +42,9 @@ public class CategoryController {
         redirectAttributes.addFlashAttribute("success","Create Successful!");
         return "redirect:/category/";
     }
-    @GetMapping(value = "/edit/{idCategory}")
-    public String showEdit(Model model, @PathVariable int idCategory){
-        Category category = categoryService.findById(idCategory);
+    @GetMapping(value = "/edit/{id}")
+    public String showEdit(Model model, @PathVariable int id){
+        Category category = categoryService.findById(id);
         model.addAttribute("category", category);
         return ("/category/edit");
     }
@@ -61,8 +61,8 @@ public class CategoryController {
 //        return ("/index/view");
 //    }
     @PostMapping(value = "/delete")
-    public String deleteCategory(@RequestParam Integer idCategory, RedirectAttributes redirectAttributes){
-        categoryService.deleteByFlag(idCategory);
+    public String deleteCategory(@RequestParam Integer id, RedirectAttributes redirectAttributes){
+        categoryService.deleteByFlag(id);
         redirectAttributes.addFlashAttribute("success","Delete Successful!");
         return "redirect:/category/";
     }

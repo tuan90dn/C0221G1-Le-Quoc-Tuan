@@ -1,0 +1,63 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<header th:replace="/layout::header"></header>
+
+<h3>Add Contract</h3>
+
+    <a th:href="@{/contracts}">
+        Back to contract list
+    </a>
+
+<div id="form">
+    <form th:action="@{/contracts/save}" th:object="${contractDto}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>Start Date</label>
+            <input type="date" th:field="*{startDate}"/>
+            <p th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">Name error</p>
+        </div>
+        <div>
+            <label>End Date</label>
+            <input type="date" th:field="*{endDate}"/>
+            <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p>
+            <p th:if="${message}">
+                <span style="color: red" th:text="${message}"></span>
+            </p>
+        </div>
+        <div>
+            <p>Employee</p>
+            <select th:field="*{employee}">
+                <option th:each="e: ${employee}" th:value="${e.id}" th:text="${e.name}"></option>
+            </select>
+        </div>
+        <div>
+            <p>Customer</p>
+            <select th:field="*{customer}">
+                <option th:each="c: ${customer}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+        </div>
+        <div>
+            <p>Service</p>
+            <select th:field="*{service}">
+                <option th:each="c: ${service}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="deposit">Deposit</label>
+            <input id="deposit" type="text" th:field="*{deposit}"/>
+            <p th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></p>
+        </div>
+<!--        <div>-->
+<!--            <label for="totalMoney">Total Money</label>-->
+<!--            <input id="totalMoney" type="text" th:field="*{totalMoney}"/>-->
+<!--            <p th:if="${#fields.hasErrors('totalMoney')}" th:errors="*{totalMoney}"></p>-->
+<!--        </div>-->
+
+
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

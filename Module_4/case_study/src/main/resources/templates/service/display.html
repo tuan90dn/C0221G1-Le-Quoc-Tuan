@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+</head>
+<body>
+<header th:replace="/layout::header"></header>
+
+<h3>Services</h3>
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-lg-4 text-center">
+            <!--            <button type="button" class="btn btn-primary"><a th:href="@{/products/create}">Add New Product</a></button>-->
+
+            <a th:href="@{/services/create}">
+                <h4>Add new service</h4>
+            </a>
+
+        </div>
+        <div class="col-lg-8 d-flex justify-content-end">
+            <form action="/services">
+                <input style="width: 200px;" type="text" name="name" id="name">
+                <input style="width: 100px;" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<p>-->
+<!--    <a th:href="@{/products/search}">-->
+<!--        Search customer-->
+<!--    </a>-->
+<!--</p>-->
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+
+<table id="products">
+    <thead>
+    <tr>
+        <th>Ordinal Number</th>
+        <th>Name</th>
+        <th>Area</th>
+        <th>Cost</th>
+        <th>Max People</th>
+        <th>Type Of Service</th>
+        <th>Type Of Rent</th>
+<!--        <th>Edit</th>-->
+<!--        <th>Delete</th>-->
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${servicePage}">
+        <td th:text="${rowStat.count}"></td>
+        <td th:text="${row.name}"></td>
+        <td th:text="${row.area}"></td>
+        <td th:text="${row.cost}"></td>
+        <td th:text="${row.maxPeople}"></td>
+        <td th:text="${row.serviceType.name}"></td>
+        <td th:text="${row.rentType.name}"></td>
+<!--        <td><a th:href="@{/employees/edit/{id}(id=${row.getId()})}">Edit</a></td>-->
+<!--        <td>-->
+<!--            <button th:onclick="|deleteBlog(${row.getId()})|" type="button" class="btn btn-primary"-->
+<!--                    data-toggle="modal" data-target="#exampleModal">-->
+<!--                Delete-->
+<!--            </button>-->
+<!--        </td>-->
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/services(page=${servicePage.number - 1},name=${keyword})}" th:if="${servicePage.hasPrevious()}">Previous</a>
+    <span th:text="${servicePage.number+1}"></span>/<span th:text="${servicePage.totalPages}"></span>
+    <a th:href="@{/services(page=${servicePage.number + 1},name=${keyword})}" th:if="${servicePage.hasNext()}">Next</a>
+
+    <span th:each="pageNo : ${#numbers.sequence(0, servicePage.totalPages -1)}">
+        <a th:href="@{/services(page=${pageNo},name=${keyword})}" th:text="${pageNo+1}"></a>
+    </span>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/services/delete}"
+              method="POST" novalidate="novalidate">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Service</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                    <input id="idDelete" type="hidden" name="id">
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+<script src="jquery/jquery-3.6.0.min.js"></script>
+
+<script>
+    function deleteBlog(id) {
+        document.getElementById("idDelete").value = id;
+    }
+</script>
+</body>
+</html>

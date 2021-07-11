@@ -41,9 +41,11 @@
         <th>Ordinal Number</th>
         <th>Creating Time</th>
         <th>Name</th>
-        <th>Price</th>
         <th>Description</th>
         <th>Manufactory</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
 
 
     </tr>
@@ -59,7 +61,15 @@
             <p th:case="true"><td th:text="${row.category.name}"></td></p>
             <p th:case="false"><td>No Category</td></p>
         </div>
+        <td><a th:href="@{/product/edit/{id}(id=${row.getId()})}">Edit</a></td>
 
+        <!--        <td><a th:href="@{/products/delete/{idProduct}(idProduct=${row.getIdOfProduct()})}">Delete</a></td>-->
+        <td>
+            <button th:onclick="|deleteBlog(${row.getId()})|" type="button" class="btn btn-primary"
+                    data-toggle="modal" data-target="#exampleModal">
+                Delete
+            </button>
+        </td>
 
 
     </tr>
@@ -92,7 +102,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Delete</button>
-                    <input id="idDelete" type="hidden" name="idProduct">
+                    <input id="idDelete" type="hidden" name="id">
                 </div>
             </div>
         </form>

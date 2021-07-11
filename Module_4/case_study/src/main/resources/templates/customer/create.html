@@ -1,0 +1,76 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<header th:replace="/layout::header"></header>
+
+<h3>Add Customer</h3>
+<p>
+    <a th:href="@{/customers}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/customers/save}" th:object="${customerDto}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>Code Of Customer</label>
+            <input type="text" th:field="*{code}"/>
+            <p th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Name error</p>
+            <p th:if="${message}">
+                <span style="color: red" th:text="${message}"></span>
+            </p>
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</p>
+        </div>
+        <div>
+            <label>Type Of Customer</label>
+            <select th:field="*{customerType}">
+                <option th:each="p : ${customerTypes}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select>
+
+        </div>
+        <div>
+            <label>Birthday</label>
+            <input type="date" th:field="*{birthday}"/>
+            <p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></p>
+        </div>
+        <div>
+            <label>Gender</label>
+            <select th:field="*{gender}">
+                <div>
+                    <option disabled="true" selected="selected" value="">Select</option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </div>
+            </select>
+
+        </div>
+        <div>
+            <label>Id Card</label>
+            <input type="text" th:field="*{idCard}"/>
+            <p th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></p>
+        </div>
+        <div>
+            <label>Phone</label>
+            <input type="text" th:field="*{phone}"/>
+            <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" th:field="*{email}"/>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        </div>
+        <div>
+            <label>Address</label>
+            <input type="text" th:field="*{address}"/>
+            <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

@@ -55,11 +55,11 @@
         <td th:text="${row.name}"></td>
         <td th:text="${row.category.name}"></td>
 
-        <td><a th:href="@{/blogs/edit/{idBlog}(idBlog=${row.getId()})}">Edit</a></td>
+        <td><a th:if="${flag==1}" th:href="@{/blogs/edit/{idBlog}(idBlog=${row.getId()})}">Edit</a></td>
 
         <!--        <td><a th:href="@{/products/delete/{idProduct}(idProduct=${row.getIdOfProduct()})}">Delete</a></td>-->
         <td>
-            <button th:onclick="|deleteBlog(${row.getId()})|" type="button" class="btn btn-primary"
+            <button th:if="${flag==1}" th:onclick="|deleteBlog(${row.getId()})|" type="button" class="btn btn-primary"
                     data-toggle="modal" data-target="#exampleModal">
                 Delete
             </button>
