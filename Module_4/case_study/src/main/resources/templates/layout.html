@@ -79,11 +79,13 @@
     </style>
 </head>
 <header th:fragment="header">
-    <div class="container-fluid bg-light d-flex sticky-top">
+    <div class="container-fluid bg-light d-flex sticky-top align-items-center">
         <div class="col-lg-3">
             <img width="40px" height="40px" src="https://i.pinimg.com/280x280_RS/8c/c7/cf/8cc7cf8460083733c6e80bcdc42aeeff.jpg">
         </div>
-        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+            <a th:href="@{/}">Home</a>
+        </div>
         <div class="col-lg-2 d-flex justify-content-end">
             <span th:utext="${#request.userPrincipal.name}"></span>
 
