@@ -34,11 +34,11 @@ public class EmployeeController {
     @Autowired
     private IAppUserService appUserService;
     @GetMapping
-    public String showEmployees(Model model, @RequestParam Optional<String> name, @PageableDefault(size = 4) Pageable pageable){
+    public String showEmployees(Model model, @PageableDefault(size = 4) Pageable pageable){
         String keyword="";
-        if (name.isPresent()){
-            keyword=name.get();
-        }
+//        if (name.isPresent()){
+//            keyword=name.get();
+//        }
         Page<Employee> employeePage = employeeService.findByName(keyword,pageable);
         model.addAttribute("employeePage", employeePage);
         model.addAttribute("keyword", keyword);
@@ -95,4 +95,25 @@ public class EmployeeController {
         redirectAttributes.addFlashAttribute("success","Delete Successful!");
         return "redirect:/employees/";
     }
+    @GetMapping(value = "/search")
+    public String searchEmployee(Model model,@RequestParam Optional<String> name,@RequestParam Optional<String> idCard,@PageableDefault(size = 4) Pageable pageable){
+        Page<Employee> employeePage;
+        if (name.isPresent()){
+            if (idCard.isPresent()){
+                employeePage=employeeService.findAllByNameContainingAndIdCardContaining(name.get(),idCard.get(),pageable);
+            } else {
+                employeePage=employeeService.findByName(name.get(),pageable);
+            }
+        } else{
+            if (idCard.isPresent()){
+                employeePage=employeeService.findAllByIdCardContaining(idCard.get(),pageable);
+            } else {
+                return "redirect:/employees/";
+            }
+        }
+        model.addAttribute("employeePage", employeePage);
+        model.addAttribute("success","");
+        return "/employee/display";
+    }
+
 }

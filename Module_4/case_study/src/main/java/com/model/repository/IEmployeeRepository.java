@@ -10,9 +10,15 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface IEmployeeRepository extends PagingAndSortingRepository<Employee,Integer> {
     @Query(value = "select * from employee where name like :name and is_active=true ",nativeQuery = true)
     Page<Employee> findEmployeesByName(@Param("name") String name, Pageable pageable);
+
+    Page<Employee> findAllByNameContainingAndIdCardContaining(String name,String idCard,Pageable pageable);
+
+    Page<Employee> findAllByIdCardContaining (String idCard,Pageable pageable);
 
     @Modifying
     @Transactional

@@ -42,4 +42,14 @@ public class EmployeeService implements IEmployeeService {
     public Page<Employee> findByName(String name, Pageable pageable) {
         return employeeRepository.findEmployeesByName("%"+name+"%",pageable);
     }
+
+    @Override
+    public Page<Employee> findAllByIdCardContaining(String idCard, Pageable pageable) {
+        return employeeRepository.findAllByIdCardContaining(idCard,pageable);
+    }
+
+    @Override
+    public Page<Employee> findAllByNameContainingAndIdCardContaining(String name, String idCard, Pageable pageable) {
+        return employeeRepository.findAllByNameContainingAndIdCardContaining(name,idCard,pageable);
+    }
 }
