@@ -48,6 +48,8 @@ public class ContractDetailController {
     @PostMapping(value = "/save")
     public String saveContractDetail(@Valid @ModelAttribute("contractDetailDto") ContractDetailDto contractDetailDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
         if (bindingResult.hasErrors()){
+            model.addAttribute("contract",contractService.findAll());
+            model.addAttribute("attachService",attachServiceService.findAll());
             return "/contract_detail/create";
         }
         ContractDetail contractDetail=new ContractDetail();

@@ -2,6 +2,7 @@ package com.controller;
 
 import com.dto.CustomerDto;
 import com.model.entity.Customer;
+import com.model.entity.CustomerType;
 import com.model.service.ICustomerService;
 import com.model.service.ICustomerTypeService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -32,6 +33,10 @@ public class CustomerController {
     private ICustomerService customerService;
     @Autowired
     private ICustomerTypeService customerTypeService;
+    @ModelAttribute("customerTypes")
+    public List<CustomerType> customerTypes(){
+        return customerTypeService.findAll();
+    }
     @GetMapping
     public String showCustomers(Model model, Principal principal, @RequestParam Optional<String> name, @PageableDefault(size = 4) Pageable pageable){
         String keyword="";
@@ -60,12 +65,13 @@ public class CustomerController {
     @GetMapping(value = "/create")
     public String showCreateForm(Model model){
         model.addAttribute("customerDto",new CustomerDto());
-        model.addAttribute("customerTypes",customerTypeService.findAll());
+//        model.addAttribute("customerTypes",customerTypeService.findAll());
         return "/customer/create";
     }
     @PostMapping(value = "/save")
     public String saveCustomer(@Valid @ModelAttribute("customerDto") CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes,Model model){
         if (bindingResult.hasErrors()){
+//            model.addAttribute("customerTypes",customerTypeService.findAll());
             return "/customer/create";
         }
         Customer customer=new Customer();
@@ -74,6 +80,7 @@ public class CustomerController {
         for (Customer customer1:customerList){
             if (customer.getCode().equals(customer1.getCode())){
                 model.addAttribute("message","This code is exist!");
+//                model.addAttribute("customerTypes",customerTypeService.findAll());
                 return "/customer/create";
             }
         }
@@ -87,12 +94,13 @@ public class CustomerController {
         CustomerDto customerDto=new CustomerDto();
         BeanUtils.copyProperties(customer,customerDto);
         model.addAttribute("customerDto",customerDto);
-        model.addAttribute("customerTypes",customerTypeService.findAll());
+//        model.addAttribute("customerTypes",customerTypeService.findAll());
         return "/customer/edit";
     }
     @PostMapping(value = "/update")
     public String updateCustomer(@Valid @ModelAttribute("customerDto") CustomerDto customerDto, BindingResult bindingResult,RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()){
+//            model.addAttribute("customerTypes",customerTypeService.findAll());
             return "/customer/edit";
         }
         Customer customer=new Customer();

@@ -16,7 +16,7 @@ public interface IEmployeeRepository extends PagingAndSortingRepository<Employee
     @Query(value = "select * from employee where name like :name and is_active=true ",nativeQuery = true)
     Page<Employee> findEmployeesByName(@Param("name") String name, Pageable pageable);
 
-    Page<Employee> findAllByNameContainingAndIdCardContaining(String name,String idCard,Pageable pageable);
+    Page<Employee> findAllByNameContainingAndIdCardContainingAndBirthdayContaining(String name,String idCard,String birthday,Pageable pageable);
 
     Page<Employee> findAllByIdCardContaining (String idCard,Pageable pageable);
 

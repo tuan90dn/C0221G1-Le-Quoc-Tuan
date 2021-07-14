@@ -57,6 +57,10 @@ public class EmployeeController {
     @PostMapping(value = "/save")
     public String saveEmployee(@Valid @ModelAttribute("employeeDto") EmployeeDto employeeDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
         if (bindingResult.hasErrors()){
+            model.addAttribute("position",positionService.findAll());
+            model.addAttribute("educationDegree",educationDegreeService.findAll());
+            model.addAttribute("division",divisionService.findAll());
+            model.addAttribute("appUser",appUserService.findAll());
             return "/employee/create";
         }
         Employee employee=new Employee();
@@ -79,8 +83,12 @@ public class EmployeeController {
         return "/employee/edit";
     }
     @PostMapping(value = "/update")
-    public String updateEmployee(@Valid @ModelAttribute("employeeDto") EmployeeDto employeeDto, BindingResult bindingResult,RedirectAttributes redirectAttributes){
+    public String updateEmployee(@Valid @ModelAttribute("employeeDto") EmployeeDto employeeDto,BindingResult bindingResult,Model model, RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()){
+            model.addAttribute("position",positionService.findAll());
+            model.addAttribute("educationDegree",educationDegreeService.findAll());
+            model.addAttribute("division",divisionService.findAll());
+            model.addAttribute("appUser",appUserService.findAll());
             return "/employee/edit";
         }
         Employee employee=new Employee();
@@ -96,21 +104,23 @@ public class EmployeeController {
         return "redirect:/employees/";
     }
     @GetMapping(value = "/search")
-    public String searchEmployee(Model model,@RequestParam Optional<String> name,@RequestParam Optional<String> idCard,@PageableDefault(size = 4) Pageable pageable){
+    public String searchEmployee(Model model,@RequestParam Optional<String> name,@RequestParam Optional<String> idCard,@RequestParam Optional<String> birthday,@PageableDefault(size = 4) Pageable pageable){
         Page<Employee> employeePage;
-        if (name.isPresent()){
-            if (idCard.isPresent()){
-                employeePage=employeeService.findAllByNameContainingAndIdCardContaining(name.get(),idCard.get(),pageable);
-            } else {
-                employeePage=employeeService.findByName(name.get(),pageable);
-            }
-        } else{
-            if (idCard.isPresent()){
-                employeePage=employeeService.findAllByIdCardContaining(idCard.get(),pageable);
-            } else {
-                return "redirect:/employees/";
-            }
-        }
+        employeePage=employeeService.findAllByNameContainingAndIdCardContainingAndBirthdayContaining(name.get(),idCard.get(), birthday.get(), pageable);
+
+//        if (name.isPresent()){
+//            if (idCard.isPresent()){
+//                employeePage=employeeService.findAllByNameContainingAndIdCardContaining(name.get(),idCard.get(),pageable);
+//            } else {
+//                employeePage=employeeService.findByName(name.get(),pageable);
+//            }
+//        } else{
+//            if (idCard.isPresent()){
+//                employeePage=employeeService.findAllByIdCardContaining(idCard.get(),pageable);
+//            } else {
+//                return "redirect:/employees/";
+//            }
+//        }
         model.addAttribute("employeePage", employeePage);
         model.addAttribute("success","");
         return "/employee/display";

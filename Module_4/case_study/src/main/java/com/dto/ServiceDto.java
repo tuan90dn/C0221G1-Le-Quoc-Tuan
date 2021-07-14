@@ -2,10 +2,12 @@ package com.dto;
 
 import com.model.entity.RentType;
 import com.model.entity.ServiceType;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class ServiceDto {
@@ -15,8 +17,8 @@ public class ServiceDto {
     @NotBlank(message = "Nhập em đi anh ơi")
     @Pattern(regexp = "^[1-9]\\d*$",message = "Số dương anh ơi")
     private String area;
-    @NotBlank(message = "Nhập em đi anh ơi")
-    @Pattern(regexp = "^[1-9]\\d*$",message = "Số dương anh ơi")
+    @NotNull(message = "Nhập em đi anh ơi")
+    @NumberFormat(pattern = "^[1-9]\\d*$")
     private Long cost;
     @NotBlank(message = "Nhập em đi anh ơi")
     @Pattern(regexp = "^[1-9]\\d*$",message = "Số dương anh ơi")

@@ -53,6 +53,8 @@ public class ServiceController {
     @PostMapping(value = "/save")
     public String saveService(@Valid @ModelAttribute("serviceDto") ServiceDto serviceDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
         if (bindingResult.hasErrors()){
+            model.addAttribute("serviceType",serviceTypeService.findAll());
+            model.addAttribute("rentType",rentTypeService.findAll());
             return "/service/create";
         }
         Service service=new Service();

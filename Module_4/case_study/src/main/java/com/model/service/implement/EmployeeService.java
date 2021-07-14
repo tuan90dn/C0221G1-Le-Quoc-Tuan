@@ -49,7 +49,7 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public Page<Employee> findAllByNameContainingAndIdCardContaining(String name, String idCard, Pageable pageable) {
-        return employeeRepository.findAllByNameContainingAndIdCardContaining(name,idCard,pageable);
+    public Page<Employee> findAllByNameContainingAndIdCardContainingAndBirthdayContaining(String name, String idCard,String birthday, Pageable pageable) {
+        return employeeRepository.findAllByNameContainingAndIdCardContainingAndBirthdayContaining(name,idCard,birthday,pageable);
     }
 }

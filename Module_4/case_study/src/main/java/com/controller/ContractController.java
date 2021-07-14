@@ -93,10 +93,16 @@ public class ContractController {
     @PostMapping(value = "/save")
     public String saveContract(@Valid @ModelAttribute("contractDto") ContractDto contractDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
         if (bindingResult.hasErrors()){
+            model.addAttribute("employee",employeeService.findAll());
+            model.addAttribute("customer",customerService.findAll());
+            model.addAttribute("service",serviceService.findAll());
             return "/contract/create";
         }
         Long numDate=ContractDto.daysBetween2Date(contractDto.getStartDate(),contractDto.getEndDate());
         if (numDate<0){
+            model.addAttribute("employee",employeeService.findAll());
+            model.addAttribute("customer",customerService.findAll());
+            model.addAttribute("service",serviceService.findAll());
             model.addAttribute("message","Ngày kết thúc phải trễ hơn ngày bắt đầu!");
             return "/contract/create";
         }
@@ -123,6 +129,9 @@ public class ContractController {
     @PostMapping(value = "/update")
     public String updateContract(Model model,@Valid @ModelAttribute("contractDto") ContractDto contractDto,BindingResult bindingResult,RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()){
+            model.addAttribute("employee",employeeService.findAll());
+            model.addAttribute("customer",customerService.findAll());
+            model.addAttribute("service",serviceService.findAll());
             return "/contract/edit";
         }
         Long numDate=ContractDto.daysBetween2Date(contractDto.getStartDate(),contractDto.getEndDate());
