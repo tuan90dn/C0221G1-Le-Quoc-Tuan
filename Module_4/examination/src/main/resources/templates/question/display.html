@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+</head>
+<body>
+<header th:replace="/layout::header"></header>
+
+<!--<h3>Contracts</h3>-->
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-lg-4 text-center">
+            <!--            <button type="button" class="btn btn-primary"><a th:href="@{/products/create}">Add New Product</a></button>-->
+
+            <a th:href="@{/questions/create}">
+                <h4>Add new question</h4>
+            </a>
+
+        </div>
+        <div class="col-lg-8 d-flex justify-content-end">
+            <form action="/questions">
+                <input style="width: 200px;" type="text" name="title" id="title" placeholder="title">
+                <select name="type">
+                    <option disabled="true" selected="selected" value="">Question Type</option>
+                    <option th:each="p : ${questionType}" th:value="${p.name}" th:text="${p.name}"></option>
+                </select>
+                <input style="width: 100px;" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<p>-->
+<!--    <a th:href="@{/products/search}">-->
+<!--        Search customer-->
+<!--    </a>-->
+<!--</p>-->
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+
+<table id="products">
+    <thead>
+    <tr>
+        <th>Ordinal Number</th>
+        <th>Title</th>
+        <th>Type Of Question</th>
+        <th>Creating Date</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${questionPage}">
+        <td th:text="${rowStat.count}"></td>
+        <td th:text="${row.getTitle()}"></td>
+        <td th:text="${row.getQuestionType().name}"></td>
+        <td th:text="${row.getDateCreate()}"></td>
+        <td th:switch="${row.getStatus()}">
+            <p th:case="1">Đã Phản Hồi</p>
+            <p th:case="0">Chờ Phản Hồi</p>
+        </td>
+
+        <td><a th:href="@{/questions/edit/{id}(id=${row.getId()})}">Edit</a></td>
+        <td>
+            <button th:onclick="|deleteBlog(${row.getId()})|" type="button" class="btn btn-primary"
+                    data-toggle="modal" data-target="#exampleModal">
+                Delete
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/questions(page=${questionPage.number - 1}, title=${keywordTitle}, type=${keywordType})}" th:if="${questionPage.hasPrevious()}">Previous</a>
+    <span th:text="${questionPage.number+1}"></span>/<span th:text="${questionPage.totalPages}"></span>
+    <a th:href="@{/questions(page=${questionPage.number + 1}, title=${keywordTitle}, type=${keywordType})}" th:if="${questionPage.hasNext()}">Next</a>
+
+    <span th:each="pageNo : ${#numbers.sequence(0, questionPage.totalPages -1)}">
+        <a th:href="@{/questions(page=${pageNo},title=${keywordTitle}, type=${keywordType})}" th:text="${pageNo+1}"></a>
+    </span>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/questions/delete}"
+              method="POST" novalidate="novalidate">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Question</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                    <input id="idDelete" type="hidden" name="id">
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+<script src="jquery/jquery-3.6.0.min.js"></script>
+
+<script>
+    function deleteBlog(id) {
+        document.getElementById("idDelete").value = id;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/jquery/jquery-3.6.0.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+
+    <title>Spring Products</title>
+
+    <style type="text/css">
+        /*h3{background-color: blue; color: white; padding: 10px 0 10px 20px;}*/
+        footer{margin: 10px 0;}
+
+        #products {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #products td, #products th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #products tr:nth-child(even){background-color: #f2f2f2;}
+
+        #products tr:hover {background-color: #ddd;}
+
+        #products th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input[type=text],input[type=email]{
+            width: 100%;
+            padding: 12px 0px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 300px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        #form {
+            width: 500px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .notify span{font-size: 15px; color: blue;}
+    </style>
+</head>
+<header th:fragment="header">
+    <div class="container-fluid bg-light d-flex sticky-top align-items-center">
+        <div class="col-lg-3">
+            <img width="40px" height="40px" src="https://i.pinimg.com/280x280_RS/8c/c7/cf/8cc7cf8460083733c6e80bcdc42aeeff.jpg">
+        </div>
+        <div class="col-lg-6">
+<!--            <a th:href="@{/}">Home</a>-->
+            <h4 style="color: violet">Cho em điểm cao chút nha</h4>
+        </div>
+        <div class="col-lg-3 d-flex justify-content-end">
+            <h3 style="color: violet">Lê Quốc Tuấn</h3>
+
+        </div>
+
+    </div>
+</header>
+<body>
+
+<footer th:fragment="footer" >
+    <div class="text-center p-3 bg-dark text-white fixed-bottom" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">Module Testing</a>
+    </div>
+</footer>
+</body>
+</html>

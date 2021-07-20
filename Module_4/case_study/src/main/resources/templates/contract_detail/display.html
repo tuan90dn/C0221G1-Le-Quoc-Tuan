@@ -63,12 +63,12 @@
     <a th:href="@{/contractdetails(page=${listContractDetail.number + 1})}" th:if="${listContractDetail.hasNext()}">Next</a>
 
     <span th:each="pageNo : ${#numbers.sequence(0, listContractDetail.totalPages -1)}">
-        <a th:href="@{/customers(page=${pageNo})}" th:text="${pageNo+1}"></a>
+        <a th:href="@{/contractdetails(page=${pageNo})}" th:text="${pageNo+1}"></a>
     </span>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="#" th:action="@{/customers/delete}"
+        <form action="#" th:action="@{/contractdetails/delete}"
               method="POST" novalidate="novalidate">
             <div class="modal-content">
                 <div class="modal-header">

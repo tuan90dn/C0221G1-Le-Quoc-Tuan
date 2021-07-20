@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<header th:replace="/layout::header"></header>
+
+<h3>Edit Question</h3>
+<p>
+    <a th:href="@{/questions}">
+        Back to question list
+    </a>
+</p>
+<div id="form">
+    <form action="#" th:action="@{/questions/update}" th:object="${questionDto}"
+          method="post" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="title">Title</label>
+            <input id="title" type="text" th:field="*{title}"/>
+            <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Name error</p>
+
+        </div>
+        <div>
+            <label for="question">Question</label>
+            <input id="question" type="text" th:field="*{question}"/>
+            <p th:if="${#fields.hasErrors('question')}" th:errors="*{question}">Name error</p>
+        </div>
+        <div>
+            <label for="answer">Answer</label>
+            <input id="answer" type="text" th:field="*{answer}"/>
+            <p th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}"></p>
+        </div>
+        <div>
+            <label>Type Of Question</label>
+            <select th:field="*{questionType}">
+                <option th:each="p : ${questionType}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select>
+
+        </div>
+        <div>
+            <label>Gender</label>
+            <select th:field="*{status}">
+                <div>
+                    <option disabled="true" selected="selected" value="">Chờ Phản Hồi</option>
+                    <option value="0">Chờ Phản Hồi</option>
+                    <option value="1">Đã Phản Hồi</option>
+                </div>
+            </select>
+
+        </div>
+        <input type="submit" value="Edit"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

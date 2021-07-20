@@ -1,0 +1,54 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<header th:replace="/layout::header"></header>
+
+<h3>Add Question</h3>
+<p>
+    <a th:href="@{/questions}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/questions/save}" th:object="${questionDto}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label for="title">Title</label>
+            <input id="title" type="text" th:field="*{title}"/>
+            <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Name error</p>
+
+        </div>
+        <div>
+            <label for="question">Question</label>
+            <input id="question" type="text" th:field="*{question}"/>
+            <p th:if="${#fields.hasErrors('question')}" th:errors="*{question}">Name error</p>
+        </div>
+        <div>
+            <label for="answer">Answer</label>
+            <input id="answer" type="text" th:field="*{answer}"/>
+            <p th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}"></p>
+        </div>
+        <div>
+            <label>Type Of Question</label>
+            <select th:field="*{questionType}">
+                <option th:each="p : ${questionType}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select>
+
+        </div>
+
+<!--            <select th:type="hidden" th:field="*{status}">-->
+
+<!--&lt;!&ndash;                    <option disabled="true" selected="selected" value="">Select</option>&ndash;&gt;-->
+<!--                    <option th:type="hidden" value="0">Chờ Phản Hồi</option>-->
+
+<!--            </select>-->
+
+<!--        <input type="hidden" th:field="*{status}" th:value="0"/>-->
+
+
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

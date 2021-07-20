@@ -40,7 +40,7 @@ public class ProductController {
         return "/view";
     }
     @GetMapping("/add/{id}")
-    public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
+    public String addToCart(@PathVariable Long id, @SessionAttribute Cart cart, @RequestParam("action") String action) {
         Product productOptional = productService.findById(id);
         if (productOptional==null) {
             return "/error.404";
