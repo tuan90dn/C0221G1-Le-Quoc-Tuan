@@ -1,0 +1,99 @@
+<div class="jumbotron text-center">
+  <div class="overlay"  [style.background-image]="'linear-gradient(' + this.direction +',' + this.color1 + ',' + this.color2 + ')'">
+
+  </div>
+
+  <div class="jumbotron-content">
+    <h1 class="display-4 mt-4">CSS3 Gradient Generator </h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+
+    <div class="direction mt-4 mb-4">
+      <div class="container">
+        <div class="row justify-content-sm-center">
+          <div class="col col-md-1">
+            <label for="right">
+
+              <svg xmlns="http://www.w3.org/2000/svg"  (click)="selectMe(id=1)" [ngClass]="{'select-active': id === 1 }" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+
+            </label>
+            <input type="radio" [(ngModel)]="direction" value="to right" name="direction" id="right">
+          </div>
+
+          <div class="col col-md-1">
+            <label for="bottom">
+              <svg xmlns="http://www.w3.org/2000/svg"  (click)="selectMe(id=2)" [ngClass]="{'select-active': id === 2 }"width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </label>
+            <input type="radio" [(ngModel)]="direction" value="to bottom" name="direction" id="bottom">
+          </div>
+
+          <div class="col col-md-1">
+            <label for="right-bottom">
+              <svg xmlns="http://www.w3.org/2000/svg"  (click)="selectMe(id=3)" [ngClass]="{'select-active': id === 3 }" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-right"><line x1="7" y1="7" x2="17" y2="17"></line><polyline points="17 7 17 17 7 17"></polyline></svg>
+            </label>
+            <input type="radio" [(ngModel)]="direction" value="to right bottom" name="direction" id="right-bottom">
+          </div>
+
+          <div class="col col-md-1">
+            <label for="right-top">
+              <svg xmlns="http://www.w3.org/2000/svg"  (click)="selectMe(id=4)" [ngClass]="{'select-active': id === 4 }" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </label>
+            <input type="radio" [(ngModel)]="direction" value="to right top" name="direction" id="right-top">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-2">
+          <div class="form-group">
+            <input type="text" class="form-control"  [(colorPicker)]="color1"
+                   [cpPresetColors]="['#7B1FA2', '#039BE5', '#FF5252', '#D32F2F', '#283593']"
+                   [cpPosition]="'left'"
+                   [style.background]="color1"
+                   [cpAlphaChannel]="'always'"
+                   [cpOutputFormat]="'hex'"
+                   [value]="color1">
+          </div>
+        </div>
+
+        <div class="col col-lg-2">
+          <div class="form-group">
+            <input type="text" class="form-control"  [(colorPicker)]="color2"
+                   [cpPresetColors]="['#7B1FA2', '#039BE5', '#FF5252', '#D32F2F', '#283593']"
+                   [cpPosition]="'right'"
+                   [style.background]="color2"
+                   [cpAlphaChannel]="'always'"
+                   [cpOutputFormat]="'hex'"
+                   [value]="color2">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </p>
+  </div>
+
+</div>
+
+<div class="container">
+  <h3>You code Here</h3>
+
+  <pre>
+
+
+        <code class="language-css" innerHTML="
+        <span class='token property'>background</span><span class='token punctuation'>:</span> <span class='token function'>linear-gradient</span><span class='token punctuation'>(</span>{{this.direction}}, {{this.color1}}, {{this.color2}}<span class='token punctuation'>)</span><span class='token punctuation'>;</span>
+        <span class='token property'>background</span><span class='token punctuation'>:</span> <span class='token function'>-webkit-linear-gradient</span><span class='token punctuation'>(</span>{{this.direction}}, {{this.color1}}, {{this.color2}}<span class='token punctuation'>)</span><span class='token punctuation'>;</span>
+        <span class='token property'>background</span><span class='token punctuation'>:</span> <span class='token function'>-moz-linear-gradient</span><span class='token punctuation'>(</span>{{this.direction}}, {{this.color1}}, {{this.color2}}<span class='token punctuation'>)</span><span class='token punctuation'>;</span>
+        <span class='token property'>background</span><span class='token punctuation'>:</span> <span class='token function'>-o-linear-gradient</span><span class='token punctuation'>(</span>{{this.direction}}, {{this.color1}}, {{this.color2}}<span class='token punctuation'>)</span><span class='token punctuation'>;</span>
+        ">
+
+            </code>
+    </pre>
+
+</div>
