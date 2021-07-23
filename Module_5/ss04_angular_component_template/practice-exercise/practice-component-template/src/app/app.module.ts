@@ -3,18 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CalculatorAppComponent } from './calculator-app/calculator-app.component';
-import { ColorPickerComponent } from './color-picker/color-picker.component';
+import { ArticleComponent } from './article/article.component';
 import {FormsModule} from '@angular/forms';
-import { TestComponent } from './test/test.component';
-
+import { LikeComponent } from './like/like.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalculatorAppComponent,
-    ColorPickerComponent,
-    TestComponent,
+    ArticleComponent,
+    LikeComponent,
+    NavbarComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,

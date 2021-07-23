@@ -1,0 +1,7 @@
+<select #selectColor (change)="changeColor(selectColor.value)">
+  <option value="Black">Black</option>
+  <option value="Red">Red</option>
+  <option value="Violet">Violet</option>
+  <option value="Blue">Blue</option>
+</select>
+<div [ngStyle]="{'color': color}">Change my color</div>
