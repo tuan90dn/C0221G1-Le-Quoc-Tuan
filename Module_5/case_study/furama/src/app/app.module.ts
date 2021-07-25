@@ -11,6 +11,9 @@ import { EmployeeListComponent } from './components/employee/employee-list/emplo
 import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
 import { EmployeeEditComponent } from './components/employee/employee-edit/employee-edit.component';
 import { EmployeeDeleteComponent } from './components/employee/employee-delete/employee-delete.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { EmployeeDeleteComponent } from './components/employee/employee-delete/e
     EmployeeListComponent,
     EmployeeCreateComponent,
     EmployeeEditComponent,
-    EmployeeDeleteComponent
+    EmployeeDeleteComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
