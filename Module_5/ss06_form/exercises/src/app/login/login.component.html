@@ -1,0 +1,32 @@
+<h2>Login</h2>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+  <p>
+    <label for="email">Email</label>
+    <input type="text" id="email" formControlName="email">
+  </p>
+  <div *ngIf="contactForm.get('email').invalid && (contactForm.get('email').dirty)">
+    <div [hidden]="!contactForm.get('email').errors.required">
+      <p style="color: red">Email is required!</p>
+    </div>
+    <div [hidden]="!contactForm.get('email').errors.email">
+      <p style="color: red">Invalid email id!!</p>
+    </div>
+  </div>
+
+  <p>
+    <label for="password">Password</label>
+    <input type="text" id="password" formControlName="password">
+  </p>
+
+  <div *ngIf="contactForm.get('password').invalid && (contactForm.get('password').dirty)">
+    <div [hidden]="!contactForm.get('password').errors.required">
+      <p style="color: red">Password is required!</p>
+    </div>
+    <div [hidden]="contactForm.get('password').errors.minLength">
+      <p style="color: red">Invalid password length!!</p>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="contactForm.invalid">Login</button>
+
+</form>

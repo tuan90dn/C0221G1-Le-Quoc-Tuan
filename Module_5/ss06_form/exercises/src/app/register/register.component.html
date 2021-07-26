@@ -1,0 +1,134 @@
+<h2>Register</h2>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+
+  <p>
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" formControlName="email">
+  </p>
+  <div *ngIf="!contactForm.controls.email?.valid && (contactForm.controls.email?.dirty || contactForm.controls.email?.touched)">
+    <div [hidden]="!contactForm.controls.email.errors.required">
+    <p style="color: red">Email is required!</p>
+    </div>
+    <div [hidden]="!contactForm.controls.email.errors.email">
+      <p style="color: red">Invalid email id!</p>
+    </div>
+  </div>
+
+  <div formGroupName="pwForm">
+    <p>
+      <label for="password">Password</label>
+      <input type="text" id="password" name="password" formControlName="password">
+    </p>
+    <div *ngIf="!contactForm.get('pwForm').get('password').valid && (contactForm.get('pwForm').get('password').dirty || (contactForm.get('pwForm').get('password').touched))">
+      <div [hidden]="!contactForm.get('pwForm').get('password').errors.required">
+        <p style="color: red">Confirm Password is required!</p>
+      </div>
+      <div [hidden]="contactForm.get('pwForm').get('password').errors.minLength">
+        <p style="color: red">Invalid confirm password length!</p>
+      </div>
+    </div>
+
+<!--    <div *ngIf="!contactForm.controls.password?.valid && (contactForm.controls.password?.dirty || contactForm.controls.password?.touched)">-->
+<!--      <div [hidden]="!contactForm.controls.password.errors.required">-->
+<!--        <p style="color: red">Password is required!</p>-->
+<!--      </div>-->
+<!--      <div [hidden]="!contactForm.controls.password.errors.minLength">-->
+<!--        <p style="color: red">Invalid password length!</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <p>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="text" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
+    </p>
+    <div *ngIf="contactForm.get('pwForm').get('confirmPassword').invalid && (contactForm.get('pwForm').get('confirmPassword').dirty || (contactForm.get('pwForm').get('confirmPassword').touched))">
+      <div [hidden]="!contactForm.get('pwForm').get('confirmPassword').errors.required">
+        <p style="color: red">Confirm Password is required!</p>
+      </div>
+      <div [hidden]="contactForm.get('pwForm').get('confirmPassword').errors.minLength">
+        <p style="color: red">Invalid confirm password length!</p>
+      </div>
+    </div>
+    <div *ngIf="contactForm.hasError('passwordnotmatch', ['pwForm']) && (contactForm.get('pwForm').get('confirmPassword').dirty || (contactForm.get('pwForm').get('confirmPassword').touched))">
+      <p style="color: red">Password does not match!</p>
+    </div>
+
+
+<!--    <div *ngIf="!contactForm.controls.confirmPassword?.valid && (contactForm.controls.confirmPassword?.dirty || contactForm.controls.confirmPassword?.touched)">-->
+<!--      <div [hidden]="!contactForm.controls.confirmPassword.errors.required">-->
+<!--        <p style="color: red">Confirm Password is required!</p>-->
+<!--      </div>-->
+<!--      <div [hidden]="!contactForm.controls.confirmPassword.errors.minLength">-->
+<!--        <p style="color: red">Invalid confirm password length!</p>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+
+<!--  <div *ngIf="contactForm.get('pwForm').invalid && (contactForm.get('pwForm').dirty || (contactForm.get('pwForm').touched))">-->
+<!--    <div [hidden]="contactForm.get('pwForm').errors.required">-->
+<!--      <p style="color: red">Confirm Password is required!</p>-->
+<!--    </div>-->
+<!--    <div [hidden]="contactForm.get('pwForm').errors.minLength">-->
+<!--      <p style="color: red">Invalid confirm password length!</p>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+
+  <p>
+    <label for="country">Country </label>
+    <select id="country" name="country" formControlName="country">
+      <option [ngValue]="c.name" *ngFor="let c of countryList">
+      </option>
+    </select>
+  </p>
+
+  <div *ngIf="!contactForm.controls.country?.valid && (contactForm.controls.country?.dirty || contactForm.controls.country?.touched)">
+    <div [hidden]="!contactForm.controls.country.errors.required">
+      <p style="color: red">Country is required!</p>
+    </div>
+  </div>
+
+  <p>
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" formControlName="age">
+  </p>
+  <div *ngIf="!contactForm.controls.age?.valid && (contactForm.controls.age?.dirty || contactForm.controls.age?.touched)">
+    <div [hidden]="!contactForm.controls.age.errors.required">
+      <p style="color: red">Age is required!</p>
+    </div>
+    <div [hidden]="!contactForm.controls.age.errors.min">
+      <p style="color: red">Invalid age size!</p>
+    </div>
+  </div>
+
+  <p>
+    <label for="gender">Geneder </label>
+    <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
+    <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female
+  </p>
+
+  <div *ngIf="!contactForm.controls.gender?.valid && (contactForm.controls.gender?.dirty || contactForm.controls.gender?.touched)">
+    <div [hidden]="!contactForm.controls.gender.errors.required">
+      <p style="color: red">Gender is required!</p>
+    </div>
+  </div>
+
+  <p>
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" name="phone" formControlName="phone">
+  </p>
+  <div *ngIf="!contactForm.controls.phone?.valid && (contactForm.controls.phone?.dirty || contactForm.controls.phone?.touched)">
+    <div [hidden]="!contactForm.controls.phone.errors.required">
+      <p style="color: red">Phone is required!</p>
+    </div>
+    <div [hidden]="!contactForm.controls.phone.errors.pattern">
+      <p style="color: red">Invalid phone pattern!</p>
+    </div>
+  </div>
+
+  <p>
+    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+  </p>
+
+</form>
