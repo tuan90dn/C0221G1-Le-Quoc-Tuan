@@ -19,9 +19,11 @@ public class Main {
 //                }
 //            }
 //            System.out.println();
-//        }
-        int arr[]={8,-1,-2,-3,-4,-5};
-        System.out.println(findSecond(arr));
+////        }
+//        int arr[]={8,-1,-2,-3,-4,-5};
+//        System.out.println(findSecond(arr));
+        String strings="aabbcdcc";
+        System.out.println(findWord(strings));
     }
 //    public static int findSecondMaxNumber(int[] arr){
 //        int num=0;
@@ -48,4 +50,18 @@ public class Main {
         }
         return 0;
     }
+    public static char[] findWord(String strings){
+        char[] array = strings.toCharArray();
+        StringBuilder newArray = new StringBuilder();
+        Arrays.sort(array);
+        for (int i =0;i<array.length-1;i++){
+            if (array[i+1]==array[i]){
+                newArray.append(array[i+1]);
+            }
+        }
+
+        String chars = newArray.toString();
+        return chars.toCharArray();
+    }
+
 }

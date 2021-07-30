@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -54,6 +55,8 @@ public class BlogController {
     }
     @PostMapping(value = "/update")
     public String updateBlog(Blog blog,RedirectAttributes redirectAttributes){
+//        blog.setDateComment(blog.getDateComment());
+//        Date newDate = blog.getDateComment();
         blogService.save(blog);
         redirectAttributes.addFlashAttribute("success","Edit Successful!");
         return "redirect:/blogs/";
