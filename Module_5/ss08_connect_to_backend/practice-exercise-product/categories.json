@@ -1,0 +1,35 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "nhập khẩu"
+    },
+    {
+      "id": 2,
+      "name": "xuất khẩu"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "điện thoại",
+      "price": "20000000",
+      "description": "new",
+      "category": "1"
+    },
+    {
+      "id": 2,
+      "name": "máy tính",
+      "price": "30000000",
+      "description": "new",
+      "category": "2"
+    },
+    {
+      "id": 3,
+      "name": "máy giặt",
+      "price": 35000000,
+      "description": "new",
+      "category": {}
+    }
+  ]
+}
