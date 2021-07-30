@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "practice-gallery": {
+    "exercise-image-slide": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/practice-gallery",
+            "outputPath": "dist/exercise-image-slide",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "practice-gallery:build"
+            "browserTarget": "exercise-image-slide:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "practice-gallery:build:production"
+              "browserTarget": "exercise-image-slide:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "practice-gallery:build"
+            "browserTarget": "exercise-image-slide:build"
           }
         },
         "test": {
@@ -114,19 +114,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "practice-gallery:serve"
+            "devServerTarget": "exercise-image-slide:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "practice-gallery:serve:production"
+              "devServerTarget": "exercise-image-slide:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "practice-gallery",
+  "defaultProject": "exercise-image-slide",
   "cli": {
-    "analytics": "c9a2a5b4-22e2-4e1e-af1c-46e660e0eaba"
+    "analytics": "12523f43-3d16-4365-85af-bcbaca0f50f1"
   }
 }
