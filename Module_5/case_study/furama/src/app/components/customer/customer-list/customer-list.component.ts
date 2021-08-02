@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {Customer} from '../../../model/customer/Customer';
+import {CustomerService} from '../../../service/customer.service';
+import {DialogService} from '../../../service/dialog.service';
+// // @ts-ignore
+// import {Customer} from '../../model/customer/Customer';
+// // @ts-ignore
+// import {CustomerService} from '../../service/customer.service';
+//
+// // @ts-ignore
+// import {DialogService} from '../../service/dialog.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -7,31 +16,47 @@ import {Customer} from '../../../model/customer/Customer';
   styleUrls: ['./customer-list.component.scss']
 })
 export class CustomerListComponent implements OnInit {
-  customers: Customer[] = [
-    {
-      id: 1,
-      idCustomerType: 1,
-      name: 'tuấn',
-      birthday: '28/11/1990',
-      idCard: '123456789',
-      phone: '0905060708',
-      email: 'tuan@gmail.com',
-      address: 'đà nẵng'
-    },
-    {
-      id: 2,
-      idCustomerType: 2,
-      name: 'toàn',
-      birthday: '14/11/2000',
-      idCard: '123456789',
-      phone: '0905060708',
-      email: 'toan@gmail.com',
-      address: 'quảng nam'
-    }
-  ];
-  constructor() { }
+  constructor(private customerService: CustomerService,
+              private dialogService: DialogService) { }
+  customers: Customer[] = [];
+  key = 'id';
+  textSearch = '';
+  reverse = false;
+  p = 1;
+  firstDate = '';
+  secondDate = '';
 
   ngOnInit(): void {
+    this.getAll();
+  }
+  getAll() {
+    this.customerService.getAll().subscribe(customers => {
+      this.customers = customers;
+    });
+  }
+  onDelete(id) {
+    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+      .afterClosed().subscribe(res => {
+      if (res) {
+        this.customerService.delete(id).subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    });
+  }
+  search() {
+    this.customerService.search(this.textSearch).subscribe(customers => {
+      this.customers = customers;
+    });
+  }
+  sort(key) {
+    this.key = key;
+    this.reverse = !this.reverse;
   }
 
+  searchByDate() {
+    this.customerService.searchDate(this.firstDate, this.secondDate).subscribe(customers => {
+      this.customers = customers;
+    });
+  }
 }

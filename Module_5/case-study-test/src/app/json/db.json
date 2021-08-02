@@ -1,0 +1,66 @@
+{
+  "customer-types": [
+    {
+      "id": 1,
+      "name": "vip"
+    },
+    {
+      "id": 2,
+      "name": "cùi bắp"
+    }
+  ],
+  "customers": [
+    {
+      "customerType": {
+        "id": 1,
+        "name": "vip"
+      },
+      "name": "tuấn",
+      "birthday": "2021-08-18",
+      "idCard": "123456789",
+      "phone": "0905060708",
+      "email": "tuan@gmail.com",
+      "address": "đà nẵng",
+      "id": 1
+    },
+    {
+      "customerType": {
+        "id": 2,
+        "name": "cùi bắp"
+      },
+      "name": "toàn",
+      "birthday": "14/1/1990",
+      "idCard": "123456789",
+      "phone": "0905060708",
+      "email": "toan@gmail.com",
+      "address": "quảng nam",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "customerType": {
+        "id": 2,
+        "name": "cùi bắp"
+      },
+      "name": "tuannnnnnn",
+      "birthday": "2021-08-17",
+      "idCard": "12345",
+      "phone": "7658658",
+      "email": "kkkkkkkkk",
+      "address": "kkkkkkk"
+    },
+    {
+      "customerType": {
+        "id": 1,
+        "name": "vip"
+      },
+      "name": "mrtuan",
+      "birthday": "2021-08-29",
+      "idCard": "66666666666",
+      "phone": "7777777777",
+      "email": "hhhhhhhhhh",
+      "address": "kkkkkkkk",
+      "id": 4
+    }
+  ]
+}

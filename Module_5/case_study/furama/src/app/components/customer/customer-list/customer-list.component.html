@@ -1,27 +1,55 @@
-<h3>Customer List</h3>
+<h2>Customer List</h2>
+<div class="container-fluid">
+  <div class="row align-items-center">
+    <div class="col-lg-4 text-center">
+      <!--            <button type="button" class="btn btn-primary"><a th:href="@{/products/create}">Add New Product</a></button>-->
+
+      <a routerLink="/customer/create"><h2>Create a new customer</h2></a>
+
+    </div>
+    <div class="col-lg-5">
+      <input type = date [(ngModel)]="firstDate">
+      <input type = date [(ngModel)]="secondDate">
+      <button style="height: 45px;margin: auto"  (click)="searchByDate()">Search</button>
+    </div>
+    <div class="col-lg-3 d-flex align-content-center ">
+      <input type = text [(ngModel)]="textSearch">
+      <button style="height: 45px;margin: auto"  (click)="search()">Search</button>
+<!--      <form action="/customers">-->
+<!--        <input style="width: 200px;" type="text" name="name" id="name">-->
+<!--        <input style="width: 100px;" type="submit" value="Search">-->
+<!--      </form>-->
+    </div>
+  </div>
+</div>
+
 <table id="products">
   <thead>
   <tr>
-    <th>Id</th>
-    <th>Id Customer Type</th>
-    <th>Name</th>
+    <th>STT</th>
+    <th>Customer Type</th>
+    <th (click)="sort('id')">Name&nbsp;<i class="fa fa-sort"></i></th>
     <th>Birthday</th>
     <th>Id Card</th>
     <th>Phone</th>
     <th>Email</th>
     <th>Address</th>
+    <td colspan="2"></td>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let customer of customers">
-    <td>{{customer.id}}</td>
-    <td>{{customer.idCard}}</td>
+  <tr *ngFor="let customer of customers|orderBy: key: reverse|paginate: {itemsPerPage:2, currentPage:p}; index as i">
+    <td>{{i+1}}</td>
+    <td>{{customer.customerType.name}}</td>
     <td>{{customer.name}}</td>
     <td>{{customer.birthday}}</td>
     <td>{{customer.idCard}}</td>
     <td>{{customer.phone}}</td>
     <td>{{customer.email}}</td>
     <td>{{customer.address}}</td>
+    <td><a [routerLink]="['/customer/edit',customer.id]">Edit</a></td>
+    <td><button mat-icon-button color="warn" (click)="onDelete(customer.id)"><mat-icon>delete_outline</mat-icon></button></td>
   </tr>
   </tbody>
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

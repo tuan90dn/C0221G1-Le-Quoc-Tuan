@@ -1,0 +1,31 @@
+<h3>Customer List</h3>
+<a routerLink="/customer/create">Create a new customer</a>
+<table>
+  <thead>
+  <tr>
+    <th>STT</th>
+    <th>Customer Type</th>
+    <th>Name</th>
+    <th>Birthday</th>
+    <th>Id Card</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Address</th>
+    <td colspan="2"></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let customer of customers; index as i">
+    <td>{{i+1}}</td>
+    <td>{{customer.customerType.name}}</td>
+    <td>{{customer.name}}</td>
+    <td>{{customer.birthday}}</td>
+    <td>{{customer.idCard}}</td>
+    <td>{{customer.phone}}</td>
+    <td>{{customer.email}}</td>
+    <td>{{customer.address}}</td>
+    <td><a [routerLink]="['/customer/edit',customer.id]">Edit</a></td>
+    <td><button mat-icon-button color="warn" (click)="onDelete(customer.id)"><mat-icon>delete_outline</mat-icon></button></td>
+  </tr>
+  </tbody>
+</table>

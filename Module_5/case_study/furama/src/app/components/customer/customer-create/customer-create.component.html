@@ -1,1 +1,41 @@
-<p>customer-create works!</p>
+<h1>Create a new customer</h1>
+<a routerLink="/customer/list">Back to list customer</a>
+<form [formGroup]="customerForm" (ngSubmit)="submit()">
+  <table id="form">
+    <tr>
+      <td>Type of customer</td>
+      <td><select formControlName="customerType">
+        <option selected [value]="null" disabled>Select</option>
+        <option *ngFor="let type of customerTypes" [ngValue]="type">{{type.name}}</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td>Birthday:</td>
+      <td><input type="date" formControlName="birthday"></td>
+    </tr>
+    <tr>
+      <td>Id card</td>
+      <td><input type="text" formControlName="idCard"></td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td><input type="text" formControlName="phone"></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" formControlName="email"></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><input type="text" formControlName="address"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Create</button></td>
+    </tr>
+  </table>
+</form>

@@ -1,0 +1,53 @@
+{
+  "customer-types": [
+    {
+      "id": 1,
+      "name": "vip"
+    },
+    {
+      "id": 2,
+      "name": "cùi bắp"
+    }
+  ],
+  "customers": [
+    {
+      "customerType": {
+        "id": 1,
+        "name": "vip"
+      },
+      "name": "mrtuan",
+      "birthday": "2021-08-29",
+      "idCard": "66666666666",
+      "phone": "7777777777",
+      "email": "hhhhhhhhhh",
+      "address": "kkkkkkkk",
+      "id": 4
+    },
+    {
+      "customerType": {
+        "id": 1,
+        "name": "vip"
+      },
+      "name": "nhung",
+      "birthday": "2021-08-11",
+      "idCard": "43654",
+      "phone": "235235435",
+      "email": "nhhhhhhhhhhh",
+      "address": "kkkkkkkkk",
+      "id": 5
+    },
+    {
+      "customerType": {
+        "id": 1,
+        "name": "vip"
+      },
+      "name": "tttttttttttttttttttttt",
+      "birthday": "2021-08-03",
+      "idCard": "555555",
+      "phone": "66666",
+      "email": "kkkkkkk",
+      "address": "hhhhhhhhh",
+      "id": 6
+    }
+  ]
+}

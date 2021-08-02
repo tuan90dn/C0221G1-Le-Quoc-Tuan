@@ -14,6 +14,17 @@ import { EmployeeDeleteComponent } from './components/employee/employee-delete/e
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+// import {MatIconModule} from '@angular/material/icon';
+// import {MatButtonModule} from '@angular/material/button';
+// import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -32,7 +43,16 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    Ng2OrderModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

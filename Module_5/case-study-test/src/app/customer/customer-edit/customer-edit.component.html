@@ -1,0 +1,40 @@
+<h1>Editing customer</h1>
+<form [formGroup]="customerForm" (ngSubmit)="update(id)">
+  <table>
+    <tr>
+      <td>Type of customer</td>
+      <td><select [compareWith]="compareFn" formControlName="customerType">
+        <option *ngFor="let type of customerTypes" [ngValue]="type">{{type.name}}</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td>Birthday:</td>
+      <td><input type="date" formControlName="birthday"></td>
+    </tr>
+    <tr>
+      <td>Id card</td>
+      <td><input type="text" formControlName="idCard"></td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td><input type="text" formControlName="phone"></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" formControlName="email"></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><input type="text" formControlName="address"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Edit</button></td>
+    </tr>
+  </table>
+</form>
+
