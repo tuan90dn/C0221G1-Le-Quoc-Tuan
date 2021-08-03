@@ -29,6 +29,9 @@ export class CustomerService {
     return this.http.get(this.apiUrl + '?name_like=' + textSearch);
   }
   searchDate(dateOne: any, dateTwo: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}/?birthday_gte=${dateOne}&birthday_lte=${dateTwo}`);
+    return this.http.get(`${this.apiUrl}?birthday_gte=${dateOne}&birthday_lte=${dateTwo}`);
+  }
+  searchSelectType(type: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}?customerType.name=${type}`);
   }
 }

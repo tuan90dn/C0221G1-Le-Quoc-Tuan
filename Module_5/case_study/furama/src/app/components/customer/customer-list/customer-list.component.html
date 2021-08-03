@@ -1,20 +1,26 @@
 <h2>Customer List</h2>
 <div class="container-fluid">
   <div class="row align-items-center">
-    <div class="col-lg-4 text-center">
+    <div class="col-lg-3 text-center">
       <!--            <button type="button" class="btn btn-primary"><a th:href="@{/products/create}">Add New Product</a></button>-->
 
       <a routerLink="/customer/create"><h2>Create a new customer</h2></a>
 
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-2">
+      <select [(ngModel)]="type" (click)="searchByCustomerType()">
+        <option [value]="'1'">Select</option>
+        <option *ngFor="let type of customerTypes" >{{type.name}}</option>
+      </select>
+    </div>
+    <div class="col-lg-4">
       <input type = date [(ngModel)]="firstDate">
       <input type = date [(ngModel)]="secondDate">
       <button style="height: 45px;margin: auto"  (click)="searchByDate()">Search</button>
     </div>
     <div class="col-lg-3 d-flex align-content-center ">
       <input type = text [(ngModel)]="textSearch">
-      <button style="height: 45px;margin: auto"  (click)="search()">Search</button>
+      <button style="height: 45px;margin: auto" (click)="search()">Search</button>
 <!--      <form action="/customers">-->
 <!--        <input style="width: 200px;" type="text" name="name" id="name">-->
 <!--        <input style="width: 100px;" type="submit" value="Search">-->

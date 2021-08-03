@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
 import {CustomerType} from '../../../model/customer/CustomerType';
 import {CustomerService} from '../../../service/customer.service';
 import {CustomerTypeService} from '../../../service/customer-type.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-customer-create',
@@ -17,12 +17,12 @@ export class CustomerCreateComponent implements OnInit {
   customerTypes: CustomerType[] = [];
   customerForm: FormGroup = new FormGroup({
     customerType: new FormControl(),
-    name: new FormControl(),
-    birthday: new FormControl(),
-    idCard: new FormControl(),
-    phone: new FormControl(),
-    email: new FormControl(),
-    address: new FormControl()
+    name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
+    birthday: new FormControl('', [Validators.required]),
+    idCard: new FormControl('', [Validators.required, Validators.pattern(/^\d{9,10}$/)]),
+    phone: new FormControl('', [Validators.required, Validators.pattern(/^0\d{9,10}$|^\+84\d{9,10}$/)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    address: new FormControl('', [Validators.required])
   });
 
 

@@ -1,6 +1,6 @@
 <h1>Create a new customer</h1>
 <a routerLink="/customer/list">Back to list customer</a>
-<form [formGroup]="customerForm" (ngSubmit)="submit()">
+<form [formGroup]="customerForm" (ngSubmit)="submit()" novalidate>
   <table id="form">
     <tr>
       <td>Type of customer</td>
@@ -13,29 +13,71 @@
       <td>Name:</td>
       <td><input type="text" formControlName="name"></td>
     </tr>
+    <div *ngIf="customerForm.get('name')?.invalid && (customerForm.get('name')?.dirty || customerForm.get('name')?.touched)">
+      <div [hidden]="!customerForm.get('name')?.errors.required">
+        <p style="color: red">Name is required!</p>
+      </div>
+      <div [hidden]="!customerForm.get('name')?.errors.pattern">
+        <p style="color: red">Invalid name!</p>
+      </div>
+    </div>
     <tr>
       <td>Birthday:</td>
       <td><input type="date" formControlName="birthday"></td>
     </tr>
+    <div *ngIf="customerForm.get('birthday')?.invalid && (customerForm.get('birthday')?.dirty || customerForm.get('birthday')?.touched)">
+      <div [hidden]="!customerForm.get('birthday')?.errors.required">
+        <p style="color: red">Birthday is required!</p>
+      </div>
+    </div>
     <tr>
       <td>Id card</td>
       <td><input type="text" formControlName="idCard"></td>
     </tr>
+    <div *ngIf="customerForm.get('idCard')?.invalid && (customerForm.get('idCard')?.dirty || customerForm.get('idCard')?.touched)">
+      <div [hidden]="!customerForm.get('idCard')?.errors.required">
+        <p style="color: red">Id card is required!</p>
+      </div>
+      <div [hidden]="!customerForm.get('idCard')?.errors.pattern">
+        <p style="color: red">Invalid id card!</p>
+      </div>
+    </div>
     <tr>
       <td>Phone number</td>
       <td><input type="text" formControlName="phone"></td>
     </tr>
+    <div *ngIf="customerForm.get('phone')?.invalid && (customerForm.get('phone')?.dirty || customerForm.get('phone')?.touched)">
+      <div [hidden]="!customerForm.get('phone')?.errors.required">
+        <p style="color: red">Phone is required!</p>
+      </div>
+      <div [hidden]="!customerForm.get('phone')?.errors.pattern">
+        <p style="color: red">Invalid phone!</p>
+      </div>
+    </div>
     <tr>
       <td>Email</td>
       <td><input type="text" formControlName="email"></td>
     </tr>
+    <div *ngIf="customerForm.get('email')?.invalid && (customerForm.get('email')?.dirty || customerForm.get('email')?.touched)">
+      <div [hidden]="!customerForm.get('email')?.errors.required">
+        <p style="color: red">Email is required!</p>
+      </div>
+      <div [hidden]="!customerForm.get('email')?.errors.email">
+        <p style="color: red">Invalid Email!</p>
+      </div>
+    </div>
     <tr>
       <td>Address</td>
       <td><input type="text" formControlName="address"></td>
     </tr>
+    <div *ngIf="customerForm.get('address')?.invalid && (customerForm.get('address')?.dirty || customerForm.get('address')?.touched)">
+      <div [hidden]="!customerForm.get('address')?.errors.required">
+        <p style="color: red">Address is required!</p>
+      </div>
+    </div>
     <tr>
       <td></td>
-      <td><button>Create</button></td>
+      <td><button type="submit" [disabled]="!customerForm.valid">Create</button></td>
     </tr>
   </table>
 </form>

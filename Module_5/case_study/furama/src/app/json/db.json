@@ -28,11 +28,11 @@
         "id": 1,
         "name": "vip"
       },
-      "name": "nhung",
+      "name": "nhungggggthhhhhhhhh",
       "birthday": "2021-08-11",
-      "idCard": "43654",
-      "phone": "235235435",
-      "email": "nhhhhhhhhhhh",
+      "idCard": "436546784",
+      "phone": "0235235435",
+      "email": "nhhhhhhhhhhh@gmail.com",
       "address": "kkkkkkkkk",
       "id": 5
     },
@@ -48,6 +48,29 @@
       "email": "kkkkkkk",
       "address": "hhhhhhhhh",
       "id": 6
+    },
+    {
+      "customerType": null,
+      "name": "tuan",
+      "birthday": "2021-08-18",
+      "idCard": "123456789",
+      "phone": "0905920025",
+      "email": "tuan@gmail.com",
+      "address": "Đà Nẵng",
+      "id": 7
+    },
+    {
+      "customerType": {
+        "id": 2,
+        "name": "cùi bắp"
+      },
+      "name": "hhhhhhhhhhhhhh",
+      "birthday": "2021-08-11",
+      "idCard": "123456789",
+      "phone": "0905912245",
+      "email": "hhhh@gmail.com",
+      "address": "bbbbbbbbbbbbb",
+      "id": 8
     }
   ]
 }
